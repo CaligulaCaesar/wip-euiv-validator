@@ -574,40 +574,54 @@ alias[trigger:had_active_policy] = {
 	days = int
 }
 
+## scope = Country
+###Returns true if the consort flag X was last set at least Y days ago.
+alias[trigger:had_consort_flag] = {
+	flag = scalar
+	days = int
+}
+
+## scope = Country
+###Returns true if the country flag X was last set for the country at least Y days ago.
+alias[trigger:had_country_flag] = {
+	flag = scalar
+	days = int
+}
+
+## scope = anywhere
+###Returns true if the global flag X was last set at least Y days ago.
+alias[trigger:had_global_flag] = {
+	flag = scalar
+	days = int
+}
+
+## scope = Country
+###Returns true if the heir flag X was last set at least Y days ago.
+alias[trigger:had_heir_flag] = {
+	flag = scalar
+	days = int
+}
+
+## scope = province
+###Returns true if the province flag X was last set for the province at least Y days ago.
+alias[trigger:had_province_flag] = {
+	flag = scalar
+	days = int
+}
+
+## scope = Country
+###Returns true if the country fought a war within the last X years.
+alias[trigger:had_recent_war] = int
+
+## scope = Country
+###Returns true if the ruler flag X was last set for the current ruler at least Y days ago.
+alias[trigger:had_ruler_flag] = {
+	flag = scalar
+	days = int
+}
 
 
 
-had_consort_flag	Clause	Returns true if the consort flag X was last set at least Y days ago	Country	
-had_consort_flag = {
-	flag = my_first_consort_flag
-	days = 365
-}
-had_country_flag	Clause	Returns true if the country flag X was last set for the country at least Y days ago.	Country	
-had_country_flag = {
-	flag = bur_successor
-	days = 180
-}
-had_global_flag	Clause	Returns true if the global flag X was last set at least Y days ago.	Anywhere	
-had_global_flag = {
-	flag = inc_smallpox
-	days = 9125
-}
-had_heir_flag	Clause	Returns true if the heir flag X was last set at least Y days ago	Country	
-had_heir_flag = {
-	flag = inc_pacific_exploration
-	days = 270
-}
-had_province_flag	Clause	Returns true if the province flag X was last set for the province at least Y days ago.	Province	
-had_province_flag = {
-	flag = dutch_revolt
-	days = 1825
-}
-had_recent_war	Integer	Returns true if the country fought a war within the last X years.	Country	had_recent_war = 10
-had_ruler_flag	Clause	Returns true if the ruler flag X was last set for the current ruler at least Y days ago	Country	
-had_ruler_flag = {
-	flag = helped_rival
-	days = 730
-}
 harmonization_progress	Integer	Returns true, if the country's current harmonization progress is at least at X.	Country	harmonization_progress = 90
 harmony	Integer	Returns true, if the country has at least X harmony.	Country	harmony = 50
 has_active_debate	Boolean	Returns true if the country has ongoing debate in parliament.	Country	has_active_debate = yes
