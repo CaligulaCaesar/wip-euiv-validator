@@ -1,0 +1,15 @@
+
+
+#Putting enums in here
+
+enums = {
+	enum[unit_types] = {
+		infantry
+		cavalry
+		artillery
+		heavy_ship
+		light_ship
+		galley
+		transport
+	}
+}
