@@ -641,6 +641,69 @@ has_casus_belli = {
 	type = cb_trade_war_triggered
 	target = TOT
 }
+
+## scope = Country
+###Returns true, if the country's current harmonization progress is at least at X.
+alias[trigger:harmonization_progress] = int
+
+## scope = Country
+###Returns true, if the country has at least X harmony.
+alias[trigger:harmony] = int
+
+## scope = Country
+###Returns true if the country has ongoing debate in parliament.
+alias[trigger:has_active_debate] = Attention!!! Boolean
+
+## scope = Country
+###Returns true if the country has activated a fervor effect.
+alias[trigger:has_active_fervor] = Attention!!! Boolean
+
+## scope = Country
+###Returns true if country has the specified policy active.
+alias[trigger:has_active_policy] = Attention!!! Identifier
+
+## scope = Country
+###Returns true if the country has adopted the specified cult.
+alias[trigger:has_adopted_cult] = Attention!!! Identifier
+
+## scope = 
+###Returns true if the country has hired an advisor.
+alias[trigger:has_advisor] = Attention!!! Boolean
+
+## scope = 
+###has_advisor = yes
+alias[trigger:Warning: Inteprets every right side argument as yes.] = Attention!!! Country
+
+## scope = Country
+###Returns true, if the country has the specified age ability.
+alias[trigger:has_age_ability] = Attention!!! Identifier
+
+## scope = Country
+###Returns true if the country is currently in a disaster.
+alias[trigger:has_any_disaster] = Attention!!! Boolean
+
+## scope = 
+###Returns true if the country borders any country of a different religion.
+alias[trigger:has_border_with_religious_enemy] = Attention!!! yes
+
+## scope = 
+###has_border_with_religious_enemy = yes
+alias[trigger:Warning: Interprets anything after ‘=’ as “yes”.] = Attention!!! Country
+
+## scope = Province
+###Returns true if there is the specified building in the province.
+alias[trigger:has_building] = Attention!!! Identifier
+
+## scope = Province
+###Returns true if the province has a cardinal in the curia.
+alias[trigger:has_cardinal] = Attention!!! Boolean
+
+## scope = Country
+###Returns true if the country has a casus belli of type X against country Y.
+alias[trigger:has_casus_belli] = Attention!!! Clause
+
+
+
 has_casus_belli_against	Tag, Scope	Returns true if the country has a casus belli against country X.	Country	has_casus_belli_against = PREV
 has_changed_nation	Boolean	Returns true if playing as a released vassal.		has_changed_nation = yes
 has_church_aspect	Identifier	Returns true if the country has enabled the church aspect X.	Country	has_church_aspect = allow_usury_aspect
@@ -662,6 +725,80 @@ has_disaster_progress = {
 	disaster = time_of_troubles
 	value = 50
 }
+
+## scope = Country
+###Returns true if the country has a casus belli against country X.
+alias[trigger:has_casus_belli_against] = scope[country]
+
+## scope = 
+###Returns true if playing as a released vassal.
+alias[trigger:has_changed_nation] = Attention!!! Boolean
+
+## scope = Country
+###Returns true if the country has enabled the church aspect X.
+alias[trigger:has_church_aspect] = Attention!!! Identifier
+
+## scope = Province
+###Returns true if the province has climate X.
+alias[trigger:has_climate] = Attention!!! Identifier
+
+## scope = Country
+###Returns true if the specified country is the colonial parent of the country.
+alias[trigger:has_colonial_parent] = scope[country]
+
+## scope = Province
+###Returns true if scoped province has an active colonist
+alias[trigger:has_colonist] = Attention!!! Boolean
+
+## scope = Country
+###Returns true, if country has a three star general.
+alias[trigger:has_commanding_three_star] = Attention!!! Boolean
+
+## scope = Country
+###Returns true if the country has a consort.
+alias[trigger:has_consort] = Attention!!! Boolean
+
+## scope = Country
+###Returns true if the consort flag X is set.
+alias[trigger:has_consort_flag] = Attention!!! Identifier
+
+## scope = Country
+###Returns true if the country has a consort regency.
+alias[trigger:has_consort_regency] = Attention!!! Boolean
+
+## scope = 
+###Returns true if there is the specified construction in progress in the province.
+alias[trigger:has_construction] = Attention!!! Identifier
+
+## scope = 
+###has_construction = core
+alias[trigger:Possible values are core, culture, building, merchant, diplomat, missionary, army, navy, canal, great_project etc.] = Attention!!! Province
+
+## scope = Country
+###Returns true if the flag X is set for the country.
+alias[trigger:has_country_flag] = Attention!!! Identifier
+
+## scope = Country
+###Returns true if the country has the modifier X.
+alias[trigger:has_country_modifier] = Attention!!! Identifier
+
+## scope = Country
+###Returns true if the country has custom ideas.
+alias[trigger:has_custom_ideas] = Attention!!! Boolean
+
+## scope = Country
+###Returns true if the country is currently in the disaster X.
+alias[trigger:has_disaster] = Attention!!! Identifier
+
+## scope = Country
+###Returns true if the disaster progress of the specified disaster is at least X in the country.
+alias[trigger:has_disaster_progress] = Attention!!! Clause
+
+## scope = 
+###
+alias[trigger:has_disaster_progress = {] = Attention!!! 
+
+
 has_discovered	Province ID, Scope	Returns true if the country has discovered the province with the ID X.	Country	has_discovered = 313
 Tag, Scope	Returns true if the country X has discovered the province.	Province	has_discovered = ROOT
 has_dlc	Identifier	Returns true if the DLC X is enabled.	Anywhere	has_dlc = "The Cossacks"
@@ -671,6 +808,41 @@ has_empty_adjacent_province	yes	Returns true if an adjacent province is uncoloni
 Warning: Works only with 'yes'.	Province	has_empty_adjacent_province = yes
 has_estate	Identifier	Returns true if the country has estate X.	Country	has_estate = estate_dhimmi
 has_estate	Boolean	Returns true if the province is controlled by an estate.	Province	has_estate = no
+
+## scope = Country
+###Returns true if the country has discovered the province with the ID X.
+alias[trigger:has_discovered] = Attention!!! Province ID, Scope
+
+## scope = has_discovered = ROOT
+###Province
+alias[trigger:Tag, Scope] = Attention!!! Returns true if the country X has discovered the province.
+
+## scope = Anywhere
+###Returns true if the DLC X is enabled.
+alias[trigger:has_dlc] = Attention!!! Identifier
+
+## scope = (Subject) Country
+###Returns true if the protectorate has divert trade to its overlord.
+alias[trigger:has_divert_trade] = Attention!!! Boolean
+
+## scope = (Subject) Country
+###Returns true if the subject nation is embargoing overlord's rivals.
+alias[trigger:has_embargo_rivals] = Attention!!! Boolean
+
+## scope = 
+###Returns true if an adjacent province is uncolonized.
+alias[trigger:has_empty_adjacent_province] = Attention!!! yes
+
+## scope = 
+###has_empty_adjacent_province = yes
+alias[trigger:Warning: Works only with 'yes'.] = Attention!!! Province
+
+## scope = Country, Province
+###Returns true if the country has estate X, or if the province is controlled by an estate.
+alias[trigger:has_estate] = Attention!!! Identifier
+
+
+
 Identifier	Returns true if the province is controlled by the estate X.	Province	has_estate = estate_church
 has_estate_influence_modifier	Clause	Returns true if the estate X in the country has the influence modifier Y.	Country	
 has_estate_influence_modifier = {
