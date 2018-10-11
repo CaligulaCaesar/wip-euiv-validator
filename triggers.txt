@@ -1,13 +1,28 @@
 
 
-#<advisor_type>	Integer	Returns true if the country has hired an advisor of the specified type which has at least level X.	Country	statesman = 3
-#<building>	Integer	Returns true if the country has at least X buildings from the specified building type.	Country	temple = 3
-#<idea_group>	Integer	Returns true if the country has at least X ideas from the specified idea group.	Country	religious_ideas = 3
-#<institution>	Integer	Returns true if the support for the specified institution in the province is at least X.	Province	printing_press = 50
-#<religion>	Integer	Returns true if the country has a tolerance of at least X of the specified religion.
-Note: No correct localisation.	Country	orthodox = -2
-#<trade_good>	Integer	Returns true if the country has at least X provinces producing the specified trade good.	Country	gold = 2
+##country scope
+###Returns true if the country has hired an advisor of the specified type which has at least level X.
+alias[trigger:<advisor_type>] = int[1..3]
 
+##country scope
+###Returns true if the country has at least X buildings from the specified building type.
+alias[trigger:<building>] = int
+
+##country scope
+###Returns true if the country has at least X ideas from the specified idea group.
+alias[trigger:<idea_group>] = int[1..8]
+
+##country scope
+###Returns true if the support for the specified institution in the province is at least X.
+alias[trigger:<institution>] = int[0..100]
+
+##country scope
+###Returns true if the country has a tolerance of at least X of the specified religion. Note: No correct localisation.
+alias[trigger:<religion>] = int
+
+##country scope
+###Returns true if the country has at least X provinces producing the specified trade good.
+alias[trigger:<trade_good>] = int
 
 ##country scope
 ###Returns true if the country has at least X absolutism.
@@ -30,7 +45,7 @@ alias[trigger:adm] = int[0..6]
 ###Returns true if the country has at least X administrative power, or at least as much as the specified country.
 alias[trigger:adm_power] = int
 alias[trigger:adm_power] = scope[country]
-alias[trigger:adm_power] = <country> #todo
+alias[trigger:adm_power] = <country_tag> #todo
 
 ##country scope
 ###Returns true if the country has an administrative technology of at least X.
@@ -52,14 +67,14 @@ alias[trigger:ai] = bool
 ###Returns true if the country has the specified attitude towards country X.
 alias[trigger:ai_attitude] = {
 	who = scope[country]
-	who = <country>
+	who = <country_tag>
 	attitude = <attitude>
 }
 
 ##country scope
 ###Returns true if the country has an alliance with X.
 alias[trigger:alliance_with] = scope[country]
-alias[trigger:alliance_with] = <country> #todo
+alias[trigger:alliance_with] = <country_tag> #todo
 
 ##anywhere
 ###Returns true if females can become emperor.
@@ -77,7 +92,7 @@ alias[trigger:area] = <area>
 ###Returns true if the country has an army of at least X k soldiers, or at least as many soldiers as the specified country.
 alias[trigger:army_size] = int
 alias[trigger:army_size] = scope[country]
-alias[trigger:army_size] = <country>
+alias[trigger:army_size] = <country_tag>
 
 ##country scope
 ###Returns true if the total army size of the country is at least X% of its land force limit.
@@ -87,7 +102,7 @@ alias[trigger:army_size_percentage] = float
 ###Returns true if the country's army size is at least the size of X times the army size of the specified country.
 alias[trigger:army_strength] = {
 	who = scope[country]
-	who = <country>
+	who = <country_tag>
 	value = float
 }
 
@@ -95,7 +110,7 @@ alias[trigger:army_strength] = {
 ###Returns true if the country has an army tradition of at least X, or at least as high as the specified country.
 alias[trigger:army_tradition] = int[0..100]
 alias[trigger:army_tradition] = scope[country]
-alias[trigger:army_tradition] = <country>
+alias[trigger:army_tradition] = <country_tag>
 
 ##country scope
 ###Returns true if the ratio of the artillery fraction to the army size of the country is at least X.
@@ -105,7 +120,7 @@ alias[trigger:artillery_fraction] = float[0.0..1.0]
 ###Returns true if there are at least X artillery units in the province, or if there are artillery units from the specified country in the province.
 alias[trigger:artillery_in_province] = int
 alias[trigger:artillery_in_province] = scope[country]
-alias[trigger:artillery_in_province] = <country>
+alias[trigger:artillery_in_province] = <country_tag>
 
 ##country scope
 ###Returns true if the country is at war with any country of a different religion.
@@ -115,7 +130,7 @@ alias[trigger:at_war_with_religious_enemy] = bool
 ###Returns true if the country has at least X authority, or if the country has at least as much authority as the specified country.
 alias[trigger:authority] = int[0..100] #todo: What is authority? If it is imperial authority, it can be 0-100, but how can it be more for one country than for another?
 alias[trigger:authority] = scope[country]
-alias[trigger:authority] = <country>
+alias[trigger:authority] = <country_tag>
 
 ##country scope
 ###Returns true if the country has an average autonomy in its provinces of at least X.
@@ -157,7 +172,7 @@ alias[trigger:blockade] = int[0..100]
 ###Returns true if distance between the borders of the countries is at least X.
 alias[trigger:border_distance] = {
 	who = scope[country]
-	who = <country>
+	who = <country_tag>
 	distance = int
 }
 
@@ -189,7 +204,7 @@ alias[trigger:can_heir_be_child_of_consort] = bool
 ##country scope
 ###Returns true if the country can justify a trade conflict against country X.
 alias[trigger:can_justify_trade_conflict] = scope[country]
-alias[trigger:can_justify_trade_conflict] = <country>
+alias[trigger:can_justify_trade_conflict] = <country_tag>
 
 ##province scope
 ###Returns true if the specified rebel faction is a valid rebel faction of the province.
@@ -203,7 +218,7 @@ alias[trigger:capital] = <province_id> #todo
 ###Returns true if distance between the capitals of the countries is at least X.
 alias[trigger:capital_distance] = {
 	who = scope[country]
-	who = <country>
+	who = <country_tag>
 	distance = int
 }
 
@@ -219,128 +234,349 @@ alias[trigger:cavalry_fraction] = float[0.0..1.0]
 ###Returns true if there are at least X cavalry units in the province, or if there are cavalry units from the specified country in the province.
 alias[trigger:cavalry_in_province] = int
 alias[trigger:cavalry_in_province] = scope[country]
-alias[trigger:cavalry_in_province] = <country>
+alias[trigger:cavalry_in_province] = <country_tag>
+
+##country scope
+###Returns true if the specified variable is at least X.
+alias[trigger:check_variable] = {
+	which = scalar
+	value = int
+}
+
+## scope = Country
+###Returns true if the country has at least X church power, or at least as much as the specified country.
+alias[trigger:church_power] = int[0..100]
+alias[trigger:church_power] = scope[country]
+alias[trigger:church_power] = <country_tag>
+
+## scope = Country
+###Returns true if the country is the target of a coalition.
+alias[trigger:coalition_target] = scope[country]
+alias[trigger:coalition_target] = <country_tag>
+
+## scope = [scope needed]
+###Returns true if ... has gotten a colonial grant for the scope's colonial region from any potential pope-like entities.
+alias[trigger:colonial_claim_by_anyone_of_religion] = <religion> #todo: how does this work?
+
+## scope = Province
+###Returns true if the province is part of the colonial region X.
+alias[trigger:colonial_region] = <colonial_region> #todo
+
+## scope = Country
+###Returns true if country has claim on colony
+alias[trigger:colony_claim] = scope[country]
+alias[trigger:colony_claim] = <country_tag>
+
+## scope = Province
+###Returns true if colony is at least size X.
+alias[trigger:colonysize] = int
+
+## scope = Country
+###Returns true if the country has a consort with an administrative skill of at least X.
+alias[trigger:consort_adm] = int[0..6]
+
+## scope = Country
+###Returns true if the country's consort has an age of at least X.
+alias[trigger:consort_age] = int
+
+## scope = Country
+###Returns true if the country has a consort with an diplomatic skill of at least X.
+alias[trigger:consort_dip] = int[0..6]
+
+## scope = Country
+###Returns true, if the country's consort has the specified culture. Can utilise Event Scope Values.
+alias[trigger:consort_culture] = <culture>
+alias[trigger:consort_culture] = scope[country] #todo: I assume province works here (and elsewhere) too
+alias[trigger:consort_culture] = <country_type>
+
+## scope = Country
+###Returns true if the country's consort has the specified personality.
+alias[trigger:consort_has_personality] = <personality>
+
+## scope = Country
+###Returns true if the country has a consort with an military skill of at least X.
+alias[trigger:consort_mil] = int[0..6]
+
+## scope = Country
+###Returns true, if the country's consort has the specified religion. Can utilise Event Scope Values.
+alias[trigger:consort_religion] = <religion>
+alias[trigger:consort_religion] = scope[country] #todo: I assume province works here (and elsewhere) too
+alias[trigger:consort_religion] = <country_type>
+
+## scope = Province
+###Returns true if the construction progress is at least X%.
+alias[trigger:construction_progress] = float[0.0..1.0]
+
+## scope = Province
+###Returns true if the province is located on continent X.
+alias[trigger:continent] = <continent>
+
+## scope = Province
+###Returns true if the province is controlled by X.
+alias[trigger:controlled_by] = scope[country]
+alias[trigger:controlled_by] = <country_tag>
+
+## scope = Country
+###Returns true if the province with id X is controlled by the country.
+alias[trigger:controls] = <province_id>
+
+## scope = Country
+###Returns true if the country has a core on any province owned by country X.
+alias[trigger:core_claim] = scope[country]
+alias[trigger:core_claim] = <country_tag>
+
+## scope = Country
+###Returns true if the country has cored at least X% of its provinces.
+alias[trigger:core_percentage] = float[0.0..1.0]
+
+## scope = Country
+###Returns true if the country has a corruption of at least X.
+alias[trigger:corruption] = float
+
+## scope = Province
+###Returns true if the province is part of the specified country or its subjects.
+alias[trigger:country_or_vassal_holds] = scope[country]
+alias[trigger:country_or_vassal_holds] = <country_tag>
+
+## scope = Province
+###Returns true if the province culture is X.
+alias[trigger:culture] = <culture>
+
+## scope = Country, Province
+###Returns true if the country/province has a culture of the specified culture group.
+alias[trigger:culture_group] = <culture_group>
+
+## scope = Country
+###Returns true if country's primary culture is the same culture group as any province owned by country X.
+alias[trigger:culture_group_claim] = scope[country]
+alias[trigger:culture_group_claim] = <country_tag>
+
+## scope = Anywhere
+###Returns true, if the current age is X.
+alias[trigger:current_age] = <game_age> #todo
+
+## scope = Country
+###Returns true if the parliament of the country debates about X.
+alias[trigger:current_debate] = <parliamentary_debate> #todo
+
+## scope = Country
+###Returns true, if the country has the specified (orthodox) icon.
+alias[trigger:current_icon] = <orthodox_icon> #todo
+
+## scope = Country, Province
+###Returns true, if the country/province has an institution growth of at least X for the first not embraced institution.
+alias[trigger:current_institution_growth] = float
+
+## scope = Country
+###Returns true if the parliament of the country has a least X seats.
+alias[trigger:current_size_of_parliament] = int
+
+## scope = Anywhere
+###Hides the enclosed condition so that it is still required but cannot be seen by human players and displays the specified tooltip in its place.
+alias[trigger:custom_trigger_tooltip] = {
+	tooltip = localisation
+	alias_name[trigger] = alias_match_left[trigger]
+}
+
+## scope = Country
+###Returns true if the country is in a defensive war with country X.
+alias[trigger:defensive_war_with] = scope[country]
+alias[trigger:defensive_war_with] = <country_tag>
+
+## scope = Province
+###Returns true if the devastation of the province is at least X.
+alias[trigger:devastation] = int
+
+## scope = Province
+###Returns true if the development of the province is at least X.
+alias[trigger:development] = int
+
+## scope = Country
+###Returns true, if the country has X percent of its overlord's development
+alias[trigger:development_of_overlord_fraction] = float[0.0..1.0]
+
+## scope = Country
+###Returns true if the country has at least X devotion, or at least as much devotion as the specified country.
+alias[trigger:devotion] = int
+alias[trigger:devotion] = scope[country]
+alias[trigger:devotion] = <country_tag>
+
+## scope = Country
+###Returns true if the country has a ruler with a diplomatic skill of at least X.
+alias[trigger:dip] = int[0..6]
+
+
+## scope = Country
+###Returns true if the country has a diplomatic reputation of at least X, or at least as much diplomatic reputation as the specified country.
+alias[trigger:diplomatic_reputation] = int
+alias[trigger:diplomatic_reputation] = scope[country]
+alias[trigger:diplomatic_reputation] = <country_tag>
+
+## scope = Country
+###Returns true if the country has at least X diplomatic power, or at least as much diplomatic power as the specified country.
+alias[trigger:dip_power] = int
+alias[trigger:dip_power] = scope[country]
+alias[trigger:dip_power] = <country_tag>
+
+## scope = Country
+###Returns true if the country has an diplomatic technology of at least level X.
+alias[trigger:dip_tech] = int
+
+## scope = Country
+###Returns true if the dominant culture in the country is X.
+alias[trigger:dominant_culture] = <culture> #todo: wiki says "capital"
+
+## scope = Country
+###Returns true if the dominant religion in the country is X.
+alias[trigger:dominant_religion] = <religion> #todo: wiki says "capital"
+
+## scope = Country
+###Returns true if the country has at least X doom, or at least as much doom as the specified country.
+alias[trigger:doom] = int
+alias[trigger:doom] = scope[country]
+alias[trigger:doom] = <country_tag>
+
+## scope = Country
+###Returns true if the ruling dynasty of the country is X, or is the same as that of country X.
+alias[trigger:dynasty] = scalar #todo: dynasty name e.g. "von Habsburg"
+alias[trigger:dynasty] = scope[country]
+alias[trigger:dynasty] = <country_tag>
+
+## scope = Anywhere
+###Returns true if at least X Empire of China reforms are enacted. Works similar to hre_reform_level
+alias[trigger:empire_of_china_reform_level] = int
+
+## scope = Country
+###Returns true if the country has employed an advisor with the specified characteristics.
+alias[trigger:employed_advisor] = {
+	## cardinality = 0..1
+	is_male = bool
+	## cardinality = 0..1
+	religion = <religion>
+	## cardinality = 0..1
+	religion = scope[country]
+	## cardinality = 0..1
+	religion = <country_tag>
+	## cardinality = 0..1
+	culture = <culture>
+	## cardinality = 0..1
+	culture = scope[country]
+	## cardinality = 0..1
+	culture = <country_tag>
+	## cardinality = 0..1
+	type = <advisor_type>
+}
+
+## scope = Country
+###Returns true if the estate X in the country has at least Y influence.
+alias[trigger:estate_influence] = {
+    estate = <estate>
+    influence = int[0..100]
+}
+
+## scope = Country
+###Returns true if the estate X in the country has at least Y loyalty.
+alias[trigger:estate_loyalty] = {
+    estate = <estate>
+    influence = int[0..100]
+}
+
+## scope = Country
+###Returns true if the estate X in the country controls at least Y% of the total development.
+alias[trigger:estate_loyalty] = {
+    estate = <estate>
+    territory = int[0..100]
+}
+
+## scope = Anywhere
+###Returns true if country X or the scoped country exists.
+alias[trigger:exists] = <country_tag> #todo: how about exists = FROM?
+alias[trigger:exists] = bool
+
+
+## scope = Country
+###Returns true if the faction in power of the country is X.
+alias[trigger:faction_in_power] = <faction>
+
+## scope = Country
+###Returns true if the faction X of the country has at least Y influence.
+alias[trigger:faction_influence] = {
+	faction = <faction>
+	influence = int
+}
+
+## scope = Country
+###Returns true if the federation with the country has at least X members.
+alias[trigger:federation_size] = int
+
+## scope = Country
+###Returns true if the country has stored at least X fervor points.
+alias[trigger:fervor] = int
+
+## scope = Province
+###Returns true if the fort in the province has at least level X.
+alias[trigger:fort_level] = int
+
+## scope = Country
+###Returns true if the country has completed the X idea group.
+alias[trigger:full_idea_group] = <idea_group>
+
+## scope = Country
+###Returns true if the ratio of the galley fraction to the navy size of the country is at least X.
+alias[trigger:galley_fraction] = float[0..1]
+
+## scope = Province
+###Returns true if there are at least X galleys in the province, or if there are galleys from the specified country in the province.
+alias[trigger:galleys_in_province] = int
+alias[trigger:galleys_in_province] = scope[country]
+alias[trigger:galleys_in_province] = <country_tag>
+
+## scope = Province
+###Returns true if the garrison is at X men. Note: Misleading tooltip.
+alias[trigger:garrison] = int
+
+## scope = Country
+###Returns true if the country has an income from gold of at least X.
+alias[trigger:gold_income] = float
+
+## scope = Country
+###Returns true if in the country the proportion of income from gold is at least X.
+alias[trigger:gold_income_percentage] = float[0.0..1.0]
+
+## scope = Country
+###Returns true if the country has government type X.
+alias[trigger:government] = <government_group> #todo (monarchy, republic, theocracy)
+alias[trigger:government] = <government> #todo
+alias[trigger:government] = tribal
+
+## scope = Country
+###Returns true if the country has a government rank of X or higher.
+alias[trigger:government_rank] = int
+
+## scope = Country
+###Returns true if the country's total development has grown by the specified amount
+alias[trigger:grown_by_development] = int
+
+#todo: "or worse???"
+## scope = Country
+###Returns true if the country has a great power rank of X or worse. (Please tell Caligula if that is correct)
+alias[trigger:great_power_rank] = int
+
+## scope = Country
+###Returns true if the country is guaranteed by X.
+alias[trigger:guaranteed_by] = scope[country]
+alias[trigger:guaranteed_by] = <country_tag>
+
+## scope = Country
+###Returns true if the country still has had the specified policy for at least X days.
+alias[trigger:had_active_policy] = {
+	policy = <policy>
+	days = int
+}
 
 
 
 
-
-
-check_variable	Clause	Returns true if the specified variable is at least X.		
-check_variable = {
-	which = grand_embassy
-	value = 6
-}
-church_power	Integer	Returns true if the country has at least X church power.	Country	church_power = 20
-Tag, Scope	Returns true if the country has at least as much church power as the specified country.	Country	church_power = SAX
-coalition_target	Tag, Scope	Returns true if the country is the target of a coalition.	Country	coalition_target = FRA
-colonial_claim_by_anyone_of_religion	[type needed]	Returns true if ... has gotten a colonial grant for the scope's colonial region from any potential pope-like entities.	[scope needed]	[example needed]
-colonial_region	Identifier	Returns true if the province is part of the colonial region X.	Province	colonial_region = colonial_colombia
-colony_claim	Tag	Returns true if country has claim on colony	Country	colony_claim = SPA
-colonysize	Integer	Returns true if colony is at least size X.	Province	colonysize = 600
-consort_adm	Integer	Returns true if the country has a consort with an administrative skill of at least X.	Country	consort_adm = 5
-consort_age	Integer	Returns true if the country’s consort has an age of at least X.	Country	consort_age = 43
-consort_dip	Integer	Returns true if the country has a consort with an diplomatic skill of at least X.	Country	consort_dip = 5
-consort_culture	Identifier, Scope	Returns true, if the country's consort has the specified culture. Can utilise Event Scope Values.	Country	consort_culture = prussian
-consort_has_personality	Identifier	Returns true if the country’s consort has the specified personality.	Country	consort_has_personality = cruel_personality
-consort_mil	Integer	Returns true if the country has a consort with an military skill of at least X.	Country	consort_mil = 5
-consort_religion	Identifier, Scope	Returns true, if the country's consort has the specified religion. Can utilise Event Scope Values.	Country	consort_religion = catholic
-construction_progress	Float	Returns true if the construction progress is at least X%.	Province	construction_progress = 0.5
-continent	Identifier	Returns true if the province is located on continent X.	Province	continent = north_america
-controlled_by	Tag, Scope	Returns true if the province is controlled by X.	Province	controlled_by = TUR
-controls	Province id	Returns true if the province with id X is controlled by the country.	Country	controls = 151
-core_claim	Tag, Scope	Returns true if the country has a core on any province owned by country X.	Country	core_claim = FROM
-core_percentage	Float	Returns true if the country has cored at least X% of its provinces.	Country	core_percentage = 0.55
-corruption	Float	Returns true if the country has a corruption of at least X.	Country	corruption = 1
-country_or_vassal_holds	Tag, Scope	Returns true if the province is part of the specified country or its subjects.	Province	country_or_vassal_holds = ROOT
-culture	Identifier, Scope	Returns true if the province culture is X.	Province	culture = basque
-culture_group	Identifier, Scope	Returns true if the country/province has a culture of the specified culture group.	Country
-Province	culture_group = iberian
-culture_group_claim	Tag	Returns true if country's primary culture is the same culture group as any province owned by country X.	Country	culture_group_claim = FROM
-current_age	Identifier	Returns true, if the current age is X.	Anywhere	current_age = age_of_discovery
-current_debate	Identifier	Returns true if the parliament of the country debates about X.	Country	current_debate = quartering_of_troops
-current_icon	Identifier	Returns true, if the country has the specified (orthodox) icon.	Country	current_icon = icon_eleusa
-current_institution_growth	Float	Returns true, if the country/province has an institution growth of at least X for the first not embraced institution.	Country, Province	current_institution_growth = 0.5
-current_size_of_parliament	Integer	Returns true if the parliament of the country has a least X seats.	Country	current_size_of_parliament = 20
-custom_trigger_tooltip	Clause	Hides the enclosed condition so that it is still required but cannot be seen by human players and displays the specified tooltip in its place.	Anywhere	
-custom_trigger_tooltip = {
-	tooltip = EST_CRUSHED_NOMADIC_TRIBES
-	NOT = { has_country_flag = nomadic_tribes_estate_in_power
-	}
-}
-defensive_war_with	Tag, Scope	Returns true if the country is in a defensive war with country X.	Country	defensive_war_with = TUR
-devastation	Integer	Returns true if the devastation of the province is at least X.	Province	devastation = 1
-development	Integer	Returns true if the development of the province is at least X.	Province	development = 9
-development_of_overlord_fraction	Float	Returns true, if the country has X percent of its overlord's development	Country	development_of_overlord_fraction = 0.33
-devotion	Integer	Returns true if the country has at least X devotion.	Country	devotion = 75
-Tag, Scope	Returns true if the country has at least as much devotion as the specified country.	Country	devotion = KOL
-dip	Integer	Returns true if the country has a ruler with a diplomatic skill of at least X.	Country	dip = 6
-Tag, Scope	Returns true if the country has a ruler with at least as high diplomatic skill as the ruler of the specified country.	Country	dip = GRM
-diplomatic_reputation	Integer	Returns true if the country has a diplomatic reputation of at least X.	Country	diplomatic_reputation = 10
-Tag, Scope	Returns true if the country has at least as much diplomatic reputation as the specified country.	Country	diplomatic_reputation = CAS
-dip_power	Integer	Returns true if the country has at least X diplomatic power.	Country	dip_power = 600
-Tag, Scope	Returns true if the country has at least as much diplomatic power than the specified country.	Country	dip_power = TEU
-dip_tech	Integer	Returns true if the country has an diplomatic technology of at least level X.	Country	dip_tech = 4
-dominant_culture	Identifier, Capital	Returns true if the dominant culture in the country is X.	Country	dominant_culture = turkish
-dominant_religion	Identifier, Capital	Returns true if the dominant religion in the country is X.	Country	dominant_religion = catholic
-doom	Integer	Returns true if the country has at least X doom.	Country	doom = 30
-Tag, Scope	Returns true if the country has at least as much doom than the specified country.	Country	doom = ROOT
-dynasty	Name	Returns true if the ruling dynasty of the country is X.	Country	dynasty = "von Habsburg"
-Tag, Scope	Returns true if both countries are ruled by the same dynasty.	Country	dynasty = CAS
-empire_of_china_reform_level	Integer	Returns true, if at least X Empire of China reforms are enacted. Works similar to [i]hre_reform_level[/i]	Anywhere	empire_of_china_reform_level = 3
-employed_advisor	Clause	Returns true if the country has employed an advisor with the specified characteristics.
-(Any combinations of type, home_religion and home_culture are permitted.)	Country	
-employed_advisor = {
-	is_male = yes
-	home_religion = reformed
-	home_culture = basque
-	type = treasurer
-}
-estate_influence	Clause	Returns true if the estate X in the country has at least Y influence.	Country	
-estate_influence = {
-    estate = estate_church
-    influence = 80
-}
-estate_loyalty	Clause	Returns true if the estate X in the country has at least Y loyalty.	Country	
-estate_loyalty = {
-    estate = estate_burghers
-    loyalty = 50
-}
-estate_territory	Clause	Returns true if the estate X in the country controls at least Y% of the total development.	Country	
-estate_territory = {
-    estate = estate_nobles
-    territory = 12
-}
-exists	Tag	Returns true if country X exists.	Anywhere	exists = MNG
-Boolean	Returns true if the scoped country exists.	Country	exists = yes
-faction_in_power	Identifier	Returns true if the faction in power of the country is X.	Country	faction_in_power = eunuchs
-faction_influence	Clause	Returns true if the faction X of the country has at least Y influence.	Country	
-faction_influence = {
-    faction =
-    influence =
-}
-federation_size	Integer	Returns true if the federation with the country has at least X members.	Country	federation_size = 5
-fervor	Integer	Returns true if the country has stored at least X fervor points.	Country	fervor = 5
-fort_level	Integer	Returns true if the fort in the province has at least level X.	Province	fort_level = 1
-full_idea_group	Identifier	Returns true if the country has completed the X idea group.	Country	full_idea_group = naval_ideas
-galley_fraction	Float	Returns true if the ratio of the galley fraction to the navy size of the country is at least X.	Country	galley_fraction = 0.33
-galleys_in_province	Integer	Returns true if there are at least X galleys in the province.	Province	galleys_in_province = 10
-Tag, Scope	Returns true if there are galleys from the specified country in the province.	Province	galleys_in_province = VEN
-garrison	Integer	Returns true if the garrison is at X men.
-Note: The localisation is misleading.	Province	garrison = 1000
-gold_income	Float	Returns true if the country has an income from gold of at least X.	Country	gold_income = 6
-gold_income_percentage	Float	Returns true if in the country the proportion of income from gold is at least X.	Country	gold_income_percentage = 0.1
-government	Identifier	Returns true if the country has government type X.
-Note: can search for the 3 government groups (monarchy, republic, theocracy), for a specific government type (feudal_monarchy, absolute_monarchy, etc.) or tribal	Country	government = monarchy
-government_rank	Integer	Returns true if the country has a government rank of X or higher.	Country	government_rank = 2
-grown_by_development	Integer	Returns true if the country's total development has grown by the specified amount	Country	grown_by_development = 50
-great_power_rank	Integer	Returns true if the country has a great power rank of 2 or worse.	Country	great_power_rank = 2
-guaranteed_by	Tag, Scope	Returns true if the country is guaranteed by X.	Country	guaranteed_by = ROOT
-had_active_policy	Clause	Returns true, if the country still has and had the specified policy for at least X days.	Country	
-had_active_policy = {
-	policy = the_combination_act
-	days = 365
-}
 had_consort_flag	Clause	Returns true if the consort flag X was last set at least Y days ago	Country	
 had_consort_flag = {
 	flag = my_first_consort_flag
