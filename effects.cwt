@@ -1,4 +1,5 @@
 
+alias[trigger:<scripted_effect>] = yes
 
 
 ## scope = any

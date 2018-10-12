@@ -1,5 +1,9 @@
 
 
+alias[trigger:<scripted_trigger>] = bool
+
+
+
 ##country scope
 ###Returns true if the country has hired an advisor of the specified type which has at least level X.
 alias[trigger:<advisor_type>] = int[1..3]
