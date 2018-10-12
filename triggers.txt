@@ -1007,15 +1007,33 @@ alias[trigger:has_port] = bool
 ###Returns true if the country has privateers in any trade node.
 alias[trigger:has_privateers] = bool
 
+## scope = Country
+###Returns true if the country is promoting investments in the specified trade company (region).
+alias[trigger:has_promote_investments] = <trade_company> #todo
+
+## scope = Province
+###Returns true if the province has the province flag X.
+alias[trigger:has_province_flag] = scalar
+
+## scope = Province
+###Returns true if province has the province modifier X.
+alias[trigger:has_province_modifier] = <province_modifier>
+
+## scope = Province
+###Returns true if the province is controlled by (the specified) rebel faction. =REB is used in Vanilla but apparently doesn't work as of 1.25
+alias[trigger:has_rebel_faction] = <rebel_faction> #todo
+alias[trigger:has_rebel_faction] = REB
+
+## scope = Country
+###Returns true if the country has a regency.
+alias[trigger:has_regency] = bool
+
+## scope = Country
+###Returns true if the country has lifted the fog of war from the specified country.
+alias[trigger:has_removed_fow] = bool
 
 
-has_promote_investments	Identifier	Returns true if the country is promoting investments in the specified trade company (region).	Country	has_promote_investments = trade_company_moluccas
-has_province_flag	Identifier	Returns true if the province has the province flag X.	Province	has_province_flag = bur_succession_province
-has_province_modifier	Identifier	Returns true if province has the province modifier X.	Province	has_province_modifier = local_christian_mission
-has_rebel_faction	Identifier	Returns true if the province is controlled by (the specified) rebel faction.	Province	has_rebel_faction = pretender_rebels
-REB	Used by Paradox, doesn't seem to work though (in EU4 version 1.25).	Province	has_rebel_faction = REB
-has_regency	Boolean	Returns true if the country has a regency.	Country	has_regency = no
-has_removed_fow	Boolean	Returns true if the country has lifted the fog of war from the specified country.	Country	FRA = { has_removed_fow = yes }
+
 has_ruler	Name	Returns true if the country has a ruler named "X".	Country	has_ruler = "Pachacuti"
 has_ruler_flag	Identifier	Returns true if the ruler flag X is set for the country.	Country	has_ruler_flag = helped_rival
 has_ruler_leader_from	Tag, Scope	Returns true if an army in the province is led by a ruler from X.	Province	has_ruler_leader_from = ROOT
@@ -1033,34 +1051,6 @@ has_spy_network_from = {
 	who = ROOT
 	value = 25
 }
-
-## scope = Country
-###Returns true if the country is promoting investments in the specified trade company (region).
-alias[trigger:has_promote_investments] = Attention!!! Identifier
-
-## scope = Province
-###Returns true if the province has the province flag X.
-alias[trigger:has_province_flag] = Attention!!! Identifier
-
-## scope = Province
-###Returns true if province has the province modifier X.
-alias[trigger:has_province_modifier] = Attention!!! Identifier
-
-## scope = Province
-###Returns true if the province is controlled by (the specified) rebel faction.
-alias[trigger:has_rebel_faction] = Attention!!! Identifier
-
-## scope = has_rebel_faction = REB
-###Province
-alias[trigger:REB] = Attention!!! Used by Paradox, doesn't seem to work though (in EU4 version 1.25).
-
-## scope = Country
-###Returns true if the country has a regency.
-alias[trigger:has_regency] = bool
-
-## scope = Country
-###Returns true if the country has lifted the fog of war from the specified country.
-alias[trigger:has_removed_fow] = bool
 
 ## scope = Country
 ###Returns true if the country has a ruler named "X".
