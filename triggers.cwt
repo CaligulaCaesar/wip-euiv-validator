@@ -1,7 +1,5 @@
 
-
 alias[trigger:<scripted_trigger>] = bool
-
 
 
 ##country scope
@@ -1025,7 +1023,7 @@ alias[trigger:has_province_modifier] = <province_modifier>
 
 ## scope = Province
 ###Returns true if the province is controlled by (the specified) rebel faction. =REB is used in Vanilla but apparently doesn't work as of 1.25
-alias[trigger:has_rebel_faction] = <rebel_faction> #todo
+alias[trigger:has_rebel_faction] = <rebel_type> #todo
 alias[trigger:has_rebel_faction] = REB
 
 ## scope = Country
@@ -1036,45 +1034,26 @@ alias[trigger:has_regency] = bool
 ###Returns true if the country has lifted the fog of war from the specified country.
 alias[trigger:has_removed_fow] = bool
 
-
-
-has_ruler	Name	Returns true if the country has a ruler named "X".	Country	has_ruler = "Pachacuti"
-has_ruler_flag	Identifier	Returns true if the ruler flag X is set for the country.	Country	has_ruler_flag = helped_rival
-has_ruler_leader_from	Tag, Scope	Returns true if an army in the province is led by a ruler from X.	Province	has_ruler_leader_from = ROOT
-has_ruler_modifier	Identifier	Returns true the country has the modifier X until the ruler changes.	Country	has_ruler_modifier = inside_man
-has_saved_event_target	Identifier	Returns true if the specified event target has been saved.		has_saved_event_target = muslim_neighbor
-has_scutage	Boolean	Returns true if the vassal pays scutage.	(Subject) Country	has_scutage = yes
-has_seat_in_parliament	Boolean	Returns true if the province has a seat in parliament.	Province	has_seat_in_parliament = no
-has_secondary_religion	Boolean	Returns true if the county has a secondary religion.	Country	has_secondary_religion = yes
-has_send_officers	Boolean	Returns true if the protectorate has received officers.	(Subject) Country	has_send_officers = yes
-has_siege	Boolean	Returns true if the province has siege.	Province	has_siege = yes
-has_spawned_rebels	Identifier	Returns true if rebels of the specified type are active in the country.	Country	has_spawned_rebels = particularist_rebels
-has_spawned_supported_rebels	Scope	Returns true if rebels which were supported by the secified country are active in the country.	Country	has_spawned_supported_rebels = FROM
-has_spy_network_from	Clause	Returns true if the country X has a spy network of at least the specified size in the country.	Country	
-has_spy_network_from = {
-	who = ROOT
-	value = 25
-}
-
 ## scope = Country
 ###Returns true if the country has a ruler named "X".
-alias[trigger:has_ruler] = Attention!!! Name
+alias[trigger:has_ruler] = scalar #todo: name
 
 ## scope = Country
 ###Returns true if the ruler flag X is set for the country.
-alias[trigger:has_ruler_flag] = Attention!!! Identifier
+alias[trigger:has_ruler_flag] = scalar
 
 ## scope = Province
 ###Returns true if an army in the province is led by a ruler from X.
 alias[trigger:has_ruler_leader_from] = scope[country]
+alias[trigger:has_ruler_leader_from] = <country_tag>
 
 ## scope = Country
-###Returns true the country has the modifier X until the ruler changes.
-alias[trigger:has_ruler_modifier] = Attention!!! Identifier
+###Returns true if the country has the modifier X until the ruler changes.
+alias[trigger:has_ruler_modifier] = <ruler_modifier> #todo
 
-## scope = 
+## scope = anywhere
 ###Returns true if the specified event target has been saved.
-alias[trigger:has_saved_event_target] = Attention!!! Identifier
+alias[trigger:has_saved_event_target] = scalar
 
 ## scope = (Subject) Country
 ###Returns true if the vassal pays scutage.
@@ -1093,90 +1072,232 @@ alias[trigger:has_secondary_religion] = bool
 alias[trigger:has_send_officers] = bool
 
 ## scope = Province
-###Returns true if the province has siege.
+###Returns true if the province is under siege.
 alias[trigger:has_siege] = bool
 
 ## scope = Country
 ###Returns true if rebels of the specified type are active in the country.
-alias[trigger:has_spawned_rebels] = Attention!!! Identifier
+alias[trigger:has_spawned_rebels] = <rebel_type>
 
 ## scope = Country
 ###Returns true if rebels which were supported by the secified country are active in the country.
-alias[trigger:has_spawned_supported_rebels] = Attention!!! Scope
+alias[trigger:has_spawned_supported_rebels] = scope[country]
+alias[trigger:has_spawned_supported_rebels] = <country_tag>
 
 ## scope = Country
 ###Returns true if the country X has a spy network of at least the specified size in the country.
-alias[trigger:has_spy_network_from] = Attention!!! Clause
+alias[trigger:has_spy_network_from] = {
+	who = scope[country]
+	who = <country_type>
+	value = int
+}
+
+## scope = Country
+###Returns true if the country has a spy network of at least the specified size in country X.
+alias[trigger:has_spy_network_in] = {
+	who = scope[country]
+	who = <country_type>
+	value = int
+}
+
+## scope = Province
+###Returns true if the province has any state patriarch.
+alias[trigger:has_state_patriach] = bool
+
+## scope = Country
+###Returns true if the country is a march with subsidized armies.
+alias[trigger:has_subsidize_armies] = bool
+
+## scope = (Subject) Country
+###Returns true if the country is a subject nation which receives support for loyalists.
+alias[trigger:has_support_loyalists] = bool
+
+## scope = Anywhere
+###Returns true if the player has changed nation by playing as a released vassal.
+alias[trigger:has_switched_nation] = bool
+
+## scope = Province
+###Returns true if the province has terrain X.
+alias[trigger:has_terrain] = <terrain> #todo
+
+## scope = trade_node
+###Returns true the specified country has the trade modifier X in the trade node.
+alias[trigger:has_trade_modifier] = {
+	who = scope[country]
+	who = <country_tag>
+	key = <trade_modifier> #todo
+}
+
+## scope = trade_node
+###Returns true if the specified country has a merchant in the trade node.
+alias[trigger:has_trader] = scope[country]
+alias[trigger:has_trader] = <country_tag>
+
+## scope = Country
+###Returns true if the country has truce.
+alias[trigger:has_truce] = scope[country]
+alias[trigger:has_truce] = <country_tag>
+
+## scope = Country
+###Returns true if the country owns all provinces of its culture group.
+alias[trigger:has_unified_culture_group] = bool
+
+## scope = Country
+###Returns true if the country has selected unit type X as preferable unit.
+alias[trigger:has_unit_type] = <unit_type> #todo
+
+## scope = Country
+###Returns true if the country has unlocked the specified cult.
+alias[trigger:has_unlocked_cult] = <cult>
+
+## scope = Country
+###Returns true if the country has raised war taxes.
+alias[trigger:has_wartaxes] = bool
+
+## scope = Province
+###Returns true if the province has winter X.
+alias[trigger:has_winter] = <winter_type> #todo
+
+## scope = Country
+###Returns true if the ratio of the heavy ship fraction to the navy size of the country is at least X.
+alias[trigger:heavy_ship_fraction] = float[0.0..1.0]
+
+## scope = Province
+###Returns true if there are at least X heavy ships in the province, or if there are heavy ships from the specified country in the province.
+alias[trigger:heavy_ships_in_province] = int
+alias[trigger:heavy_ships_in_province] = scope[country]
+alias[trigger:heavy_ships_in_province] = <country_tag>
+
+## scope = Country
+###Returns true if the country has an heir with an administrative skill of at least X.
+alias[trigger:heir_adm] = int[0..6]
+
+## scope = Country
+###Returns true if the country has an heir that is at least X years old.
+alias[trigger:heir_age] = int
+
+## scope = Country
+###Returns true if the country has an heir with a diplomatic skill of at least X.
+alias[trigger:heir_dip] = int[0..6]
+
+## scope = Country
+###Returns true if the country has an heir with a claim strength of at least X.
+alias[trigger:heir_claim] = int[0..100]
+
+## scope = Country
+###Returns true, if the country's heir has the specified culture. Can utilise Event Scope Values.
+alias[trigger:heir_culture] = <culture>
+alias[trigger:heir_culture] = scope[country]
+alias[trigger:heir_culture] = <country_tag>
+
+## scope = Country
+###Returns true if the country's heir and consort have the same dynasty.
+alias[trigger:heir_has_consort_dynasty] = bool
+
+## scope = Country
+###Returns true if the country's heir has the specified personality.
+alias[trigger:heir_has_personality] = <personality> #todo
+
+## scope = Country
+###Returns true if the country's heir and ruler have the same dynasty.
+alias[trigger:heir_has_ruler_dynasty] = bool
+
+## scope = Country
+###Returns true if the country has an heir with a military skill of at least X.
+alias[trigger:heir_mil] = int[0..6]
+
+## scope = Country
+###Returns true if the country has an heir with nationality X.
+alias[trigger:heir_nationality] = scope[country]
+alias[trigger:heir_nationality] = <country_tag>
+
+## scope = Country
+###Returns true, if the country's heir has the specified religion. Can utilise Event Scope Values.
+alias[trigger:heir_religion] = <culture>
+alias[trigger:heir_religion] = scope[country]
+alias[trigger:heir_religion] = <country_tag>
+
+## scope = anywhere
+###Hides the enclosed conditions so that they are still required but cannot be seen by human players.
+alias[trigger:hidden_trigger] = {
+	alias_name[trigger] = alias_match_left[trigger]
+}
+
+## scope = trade_node
+###Returns true if the trade node is the highest valued trade node in the world. The value is calculated as total trade value minus outgoing trade value.
+alias[trigger:highest_value_trade_node] = bool
+
+## scope = Country
+###Returns true if the countries are historical friends.
+alias[trigger:historical_friend_with] = scope[country]
+alias[trigger:historical_friend_with] = <country_tag>
+
+## scope = Country
+###Returns true if the countries are historical rivals
+alias[trigger:historical_rival_with] = scope[country]
+alias[trigger:historical_rival_with] = <country_tag>
+
+## scope = Country
+###Returns true if the country has a horde unity of at least X, or at least as much horde unity as the specified country.
+alias[trigger:horde_unity] = int
+alias[trigger:horde_unity] = scope[country]
+alias[trigger:horde_unity] = <country_tag>
+
+## scope = Anywhere
+###Returns true if the specified religion is the opposition religion of the HRE. Note: No localisation for the negation.
+alias[trigger:hre_heretic_religion] = <religion>
+alias[trigger:hre_heretic_religion] = scope[country]
+alias[trigger:hre_heretic_religion] = <country_tag>
+
+## scope = Anywhere
+###Returns true if religious leagues are enabled.
+alias[trigger:hre_leagues_enabled] = bool
+
+## scope = Anywhere
+###Returns true if the Xth imperial reform is enacted.
+alias[trigger:hre_reform_level] = int
+
+## scope = Anywhere
+###Returns true if the specified religion is the dominant faith of the HRE.
+alias[trigger:hre_religion] = <religion>
+alias[trigger:hre_religion] = scope[country]
+alias[trigger:hre_religion] = <country_tag>
+
+## scope = Anywhere
+###Returns true if an official faith of the HRE has been permanently established.
+alias[trigger:hre_religion_locked] = bool
+
+## scope = Anywhere
+###Returns true if the treaty of religious peace in the HRE has been signed.
+alias[trigger:hre_religion_treaty] = bool
+
+## scope = Anywhere
+###Returns true if the HRE contains at least X members.
+alias[trigger:hre_size] = int
+
+## scope = Anywhere
+###Returns true if the emperor of the HRE has an imperial authority of at least X.
+alias[trigger:imperial_influence] = int
+
+## scope = Anywhere
+###Returns true if the emperor of China has at least X mandate.
+alias[trigger:imperial_mandate] = int
+
+## scope = Country
+###Returns true if the country currently is in a golden age.
+alias[trigger:in_golden_age] = bool
+
+## scope = Country
+###Returns true if the ratio of the infantry fraction to the army size of the country is at least X.
+alias[trigger:infantry_fraction] = float[0.0..1.0]
+
+## scope = Province
+###Returns true if there are at least X infantry units in the province.
+alias[trigger:infantry_in_province] = int
 
 
-has_spy_network_in	Clause	Returns true if the country has a spy network of at least the specified size in country X.	Country	
-has_spy_network_in = {
-	who = ROOT
-	value = 25
-}
-has_state_patriach	Boolean	Returns true if the province has any state patriarch.	Province	has_state_patriach = yes
-has_subsidize_armies	Boolean	Returns true if the march has subsidizes armies.	(Subject) Country	has_subsidize_armies = yes
-has_support_loyalists	Boolean	Returns true if the subject nation receives support for loyalists.	(Subject) Country	has_support_loyalists = yes
-has_switched_nation	Boolean	Returns true if the player has changed nation by playing as a released vassal.	Anywhere	has_switched_nation = no
-has_terrain	Identifier	Returns true if the province has terrain X.	Province	has_terrain = marsh
-has_trade_modifier	Clause	Returns true the specified country has the trade modifier X in the trade node.	Province
-(Trade node)	
-has_trade_modifier = {
-	who = ROOT
-	key = income_bonanza
-}
-has_trader	Tag, Scope	Returns true if the specified country has a merchant in the trade node.	Province
-(Trade node)	has_trader = VEN
-has_truce	Country	Returns true if the country has truce.	Country	has_truce = KHM
-has_unified_culture_group	Boolean	Returns true if the country owns all provinces of its culture group.	Country	has_unified_culture_group = yes
-has_unit_type	Identifier	Returns true if the country has selected unit type X as preferable unit.	Country	unit_type = polish_winged_hussar
-has_unlocked_cult	Identifier	Returns true if the country has unlocked the specified cult.	Country	has_unlocked_cult = jewish_cult
-has_wartaxes	Boolean	Returns true if the country has raised war taxes.	Country	has_wartaxes = yes
-has_winter	Identifier	Returns true if the province has winter X.	Province	has_winter = normal_winter
-heavy_ship_fraction	Float	Returns true if the ratio of the heavy ship fraction to the navy size of the country is at least X.	Country	heavy_ship_fraction = 0.33
-heavy_ships_in_province	Integer	Returns true if there are at least X heavy ships in the province.	Province	heavy_ships_in_province = 2
-Tag, Scope	Returns true if there are heavy ships from the specified country in the province.	Province	heavy_ships_in_province = TUN
-heir_adm	Integer	Returns true if the country has an heir with an administrative skill of at least X.	Country	heir_adm = 5
-heir_age	Integer	Returns true if the country has an heir that is at least X years old.	Country	heir_age = 15
-heir_dip	Integer	Returns true if the country has an heir with a diplomatic skill of at least X.	Country	heir_dip = 5
-heir_claim	Integer	Returns true if the country has an heir with a claim strength of at least X.	Country	heir_claim = 90
-heir_culture	Identifier, Scope	Returns true if the country's heir has the specified culture. Can utilise Event Scope Values.	Country	heir_culture = prussian
-heir_has_consort_dynasty	Integer	Returns true if the country’s heir and consort have the same dynasty.	Country	heir_has_consort_dynasty = yes
-heir_has_personality	Identifier	Returns true if the country’s heir has the specified personality.	Country	heir_has_personality = intricate_web_weaver_personality
-heir_has_ruler_dynasty	Integer	Returns true if the country’s heir and ruler have the same dynasty.	Country	heir_has_ruler_dynasty = yes
-heir_mil	Integer	Returns true if the country has an heir with a military skill of at least X.	Country	heir_mil = 5
-heir_nationality	Tag, Scope	Returns true if the country has an heir with nationality X.	Country	heir_nationality = PREV
-heir_religion	Identifier, Scope	Returns true if the country's heir has the specified religion. Can utilise Event Scope Values.	Country	heir_religion = catholic
-hidden_trigger	Clause	Hides the enclosed conditions so that they are still required but cannot be seen by human players.	Anywhere	
-hidden_trigger = {
-	NOT = {
-		estate_influence = {
-			estate = estate_nomadic_tribes
-			influence = 85
-		}
-	}
-}
-highest_value_trade_node	Boolean	Returns true if the trade node is the highest valued trade node in the world.
-The value is calculated as total trade value minus outgoing trade value.	Province
-(Trade node)	highest_value_trade_node = yes
-historical_friend_with	Tag, Scope	Returns true if the countries are historical friends.	Country	historical_friend_with = FROM
-historical_rival_with	Tag, Scope	Returns true if the countries are historical rivals	Country	historical_rival_with = TEU
-horde_unity	Integer	Returns true if the country has a horde unity of at least X.	Country	horde_unity = 50
-Tag, Scope	Returns true if the country has at least as much horde unity as the specified country.	Country	horde_unity = GOL
-hre_heretic_religion	Identifier, Scope	Returns true if the specified religion is the opposition religion of the HRE.
-Note: No localisation for the negation.	Anywhere	hre_heretic_religion = catholic
-hre_leagues_enabled	Boolean	Returns true religious leagues are enabled.	Anywhere	hre_leagues_enabled = yes
-hre_reform_level	Integer	Returns true if the Xth imperial reform is enacted.	Anywhere	hre_reform_level = 6
-hre_religion	Identifier, Scope	Returns true if the specified religion is the dominant faith of the HRE.	Anywhere	hre_religion = catholic
-hre_religion_locked	Boolean	Returns true if an official faith of the HRE has been permanently established.	Anywhere	hre_religion_locked = no
-hre_religion_treaty	Boolean	Returns true if the treaty of religious peace in the HRE has been signed.	Anywhere	hre_religion_treaty = no
-hre_size	Integer	Returns true if the HRE contains at least X members.	Anywhere	hre_size = 10
-imperial_influence	Integer	Returns true if the emperor of the HRE has an imperial authority of at least X.	Anywhere	imperial_influence = 25
-imperial_mandate	Integer	Returns true if the emperor of China has at least X mandate.	Anywhere	<imperial_mandate = 80</code>
-in_golden_age	Boolean	Returns true if the country currently is in a golden age.	Country	in_golden_age = yes
-infantry_fraction	Float	Returns true if the ratio of the infantry fraction to the army size of the country is at least X.	Country	infantry_fraction = 0.6
-infantry_in_province	Integer	Returns true if there are at least X infantry units in the province.	Province	infantry_in_province = 17
-Tag, Scope	Returns true if there are infantry units from the specified country in the province.	Province	infantry_in_province = SHL
+
+
 inflation	Float	Returns true if the country has an inflation of at least X	Country	inflation = 10
 Tag, Scope	Returns true if the country has at least as much inflation as the country X.	Country	inflation = NOV
 incident_variable_value	Clause	Returns true if the value of the specified incident is at least X.	Country	
