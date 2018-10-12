@@ -88,214 +88,161 @@ alias[effect:set_country_flag] = scalar
 ###Clears a defined country flag for the current scope.
 alias[effect:clr_country_flag] = scalar
 
+## scope = country
+###Changes current scope to <scope> tag.
+alias[effect:change_tag] = <country_tag>
+alias[effect:change_tag] = scope[country]
 
+## scope = country
+###Switches the player view to <scope> tag. Original country becomes controlled by AI.
+alias[effect:switch_tag] = <country_tag>
+alias[effect:switch_tag] = scope[country]
 
+## scope = country
+###Changes the current scope's graphical culture. Graphical culture determines the unit models, advisor portraits, etc that a country uses. Graphical cultures are found in /Europa Universalis IV/common/graphicalculturetype.txt.
+alias[effect:change_graphical_culture] = <graphical_culture> #todo
 
+## scope = country
+###Adds Administrative power to the current scope.
+alias[effect:add_adm_power] = int
 
+## scope = country
+###Adds Diplomatic power to the current scope.
+alias[effect:add_dip_power] = int
 
-change_tag 	<scope>
+## scope = country
+###Adds Military power to the current scope.
+alias[effect:add_mil_power] = int
 
-The scope to change to.
-	change_tag = FRA
-change_tag = ROOT
-change_tag = event_target:my_country 	Changes current scope to <scope> tag. 		1.1
-switch_tag 	<scope>
-
-The scope to switch to.
-	switch_tag = FRA
-switch_tag = ROOT
-switch_tag = event_target:my_country 	Switches the player view to <scope> tag. Original country becomes controlled by AI. 		1.8
-change_graphical_culture 	<gfxculture>
-
-The graphical culture to assign.
-	change_graphical_culture = westerngfx 	Changes the current scope's graphical culture. Graphical culture determines the unit models, advisor portraits, etc that a country uses. 	Graphical cultures are found in /Europa Universalis IV/common/graphicalculturetype.txt. 	1.11
-add_adm_power 	<int>
-
-The amount of power to add or subtract.
-	add_adm_power = 100 	Adds Administrative power to the current scope. 		1.1
-add_dip_power 	<int>
-
-The amount of power to add or subtract.
-	add_dip_power = 100 	Adds Diplomatic power to the current scope. 		1.1
-add_mil_power 	<int>
-
-The amount of power to add or subtract.
-	add_mil_power = 100 	Adds Military power to the current scope. 		1.1
-set_saved_name 	key = <string>
-
-The key that holds the name.
-type = advisor / simple
-The name generation type. Advisor draws from namelist, simple utilises name parameter.
-name = <string>
-The name to hold in the key. Only used with the simple type.
-scope = <scope>
-The country scope to draw the namelist from. Only used with the advisor type.
-	Simple:
-
-set_saved_name = {
-    key = simple_name
-    type = simple
-    name = "My Simple Name"
-}
-
-define_ruler = {
-    name = simple_name
-}
-
-Advisor:
-
-set_saved_name = {
-    key = noble_zealot
-    type = advisor
-    scope = ROOT
-}
-
-spawn_rebels = {
-    size = 1
-    leader = noble_zealot
-    type = religious_rebels
-}
-
-	Saves a name to an unique key for usage in other effects. 	Usable with define_admiral, define_explorer, define_conquistador, define_general, define_ruler, define_consort, define_heir, define_advisor and spawn_rebels. 	1.23
-clear_saved_name 	<key>
-
-The name key to clear.
-	clear_saved_name = noble_zealot 	Clears a saved name key. 	Use this after using the saved name in an effect. 	1.23
-Economy
-Ambox outdated info.png 	
-This section may contain outdated information that is inaccurate for the current version of the game. The last version it was verified as up to date for was 1.24.
-Name 	Parameters 	Examples 	Description 	Notes 	Version Added
-add_years_of_income 	<float>
-
-The amount of income to add or subtract..
-	add_years_of_income = 0.5 	Adds ducats equal to the years of income defined. 	1 is equal to 1 year of income, based of a country's current monthly income. 	1.1
-add_treasury 	<int>
-
-The amount of ducats to add or subtract.
-	add_treasury = 50 	Adds ducats to the current scope. 		1.1
-add_inflation 	<float>
-
-The amount of inflation to add or subtract.
-	add_inflation = 2 	Adds inflation to the current scope. 		1.1
-add_mercantilism 	<int>
-
-The amount of mercantilism to add or subtract.
-	add_mercantilism = 2 	Adds mercantilism to the current scope. 		1.1
-add_tariff_value 	<float>
-
-The amount of tariff value to add or subtract.
-	add_tariff_value = 0.1 	Adds tariff value to the current scope. 	Tariff value is the ducats sent to an overlord by subjects such as colonial nations. 	1.4
-loan_size 	<int>
-
-The value to change to.
-	loan_size = 24 	Changes the loan size of the current scope. 	Size is the number of months in monthly income that a single loan is equal to. 	1.1
-change_price 	trade_goods = <tradegood>
-
-The trade good to change.
-key = <string>
-The localisation key to display in the Trade Good's price tooltip.
-value = <float>
-The percentage to change the value by.
-duration = <days>
-The duration for the value to stay changed for.
+## scope = country
+###Saves a name to an unique key for usage in other effects. Usable with define_admiral, define_explorer, define_conquistador, define_general, define_ruler, define_consort, define_heir, define_advisor and spawn_rebels.
+alias[effect:set_saved_name] = {
+	key = scalar #todo: make sure this name is remembered and can be checked elsewhere, kinda like variables
+	type = advisor
+	type = simple
+	## cardinality = 0..1
+	###Only with type = advisor
+	scope = scope[country]
+	## cardinality = 0..1
+	###Only with type = advisor
+	scope = <country_tag>
 	
-
-change_price = {
-    trade_goods = grain
-    key = grain_shortage
-    value = 0.5
-    duration = 3650
+	## cardinality = 0..1
+	name = scalar
 }
 
-	Changes the price of a trade good globally. 	Tradegood prices are found in /Europa Universalis IV/common/prices/*.txt
+## scope = country
+###Clears a saved name key. Use this after using the saved name in an effect.
+alias[effect:clear_saved_name] = scalar #todo
 
-The new price is the base price + (base price * value)
-duration accepts -1 for unlimited duration.
-	1.8
-Government
-Ambox outdated info.png 	
-This section may contain outdated information that is inaccurate for the current version of the game. The last version it was verified as up to date for was 1.24.
-Name 	Parameters 	Examples 	Description 	Notes 	Version Added
-add_absolutism 	<int>
 
-The amount of absolutism to add or subtract.
-	add_absolutism = 10 	Adds absolutism to the current scope. 	No effect if Absolutism isn't active. 	1.20
-add_legitimacy 	<int>
+#Country Economy stuff
 
-The amount of legitimacy to add or subtract.
-<scope>
-The amount of legitimacy to add or subtract, taking the value from the scope's current value.
-	add_legitimacy = 10
-add_legitimacy = CAS 	Adds legitimacy to the current scope. 	No effect if not a government monarchy. 	1.1
-add_republican_tradition 	<int>
+## scope = country
+###Adds ducats equal to the years of income defined. 1 is equal to 1 year of income, based of a country's current monthly income.
+alias[effect:add_years_of_income] = float
 
-The amount of republican tradition to add or subtract.
-	add_republican_tradition = 10 	Adds republican tradition to the current scope. 	No effect if not a government using republic. 	1.1
-add_scaled_republican_tradition 	<int>
+## scope = country
+###Adds ducats to the current scope. Can also subtract.
+alias[effect:add_treasury] = int
 
-The amount of republican tradition to add or subtract.
-	add_scaled_republican_tradition = 10 	Adds republican tradition to the current scope. 	Scales to the government's election cycle duration.
-No effect if not a government using republic. 	1.7
-add_devotion 	<int>
+## scope = country
+###Adds inflation to the current scope. Can also subtract.
+alias[effect:add_inflation] = float
 
-The amount of devotion to add or subtract.
-	add_devotion = 10 	Adds devotion to the current scope. 	No effect if not a government using has_devotion. 	1.12
-add_horde_unity 	<int>
+## scope = country
+###Adds mercantilism to the current scope. Can also subtract.
+alias[effect:add_mercantilism] = int
 
-The amount of horde unity to add or subtract.
-	add_horde_unity = 10 	Adds horde unity to the current scope. 	No effect if not a government using nomad. 	1.14
-add_meritocracy 	<int>
+## scope = country
+###Adds tariff value to to the current scope. Tariff value is the ducats sent to an overlord by subjects such as colonial nations. Can also subtract.
+alias[effect:add_tariff_value] = float
 
-The amount of meritocracy to add or subtract.
-	add_meritocracy = 10 	Adds meritocracy to the current scope. 	No effect if not a government using has_meritocracy. 	1.20
-set_meritocracy 	<int>
+## scope = country
+###Changes the loan size of the current scope. Size is the number of months in monthly income that a single loan is equal to.
+alias[effect:loan_size] = int[1..inf]
 
-The amount of meritocracy to set.
-	set_meritocracy = 10 	Sets the current meritocracy for the current scope. 	No effect if not a government using has_meritocracy. 	1.20
-add_militarised_society 	<int>
-
-The amount of militarisation to add or subtract.
-	add_militarised_society = 10 	Adds militarisation to the current scope. 	No effect if not a government using militarised_society. 	1.18
-add_tribal_allegiance 	<int>
-
-The amount of tribal allegiance to add or subtract.
-	add_tribal_allegiance = 10 	Adds tribal allegiance to the current scope. 	No effect if not a government using tribal_federation_mechanic. 	1.23
-change_statists_vs_orangists 	<int>
-
-The amount of swing towards statists or organgists.
-	change_statists_vs_orangists = 10 	Changes the Organist-Statist balance. 	Positive moves towards Orangist, negative moves towards Statists. 	1.7
-change_government 	<government>
-
-The government to change to.
-	change_government = dictatorship 	Changes the government of the current scope. 	Governments are found in /Europa Universalis IV/common/governments/*.txt. 	1.1
-set_government_rank 	<int>
-
-The rank to change to.
-	set_government_rank = 3 	Changes the government rank of the current scope. 	Default range is 1 to 3. 	1.12
-add_government_power 	government_mechanic = <type>
-
-Which government mechanic to add power to.
-which = <type>
-Which pool type to add the power to. ADM, DIP or MIL
-amount = <type>
-The amount of power to add.
-	
-
-add_government_power = {
-    government_mechanic = iqta_mechanic
-    which = ADM
-    amount = 10
+## scope = country
+###Changes the price of a trade good globally. Tradegood prices are found in /Europa Universalis IV/common/prices/*.txt. The new price is the base price + (base price * value). Duration accepts -1 for unlimited duration.
+alias[effect:change_price] = {
+	trade_goods = <trade_good>
+	###The localisation key to display in the Trade Good's price tooltip.
+	key = localisation
+	###The percentage to change the value by.
+	value = float
+	###The duration for the value to stay changed for. -1 = infinite.
+	duration = int
 }
 
-	Changes the pool size of one of the power pools within a government mechanic. 	List of government mechanics:
 
-    russian_mechanic
-    feudal_theocracy_mechanic
-    tribal_federation_mechanic
-    mamluk_mechanic
-    iqta_mechanic
+#Country Government stuff
 
-	1.23
+## scope = country
+###Adds absolutism to the current scope. Can also subtract. No effect if Absolutism isn't active.
+alias[effect:add_absolutism] = int
+
+## scope = country
+###Adds legitimacy to the current scope. Can also subtract. Target can be a country, in which case that country's legitimacy value is used. No effect if not a government monarchy.
+alias[effect:add_legitimacy] = int
+alias[effect:add_legitimacy] = scope[country]
+alias[effect:add_legitimacy] = <country_tag>
+
+## scope = country
+###Adds republican tradition to the current scope. No effect if not a government using republic.
+alias[effect:add_republican_tradition] = int
+
+## scope = country
+###Adds republican tradition to the current scope. Scales to the government's election cycle duration. No effect if not a government using republic.
+alias[effect:add_scaled_republican_tradition] = int
+
+## scope = country
+###Adds devotion to the current scope. No effect if not a government using has_devotion.
+alias[effect:add_devotion] = int
+
+## scope = country
+###Adds horde unity to the current scope. No effect if not a government using nomad.
+alias[effect:add_horde_unity] = int
+
+## scope = country
+###Adds meritocracy to the current scope. No effect if not a government using has_meritocracy.
+alias[effect:add_meritocracy] = int
+
+## scope = country
+###Sets the current meritocracy for the current scope. No effect if not a government using has_meritocracy.
+alias[effect:set_meritocracy] = int
+
+## scope = country
+###Adds militarisation to the current scope. No effect if not a government using militarised_society.
+alias[effect:add_militarised_society] = int
+
+## scope = country
+###Adds tribal allegiance to the current scope. No effect if not a government using tribal_federation_mechanic.
+alias[effect:add_tribal_allegiance] = int
+
+## scope = country
+###Changes the Organist-Statist balance. Positive moves towards Orangist, negative moves towards Statists.
+alias[effect:change_statists_vs_orangists] = int
+
+## scope = country
+###Changes the government of the current scope. Governments are found in /Europa Universalis IV/common/governments/*.txt.
+alias[effect:change_government] = <government>
+
+## scope = country
+###Changes the government rank of the current scope. Default range is 1 to 3.
+alias[effect:set_government_rank] = int[1..3]
+
+## scope = country
+###Changes the pool size of one of the power pools within a government mechanic.
+alias[effect:add_government_power] = {
+	###Which government mechanic to add power to.
+	government_mechanic = enum[government_mechanics] #todo: is this a type?
+	which = enum[power_types]
+	amount = int
+}
+
+
+
+
 set_government_and_rank 	government = <government>
 
 The government to change to.
@@ -2655,159 +2602,79 @@ capital_scope = {
 }
 
 	The defined scope loses their territorial core on the current province scope. 		1.18
-Military
-Ambox outdated info.png 	
-This section may contain outdated information that is inaccurate for the current version of the game. The last version it was verified as up to date for was 1.24.
-Name 	Parameters 	Examples 	Description 	Notes 	Version Added
-artillery 	<scope>
-
-The country scope the artillery belongs to
-	
-
-capital_scope = {
-    artillery = FRA
-}
-
-	Spawns an artillery unit in the current province scope for the defined country scope. 	Uses the currently selected artillery unit. 	1.1
-cavalry 	<scope>
-
-The country scope the cavalry belongs to
-	
-
-capital_scope = {
-    cavalry = FRA
-}
-
-	Spawns an cavalry unit in the current province scope for the defined country scope. 	Uses the currently selected cavalry unit. 	1.1
-infantry 	<scope>
-
-The country scope the infantry belongs to
-	
-
-capital_scope = {
-    infantry = FRA
-}
-
-	Spawns an infantry unit in the current province scope for the defined country scope. 	Uses the currently selected infantry unit. 	1.1
-mercenary_infantry 	<scope>
-
-The country scope the mercenary infantry belongs to
-	
-
-capital_scope = {
-    mercenary_infantry = FRA
-}
-
-	Spawns an mercenary infantry unit in the current province scope for the defined country scope. 	Uses the currently selected infantry unit. 	1.11
-mercenary_cavalry 	<scope>
-
-The country scope the mercenary cavalry belongs to
-	
-
-capital_scope = {
-    mercenary_cavalry = FRA
-}
-
-	Spawns an mercenary cavalry unit in the current province scope for the defined country scope. 	Uses the currently selected cavalry unit. 	1.11
-streltsy_infantry 	<scope>
-
-The country scope the streltsy infantry belongs to
-	
-
-capital_scope = {
-    streltsy_infantry = FRA
-}
-
-	Spawns an streltsy infantry unit in the current province scope for the defined country scope. 	Uses the currently selected infantry unit. 	1.22
-cossack_cavalry 	<scope>
-
-The country scope the cossack cavalry belongs to
-	
-
-capital_scope = {
-    cossack_cavalry = FRA
-}
-
-	Spawns an cossack cavalry unit in the current province scope for the defined country scope. 	Uses the currently selected cavalry unit. 	1.22
-heavy_ship 	<scope>
-
-The country scope the ship belongs to
-	
-
-random_owned_province = {
-    limit = { has_port = yes }
-    heavy_ship = FRA
-}
-
-	Spawns an heavy ship unit in the current province scope for the defined country scope. 	Uses the defined scope's current heavy ship unit.
-Requires the current province scope to have a port. 	1.1
-light_ship 	<scope>
-
-The country scope the ship belongs to
-	
-
-random_owned_province = {
-    limit = { has_port = yes }
-    light_ship = FRA
-}
-
-	Spawns an light ship unit in the current province scope for the defined country scope. 	Uses the defined scope's current light ship unit.
-Requires the current province scope to have a port. 	1.1
-galley 	<scope>
-
-The country scope the ship belongs to
-	
-
-random_owned_province = {
-    limit = { has_port = yes }
-    galley = FRA
-}
-
-	Spawns an galley ship unit in the current province scope for the defined country scope. 	Uses the defined scope's current galley ship unit.
-Requires the current province scope to have a port. 	1.1
-transport 	<scope>
-
-The country scope the ship belongs to
-	
-
-random_owned_province = {
-    limit = { has_port = yes }
-    transport = FRA
-}
-
-	Spawns an transport ship unit in the current province scope for the defined country scope. 	Uses the defined scope's current transport ship unit.
-Requires the current province scope to have a port. 	1.1
-<unit name> 	<scope>
-
-The country scope the unit belongs to
-	
-
-capital_scope = {
-    british_redcoat = FRA
-}
-
-	Spawns a specific unit in the current province scope for the defined country scope. 	Units can be found in /Europa Universalis IV/common/units/*.txt. 	1.1
-kill_leader 	<type>
-
-The leader type to kill. name is the specific leader name to target.
-	kill_leader = general
-
-kill_leader = random
-kill_leader = "John Smith
-	Kills a leader in the current province scope if they match the type used. 	Only works if the leader is assigned to a unit that is stationed in the current province.
-
-Possible types:
-
-    general
-    admiral
-    conquistador
-    explorer
-    random
-    <leader name> 
-
-	1.1
 
 	
+	
+#Province Military Stuff
+
+## scope = province
+###Spawns an artillery unit in the current province scope for the defined country scope. Uses the currently selected artillery unit.
+alias[effect:artillery] = scope[country]
+alias[effect:artillery] = <country_tag>
+
+## scope = province
+###Spawns an infantry unit in the current province scope for the defined country scope. Uses the currently selected infantry unit.
+alias[effect:infantry] = scope[country]
+alias[effect:infantry] = <country_tag>
+
+## scope = province
+###Spawns a cavalry unit in the current province scope for the defined country scope. Uses the currently selected cavalry unit.
+alias[effect:cavalry] = scope[country]
+alias[effect:cavalry] = <country_tag>
+
+## scope = province
+###Spawns a mercenary infantry unit in the current province scope for the defined country scope. Uses the currently selected infantry unit.
+alias[effect:mercenary_infantry] = scope[country]
+alias[effect:mercenary_infantry] = <country_tag>
+
+## scope = province
+###Spawns a mercenary cavalry unit in the current province scope for the defined country scope. Uses the currently selected cavalry unit.
+alias[effect:mercenary_cavalry] = scope[country]
+alias[effect:mercenary_cavalry] = <country_tag>
+
+## scope = province
+###Spawns a streltsy infantry unit in the current province scope for the defined country scope. Uses the currently selected infantry unit.
+alias[effect:streltsy_infantry] = scope[country]
+alias[effect:streltsy_infantry] = <country_tag>
+
+## scope = province
+###Spawns a cossack cavalry unit in the current province scope for the defined country scope. Uses the currently selected cavalry unit.
+alias[effect:cossack_cavalry] = scope[country]
+alias[effect:cossack_cavalry] = <country_tag>
+
+
+## scope = province
+###Spawns a heavy ship unit in the current province scope for the defined country scope. Uses the defined scope's current transport ship unit. Requires the current province scope to have a port.
+alias[effect:heavy_ship] = scope[country]
+alias[effect:heavy_ship] = <country_tag>
+
+## scope = province
+###Spawns a light ship unit in the current province scope for the defined country scope. Uses the defined scope's current transport ship unit. Requires the current province scope to have a port.
+alias[effect:light_ship] = scope[country]
+alias[effect:light_ship] = <country_tag>
+
+## scope = province
+###Spawns a galley ship unit in the current province scope for the defined country scope. Uses the defined scope's current transport ship unit. Requires the current province scope to have a port.
+alias[effect:galley] = scope[country]
+alias[effect:galley] = <country_tag>
+
+## scope = province
+###Spawns a transport ship unit in the current province scope for the defined country scope. Uses the defined scope's current transport ship unit. Requires the current province scope to have a port.
+alias[effect:transport] = scope[country]
+alias[effect:transport] = <country_tag>
+
+## scope = province
+###Spawns a specific unit in the current province scope for the defined country scope. Units can be found in /Europa Universalis IV/common/units/*.txt.
+alias[effect:<unit_name>] = scope[country]
+alias[effect:<unit_name>] = <country_tag>
+#todo: did I use unit_name before? (E.g. is "British Redcoats")
+
+	
+## scope = province
+###Kills a leader in the current province scope if they match the type used. Only works if the leader is assigned to a unit that is stationed in the current province.
+alias[effect:kill_leader] = enum[military_leader_types]
+alias[effect:kill_leader] = random
+alias[effect:kill_leader] = scalar #todo: name
 	
 ## scope = province
 ###Kills units following the defined parameters in the current province scope. In the who parameter, you can use enemy, owner and controller. When used with no parameters, will kill all units within the current province scope.
