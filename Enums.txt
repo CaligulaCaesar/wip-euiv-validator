@@ -12,4 +12,15 @@ enums = {
 		galley
 		transport
 	}
+	enum[power_categories] = {
+		ADM
+		DIP
+		MIL
+	}
+	enum[military_leader_types] = {
+		admiral
+		general
+		conquistador
+		explorer
+	}
 }
