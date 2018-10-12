@@ -240,181 +240,123 @@ alias[effect:add_government_power] = {
 	amount = int
 }
 
-
-
-
-set_government_and_rank 	government = <government>
-
-The government to change to.
-rank = <int>
-The rank to change to.
-	
-
-set_government_and_rank = { 
-    government = celestial_empire
-    rank = 3
+## scope = country
+###Changes the current scope's government and rank at the same time. Governments are found in /Europa Universalis IV/common/governments/*.txt. Will respect that governments have fixed ranks and the maximum ranks for subject types.
+alias[effect:set_government_and_rank] = {
+	government = <government>
+	rank = int
 }
 
-	Changes the current scope's government and rank at the same time. 	Governments are found in /Europa Universalis IV/common/governments/*.txt.
+## scope = country
+###Disables the Parliament mechanic. Only affects governments with has_parliament.
+alias[effect:dissolve_parliament] = yes
 
-Will respect that governments have fixed ranks and the maximum ranks for subject types.
-	1.22
-dissolve_parliament 	yes
+## scope = country
+###Re-enables the Parliament mechanic after dissolve_parliament. Only affects governments with has_parliament.
+alias[effect:reinstate_parliament] = yes
 
-Boolean.
-	dissolve_parliament = yes 	Disables the Parliament mechanic. 	Only effects governments with has_parliament. 	1.15
-reinstate_parliament 	yes
 
-Boolean.
-	reinstate_parliament = yes 	Re-enables the Parliament mechanic after dissolve_parliament. 	Only effects governments with has_parliament. 	1.15
-Culture
-Ambox outdated info.png 	
-This section may contain outdated information that is inaccurate for the current version of the game. The last version it was verified as up to date for was 1.24.
-Name 	Parameters 	Examples 	Description 	Notes 	Version Added
-add_accepted_culture 	<culture>
+#Country Culture stuff
 
-The culture to add.
-<scope>
-The culture to add, derived from the scope.
-	add_accepted_culture = english
+## scope = country
+###Adds a new accepted culture to the current scope. Cultures are found in /Europa Universalis IV/common/cultures/*.txt.
+alias[effect:add_accepted_culture] = <culture>
+alias[effect:add_accepted_culture] = scope[country]
+alias[effect:add_accepted_culture] = <country_tag>
+#todo: variable:my_variable
 
-add_accepted_culture = ENG
-add_accepted_culture = event_target:my_event_target
-add_accepted_culture = variable:my_variable
-	Adds a new accepted culture to the current scope. 	Cultures are found in /Europa Universalis IV/common/cultures/*.txt.
+## scope = country
+###Changes the primary culture of the current scope. Cultures are found in /Europa Universalis IV/common/cultures/*.txt.
+alias[effect:change_primary_culture] = <culture>
+alias[effect:change_primary_culture] = scope[country]
+alias[effect:change_primary_culture] = <country_tag>
+#todo: variable:my_variable
 
-Can utilise Event Scope Values.
-	1.1
-change_primary_culture 	<culture>
+## scope = country
+###Removes an accepted culture from the current scope. Cultures are found in /Europa Universalis IV/common/cultures/*.txt.
+alias[effect:remove_accepted_culture] = <culture>
+alias[effect:remove_accepted_culture] = scope[country]
+alias[effect:remove_accepted_culture] = <country_tag>
+#todo: variable:my_variable
 
-The culture to change to, from /Europa Universalis IV/common/cultures/. <scope>
-The culture to change to, derived from the scope.
-	change_primary_culture = english
 
-change_primary_culture = ENG
-change_primary_culture = event_target:my_event_target
-change_primary_culture = variable:my_variable
-	Changes the primary culture of the current scope. 	Cultures are found in /Europa Universalis IV/common/cultures/*.txt.
+#Country Religion stuff
 
-Can utilise Event Scope Values.
-	1.1
-remove_accepted_culture 	<culture>
+## scope = country
+###Changes the religion of the current scope. Religions are found in /Europa Universalis IV/common/religions/*.txt
+alias[effect:change_religion] = <culture>
+alias[effect:change_religion] = scope[country]
+alias[effect:change_religion] = <country_tag>
+#todo: variable:my_variable
 
-The culture to remove, from /Europa Universalis IV/common/cultures/. <scope>
-The culture to remove, derived from the scope.
-	remove_accepted_culture = english
+## scope = country
+###Enables a religion that has been restricted with the date parameter. Religions are found in /Europa Universalis IV/common/religions/*.txt
+alias[effect:enable_religion] = <culture>
 
-remove_accepted_culture = ENG
-remove_accepted_culture = event_target:my_event_target
-remove_accepted_culture = variable:my_variable
-	Removes an accepted culture from the current scope. 	Cultures are found in /Europa Universalis IV/common/cultures/*.txt.
+## scope = country
+###Sets whether the current scope has been force converted. 
+alias[effect:force_converted] = bool
 
-Can utilise Event Scope Values.
-	1.1
-Religion
-Ambox outdated info.png 	
-This section may contain outdated information that is inaccurate for the current version of the game. The last version it was verified as up to date for was 1.24.
-Name 	Parameters 	Examples 	Description 	Notes 	Version Added
-change_religion 	<religion>
+## scope = country
+###Adds authority to the current scope. Used in Religious Reforms that use authority. No effect if the country does not hold a religion using authority.
+alias[effect:add_authority] = int
 
-The religion to change to.
-<scope>
-The religion to change to, derived from the scope.
-	change_religion = catholic
+## scope = country
+###Adds doom to the current scope. Used in Religious Reforms that use doom. No effect if the country does not hold a religion using doom.
+alias[effect:add_doom] = int
 
-change_religion = event_target:my_event_target
-change_religion = variable:my_variable
-	Changes the religion of the current scope. 	Religions are found in /Europa Universalis IV/common/religions/*.txt
+## scope = country
+###Removes taken religious reforms from the current scope. No effect if the country does not hold a religion using religious_reforms.
+alias[effect:remove_religious_reforms] = int
 
-Can utilise Event Scope Values.
-Does not accept TAG scopes.
-	1.1
-enable_religion 	<religion>
+## scope = country
+###Adds Fervor to the current scope. No effect if the country does not hold a religion using fervor.
+alias[effect:add_fervor] = int
 
-The religion to change to.
-	enable_religion = reformed
-	Enables an religion that has been restricted with the date parameter. 	Religions are found in /Europa Universalis IV/common/religions/*.txt 	1.1
-force_converted 	yes
+## scope = country
+###Adds Karma to the current scope. No effect if the country does not hold a religion using uses_karma.
+alias[effect:add_karma] = int
 
-Boolean.
-	force_converted = yes
-	Sets whether the current scope has been force converted. 		1.1
-add_authority 	<int>
+## scope = country
+###Sets the Karma value for the current scope. No effect if the country does not hold a religion using uses_karma.
+alias[effect:set_karma] = int
 
-The amount of authority to add.
-	add_authority = 10
-	Adds authority to the current scope. Used in Religious Reforms that use authority. 	No effect if the country does not hold a religion using authority. 	1.10
-add_doom 	<int>
+## scope = country
+###Adds Church Power to the current scope. No effect if the country does not hold a religion using uses_church_power.
+alias[effect:add_church_power] = int
 
-The amount of doom to add.
-	add_doom = 10
-	Adds doom to the current scope. Used in Religious Reforms that use doom. 	No effect if the country does not hold a religion using doom. 	1.10
-remove_religious_reforms 	<int>
+## scope = country
+###Adds the defined aspect to the current scope. Church Aspects are found in /Europa Universalis IV/common/church_aspects/00_church_aspects.txt. No effect if the country does not hold a religion using uses_church_power and the aspect set in aspects. Does not work with Blessings.
+alias[effect:add_church_aspect] = <church_aspect> #todo
 
-The amount of religious reforms to remove.
-	remove_religious_reforms = 2
-	Removes taken religious reforms from the current scope. 	No effect if the country does not hold a religion using religious_reforms. 	1.10
-add_fervor 	<int>
+## scope = country
+###Removes the defined aspect from the current scope. Church Aspects are found in /Europa Universalis IV/common/church_aspects/00_church_aspects.txt. No effect if the country does not hold a religion using uses_church_power and the aspect set in aspects. Does not work with Blessings.
+alias[effect:remove_church_aspect] = <church_aspect> #todo
+alias[effect:remove_church_aspect] = random
 
-The amount of fervor to add or subtract.
-	add_fervor = 10
-	Adds Fervor to the current scope. 	No effect if the country does not hold a religion using fervor. 	1.6
-add_karma 	<int>
+## scope = country
+###Adds Papal Influence to the current scope. No effect if the country does not hold a religion using papacy.
+alias[effect:add_papal_influence] = int
 
-The amount of karma to add or subtract.
-	add_karma = 10
-	Adds Karma to the current scope. 	No effect if the country does not hold a religion using uses_karma. 	1.12
-set_karma 	<int>
+## scope = country
+###Adds or subtracts Catholic Reform Desire.
+alias[effect:add_reform_desire] = float
 
-The amount of karma to set.
-	set_karma = 10
-	Sets the Karma value for the current scope. 	No effect if the country does not hold a religion using uses_karma. 	1.12
-add_church_power 	<int>
+## scope = country
+###Excommunicates the defined scope. If already excommunicated, removes excommunication.
+alias[effect:excommunicate] = scope[country]
+alias[effect:excommunicate] = <country_tag>
 
-The amount of church power to add or subtract.
-	add_church_power = 10
-	Adds Church Power to the current scope. 	No effect if the country does not hold a religion using uses_church_power. 	1.12
-add_church_aspect 	<aspect>
+## scope = country
+###Enables or disables the Papacy mechanic.
+alias[effect:set_papacy_active] = bool
 
-The church aspect to add.
-	add_church_aspect = adult_baptism_aspect
-	Adds the defined aspect to the current scope. 	Church Aspects are found in /Europa Universalis IV/common/church_aspects/00_church_aspects.txt.
+## scope = country
+###Adds Piety to the current scope. No effect if the country does not hold a religion using uses_piety
+alias[effect:add_piety] = float
 
-No effect if the country does not hold a religion using uses_church_power and the aspect set in aspects.
-Does not work with Blessings.
-	1.12
-remove_church_aspect 	<aspect>
 
-The church aspect to remove. You can also use random here to pick a random aspect.
-	remove_church_aspect = adult_baptism_aspect
-	Removes the defined aspect from the current scope. 	Church Aspects are found in /Europa Universalis IV/common/church_aspects/00_church_aspects.txt.
 
-No effect if the country does not have the aspect.
-Does not work with Blessings.
-	1.12
-add_papal_influence 	<int>
-
-The amount of papal influence to add or subtract.
-	add_papal_influence = 10
-	Adds Papal Influence to the current scope. 	No effect if the country does not hold a religion using papacy. 	1.1
-add_reform_desire 	<float>
-
-The amount reform desire to add or subtract.
-	add_reform_desire = 0.5
-	Adds Reform Desire. 		1.1
-excommunicate 	<scope>
-
-The scope to excommunicate.
-	excommunicate = FRA 	Excommunicates the defined scope. If already excommunicated, removes excommunication. 		1.12
-set_papacy_active 	yesno
-
-Boolean.
-	set_papacy_active = yes 	Enables or disables the Papacy mechanic. 		1.1
-add_piety 	<float>
-
-The amount of piety to add or subtract.
-	add_piety = 0.5
-	Adds Piety to the current scope. 	No effect if the country does not hold a religion using uses_piety. 	1.1
 set_school_opinion 	who = <who>
 
 Which country to alter opinion with.
@@ -2504,106 +2446,60 @@ upper_peru_region = {
 }
 
 	The defined scope loses vision over the current province scope. 	Best used within areas, regions, etc to remove vision. 	1.1
-Diplomacy
-Ambox outdated info.png 	
-This section may contain outdated information that is inaccurate for the current version of the game. The last version it was verified as up to date for was 1.24.
-Name 	Parameters 	Examples 	Description 	Notes 	Version Added
-add_claim 	<scope>
-
-The country that gains the claim.
 	
 
-capital_scope = {
-    add_claim = FRA
-}
+#Province Diplomacy stuff
 
-	The defined scope gains a claim on the current province scope. 		1.1
-add_core 	<scope>
+## scope = province
+###The defined scope gains a claim on the current province scope.
+alias[effect:add_claim] = scope[country]
+alias[effect:add_claim] = <country_tag>
 
-The country that gains the core.
+## scope = province
+###The defined scope gains a core on the current province scope.
+alias[effect:add_core] = scope[country]
+alias[effect:add_core] = <country_tag>
+
+## scope = province
+###Starts core construction in the current province scope, for the current owner.
+alias[effect:add_core_construction] = yes
 	
+## scope = province
+###The defined scope gains a permanent claim on the current province scope.
+alias[effect:add_permanent_claim] = scope[country]
+alias[effect:add_permanent_claim] = <country_tag>
 
-capital_scope = {
-    add_core = FRA
-}
+## scope = province
+###The defined scope gains a territorial core on the current province scope.
+alias[effect:add_territorial_core] = scope[country]
+alias[effect:add_territorial_core] = <country_tag>
 
-	The defined scope gains a core on the current province scope. 		1.1
-add_core_construction 	yes
+## scope = province
+###The defined scope gains ownership of the current province scope. previous_owner can be used to cede ownership to the last previous owner of a province.
+alias[effect:cede_province] = scope[country]
+alias[effect:cede_province] = <country_tag>
+alias[effect:cede_province] = previous_owner
 
-Boolean.
-	add_core_construction = yes 	Starts core construction in the current province scope, for the current owner. 		1.11
-add_permanent_claim 	<scope>
+## scope = province
+###The defined scope gains control over the current province scope. Control here means occupation, not ownership.
+alias[effect:change_controller] = scope[country]
+alias[effect:change_controller] = <country_tag>
 
-The country that gains the permanent claim.
-	
+## scope = province
+###The defined scope loses their claim on the current province scope. Works for both types of claims.
+alias[effect:remove_claim] = scope[country]
+alias[effect:remove_claim] = <country_tag>
 
-capital_scope = {
-    add_permanent_claim = FRA
-}
+## scope = province
+###The defined scope loses their core on the current province scope.
+alias[effect:remove_core] = scope[country]
+alias[effect:remove_core] = <country_tag>
 
-	The defined scope gains a permanent claim on the current province scope. 		1.14
-add_territorial_core 	<scope>
+## scope = province
+###The defined scope loses their territorial core on the current province scope.
+alias[effect:remove_territorial_core] = scope[country]
+alias[effect:remove_territorial_core] = <country_tag>
 
-The country that gains the territorial core.
-	
-
-capital_scope = {
-    add_territorial_core = FRA
-}
-
-	The defined scope gains a territorial core on the current province scope. 		1.18
-cede_province 	<scope>
-
-The country that gains ownership.
-	
-
-capital_scope = {
-    cede_province = FRA
-}
-
-	The defined scope gains ownership of the current province scope. 	previous_owner can be used to cede ownership to the last previous owner of a province. 	1.1
-change_controller 	<scope>
-
-The country that gains control.
-	
-
-capital_scope = {
-    change_controller = FRA
-}
-
-	The defined scope gains control over the current province scope. 	Control here means occupation, not ownership. 	1.1
-remove_claim 	<scope>
-
-The country that loses their claim.
-	
-
-capital_scope = {
-    remove_claim = FRA
-}
-
-	The defined scope loses their claim on the current province scope. 	Works for both types of claims. 	1.1
-remove_core 	<scope>
-
-The country that loses their core.
-	
-
-capital_scope = {
-    remove_core = FRA
-}
-
-	The defined scope loses their core on the current province scope. 		1.1
-remove_territorial_core 	<scope>
-
-The country that loses their territorial core.
-	
-
-capital_scope = {
-    remove_territorial_core = FRA
-}
-
-	The defined scope loses their territorial core on the current province scope. 		1.18
-
-	
 	
 #Province Military Stuff
 

@@ -30,4 +30,19 @@ enums = {
 		mamluk_mechanic
 		iqta_mechanic
 	}
+	enum[construction_types] = {
+		core
+		culture
+		building
+		merchant
+		diplomat
+		missionary
+		army
+		navy
+		canal
+		great_project
+	}
+	enum[DLCs] = {
+	
+	}
 }
