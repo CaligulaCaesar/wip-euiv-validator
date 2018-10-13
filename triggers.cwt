@@ -2205,6 +2205,106 @@ alias[trigger:num_of_owned_provinces_with] = {
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
+## scope = Country
+###Returns true if country owns at least X home ports (in lands contiguously connected to the capital), or at least as many home ports as the specified country.
+alias[trigger:num_of_ports] = int
+alias[trigger:num_of_ports] = scope[country]
+alias[trigger:num_of_ports] = <country_tag>
+
+## scope = Country
+###Returns true if the country blockades at least X ports.
+alias[trigger:num_of_ports_blockading] = int
+
+## scope = Country
+###Returns true if the country has at least X estates with at least 70 influence.
+alias[trigger:num_of_powerful_estates] = int
+
+## scope = Country
+###Returns true if the country has at least X protectorates, or at least as many protectorates as the specified country.
+alias[trigger:num_of_protectorates] = int
+alias[trigger:num_of_protectorates] = scope[country]
+alias[trigger:num_of_protectorates] = <country_tag>
+
+## scope = Country
+###Returns true if the country has at least X provinces is states.
+alias[trigger:num_of_provinces_in_states] = int
+
+## scope = Country
+###Returns true if the country has at least X provinces is territories.
+alias[trigger:num_of_provinces_in_territories] = int
+
+## scope = Country
+###Returns true if the number of rebel armies in the country is at least X, or at least as many rebel armies in the country as the specified country.
+alias[trigger:num_of_rebel_armies] = int
+alias[trigger:num_of_rebel_armies] = scope[country]
+alias[trigger:num_of_rebel_armies] = <country_tag>
+
+## scope = Country
+###Returns true if the number of rebel controlled provinces in the country is at least X, or at least as many rebel controlled provinces as the specified country.
+alias[trigger:num_of_rebel_controlled_provinces] = int
+alias[trigger:num_of_rebel_controlled_provinces] = scope[country]
+alias[trigger:num_of_rebel_controlled_provinces] = <country_tag>
+
+## scope = country
+###Float value: Returns true if the ratio of the provinces with the specified religion to the total provinces of the country is at least X. Integer value: Returns true if the country has at least X provinces with the specified religion.
+alias[trigger:num_of_religion] = {
+	religion = <religion>
+	value = float
+	value = int
+	## cardinality = 0..1
+	secondary = yes
+}
+
+## scope = Country
+###Returns true if the number of revolts in the country is at least X, or at least as many rebel controlled provinces as the specified country. The same as ‘num_of_rebel_controlled_provinces’.
+alias[trigger:num_of_revolts] = int
+alias[trigger:num_of_revolts] = scope[country]
+alias[trigger:num_of_revolts] = <country_tag>
+
+## scope = Country
+###Returns true if the country has at least X royal marriages, or at least as many royal marriages as the specified country.
+alias[trigger:num_of_royal_marriages] = int
+alias[trigger:num_of_royal_marriages] = scope[country]
+alias[trigger:num_of_royal_marriages] = <country_tag>
+
+## scope = Country
+###Returns true if the country has at least X states.
+alias[trigger:num_of_states] = int
+
+## scope = Country
+###Returns true if the country has at least X streltsy units.
+alias[trigger:num_of_streltsy] = int
+
+## scope = Country
+###Returns true if the country has at least X strong trade companies.
+alias[trigger:num_of_strong_trade_companies] = int
+
+## scope = Country
+###Returns true if the country is the overlord of at least X subject countries of any type.
+alias[trigger:num_of_subjects] = int
+
+## scope = Country
+###Returns true if the country has at least X territories (areas that aren't states).
+alias[trigger:num_of_territories] = int
+
+## scope = Province
+###Returns true if the development of the province was improved at least X times.
+alias[trigger:num_of_times_improved] = int
+
+## scope = Country
+###Returns true if the country owns at least X total ports (anywhere in the world), or at least as many total ports as the specified country.
+alias[trigger:num_of_total_ports] = int
+alias[trigger:num_of_total_ports] = scope[country]
+alias[trigger:num_of_total_ports] = <country_tag>
+
+## scope = Country
+###Returns true if the country has at least X trade embargos.
+alias[trigger:num_of_trade_embargos] = int
+
+## scope = Country
+###Returns true if the country hasat least X ‘trading in’ bonuses.
+alias[trigger:num_of_trading_bonuses] = int
+
 
 
 
@@ -2445,142 +2545,6 @@ Tag, Scope	Returns true if the country's treasury contains ducats of at least th
 
 
 ## scope = Country
-###Returns true if country owns at least X home ports (in lands contiguously connected to the capital).
-alias[trigger:num_of_ports] = int
-
-## scope = num_of_ports = MNG
-###Country
-alias[trigger:Tag, Scope] = Attention!!! Returns true if the country has at least as many home ports as the specified country.
-
-## scope = Country
-###Returns true if the country blockades at least X ports.
-alias[trigger:num_of_ports_blockading] = int
-
-## scope = Country
-###Returns true if the country has at least X estates with at least 70 influence.
-alias[trigger:num_of_powerful_estates] = int
-
-## scope = Country
-###Returns true if the country has at least X protectorates.
-alias[trigger:num_of_protectorates] = int
-
-## scope = num_of_protectorates = POR
-###Country
-alias[trigger:Tag, Scope] = Attention!!! Returns true if the country has at least as many protectorates as the specified country.
-
-## scope = Country
-###Returns true if the country has at least X provinces is states.
-alias[trigger:num_of_provinces_in_states] = int
-
-## scope = Country
-###Returns true if the country has at least X provinces is territories.
-alias[trigger:num_of_provinces_in_territories] = int
-
-## scope = Country
-###Returns true if the number of rebel armies in the country is at least X.
-alias[trigger:num_of_rebel_armies] = int
-
-## scope = num_of_rebel_armies = SWI
-###Country
-alias[trigger:Tag, Scope] = Attention!!! Returns true if there are at least as many rebel armies in the country as the specified country.
-
-## scope = Country
-###Returns true if the number of rebel controlled provinces in the country is at least X.
-alias[trigger:num_of_rebel_controlled_provinces] = int
-
-## scope = num_of_rebel_controlled_provinces = TIM
-###Country
-alias[trigger:Tag, Scope] = Attention!!! Returns true if the country has at least as many rebel controlled provinces as the specified country.
-
-## scope = 
-###Float value: Returns true if the ratio of the provinces with the specified religion to the total provinces of the country is at least X.
-alias[trigger:num_of_religion] = Attention!!! Clause
-
-## scope = 
-###
-alias[trigger:Integer value: Returns true if the country has at least X provinces with the specified religion.] = Attention!!! 
-
-## scope = 
-###
-alias[trigger:It is also possible to specify the secondary religion by secondary = yes.] = Attention!!! Country
-
-## scope = 
-###
-alias[trigger:num_of_religion = {] = Attention!!! 
-
-## scope = 
-###
-alias[trigger:] = Attention!!! religion = animism
-
-## scope = 
-###
-alias[trigger:] = Attention!!! value = 0.3
-
-## scope = 
-###
-alias[trigger:}] = Attention!!! 
-
-## scope = 
-###Returns true if the number of revolts in the country is at least X.
-alias[trigger:num_of_revolts] = int
-
-## scope = 
-###num_of_revolts = 3
-alias[trigger:The same as ‘num_of_rebel_controlled_provinces’.] = Attention!!! Country
-
-## scope = num_of_revolts = TIM
-###Country
-alias[trigger:Tag, Scope] = Attention!!! Returns true if the country has at least as many rebel controlled provinces as the specified country.
-
-## scope = Country
-###Returns true if the country has at least X royal marriages.
-alias[trigger:num_of_royal_marriages] = int
-
-## scope = num_of_royal_marriages = ENG
-###Country
-alias[trigger:Tag, Scope] = Attention!!! Returns true if the country has at least as many royal marriages as the specified country.
-
-## scope = Country
-###Returns true if the country has at least X states.
-alias[trigger:num_of_states] = int
-
-## scope = Country
-###Returns true if the country has at least X streltsy units.
-alias[trigger:num_of_streltsy] = int
-
-## scope = Country
-###Returns true if the country has at least X strong trade companies.
-alias[trigger:num_of_strong_trade_companies] = int
-
-## scope = Country
-###Returns true if the country is the overlord of at least X subject countries of any type.
-alias[trigger:num_of_subjects] = int
-
-## scope = Country
-###Returns true if the country has at least X territories (areas that aren't states).
-alias[trigger:num_of_territories] = int
-
-## scope = Province
-###Returns true if the development of the province was improved at least X times.
-alias[trigger:num_of_times_improved] = int
-
-## scope = Country
-###Returns true if the country owns at least X total ports (anywhere in the world).
-alias[trigger:num_of_total_ports] = int
-
-## scope = num_of_total_ports = JAP
-###Country
-alias[trigger:Tag, Scope] = Attention!!! Returns true if the country owns at least as many total ports as the specified country.
-
-## scope = Country
-###Returns true if the country has at least X trade embargos.
-alias[trigger:num_of_trade_embargos] = int
-
-## scope = Country
-###Returns true if the country hasat least X ‘trading in’ bonuses.
-alias[trigger:num_of_trading_bonuses] = int
-
-## scope = Country
 ###Returns true if the country has at least X transports.
 alias[trigger:num_of_transport] = int
 
@@ -2604,25 +2568,17 @@ alias[trigger:Tag, Scope] = Attention!!! Returns true if the country has at leas
 ###Returns true if the specified country has at least X units of the specified type in the province. (type and who are not needed, if not included will default to all.)
 alias[trigger:num_of_units_in_province] = Attention!!! Clause
 
-## scope = 
-###
-alias[trigger:num_of_units_in_province = {] = Attention!!! 
-
-## scope = 
-###
-alias[trigger:    who =] = Attention!!! 
-
-## scope = 
-###
-alias[trigger:    type =] = Attention!!! 
-
-## scope = 
-###
-alias[trigger:    amount =] = Attention!!! 
-
-## scope = 
-###
-alias[trigger:}] = Attention!!! 
+## scope = Province
+###Returns true if the specified country has at least X units of the specified type in the province. (type and who are not needed, if not included will default to all.)
+alias[trigger:num_of_units_in_province] = {
+	amount = int
+	## cardinality = 0..1
+	who = scope[country]
+	## cardinality = 0..1
+	who = <country_tag>
+	## cardinality = 0..1
+	type = enum[unit_types]
+}
 
 ## scope = Country
 ###Returns true if the country has unlocked at least X cults.
@@ -2652,51 +2608,12 @@ alias[trigger:num_ships_privateering] = int
 ###Country
 alias[trigger:Tag, Scope] = Attention!!! Returns true if the country has at least as many ships privateering as the specified country.
 
-num_of_ports	Integer	Returns true if country owns at least X home ports (in lands contiguously connected to the capital).	Country	num_of_ports = 20
-Tag, Scope	Returns true if the country has at least as many home ports as the specified country.	Country	num_of_ports = MNG
-num_of_ports_blockading	Integer	Returns true if the country blockades at least X ports.	Country	num_of_ports_blockading = 10
-num_of_powerful_estates	Integer	Returns true if the country has at least X estates with at least 70 influence.	Country	num_of_powerful_estates = 2
-num_of_protectorates	Integer	Returns true if the country has at least X protectorates.	Country	num_of_protectorates = 2
-Tag, Scope	Returns true if the country has at least as many protectorates as the specified country.	Country	num_of_protectorates = POR
-num_of_provinces_in_states	Integer	Returns true if the country has at least X provinces is states.	Country	num_of_provinces_in_states = 14
-num_of_provinces_in_territories	Integer	Returns true if the country has at least X provinces is territories.	Country	num_of_provinces_in_territories = 12
-num_of_rebel_armies	Integer	Returns true if the number of rebel armies in the country is at least X.	Country	num_of_rebel_armies = 3
-Tag, Scope	Returns true if there are at least as many rebel armies in the country as the specified country.	Country	num_of_rebel_armies = SWI
-num_of_rebel_controlled_provinces	Integer	Returns true if the number of rebel controlled provinces in the country is at least X.	Country	num_of_rebel_controlled_provinces = 3
-Tag, Scope	Returns true if the country has at least as many rebel controlled provinces as the specified country.	Country	num_of_rebel_controlled_provinces = TIM
-num_of_religion	Clause	Float value: Returns true if the ratio of the provinces with the specified religion to the total provinces of the country is at least X.
-Integer value: Returns true if the country has at least X provinces with the specified religion.
-It is also possible to specify the secondary religion by secondary = yes.	Country	
-num_of_religion = {
-	religion = animism
-	value = 0.3
-}
-num_of_revolts	Integer	Returns true if the number of revolts in the country is at least X.
-The same as ‘num_of_rebel_controlled_provinces’.	Country	num_of_revolts = 3
-Tag, Scope	Returns true if the country has at least as many rebel controlled provinces as the specified country.	Country	num_of_revolts = TIM
-num_of_royal_marriages	Integer	Returns true if the country has at least X royal marriages.	Country	num_of_royal_marriages = 2
-Tag, Scope	Returns true if the country has at least as many royal marriages as the specified country.	Country	num_of_royal_marriages = ENG
-num_of_states	Integer	Returns true if the country has at least X states.	Country	num_of_states = 8
-num_of_streltsy	Integer	Returns true if the country has at least X streltsy units.	Country	num_of_streltsy = 3
-num_of_strong_trade_companies	Integer	Returns true if the country has at least X strong trade companies.	Country	num_of_strong_trade_companies = 4
-num_of_subjects	Integer	Returns true if the country is the overlord of at least X subject countries of any type.	Country	num_of_subjects = 1
-num_of_territories	Integer	Returns true if the country has at least X territories (areas that aren't states).	Country	num_of_territories = 10
-num_of_times_improved	Integer	Returns true if the development of the province was improved at least X times.	Province	num_of_times_improved = 5
-num_of_total_ports	Integer	Returns true if the country owns at least X total ports (anywhere in the world).	Country	num_of_total_ports = 20
-Tag, Scope	Returns true if the country owns at least as many total ports as the specified country.	Country	num_of_total_ports = JAP
-num_of_trade_embargos	Integer	Returns true if the country has at least X trade embargos.	Country	num_of_trade_embargos = 3
-num_of_trading_bonuses	Integer	Returns true if the country hasat least X ‘trading in’ bonuses.	Country	num_of_trading_bonuses = 7
+
 num_of_transport	Integer	Returns true if the country has at least X transports.	Country	num_of_transport = 24
 Tag, Scope	Returns true if the country has at least as many transports as the specified country.	Country	num_of_transport = DEN
 num_of_trusted_allies	Integer	Returns true if the country has at least X allies with 100 trust.	Country	num_of_trusted_allies = 3
 num_of_unions	Integer	Returns true if the country has at least X personal unions.	Country	num_of_unions = 3
 Tag, Scope	Returns true if the country has at least as many personal unions as the specified country. Note: this no longer works. personal_union = x is the new format, eg personal_union = 2.	Country	num_of_unions = BUR
-num_of_units_in_province	Clause	Returns true if the specified country has at least X units of the specified type in the province. (type and who are not needed, if not included will default to all.)	Province	
-num_of_units_in_province = {
-    who =
-    type =
-    amount =
-}
 num_of_unlocked_cults	Integer	Returns true if the country has unlocked at least X cults.	Country	num_of_unlocked_cults = 13
 num_of_vassals	Integer	Returns true if the country has at least X vassals.	Country	num_of_vassals = 3
 Tag, Scope	Returns true if the country has at least as many vassals as the specified country.	Country	num_of_vassals = POL
