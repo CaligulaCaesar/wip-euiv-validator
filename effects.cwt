@@ -413,178 +413,112 @@ alias[effect:set_incident_variable_value] = {
 
 #Country Technology stuff
 
+## scope = country
+###Adds an idea for the current scope. Ideas are found in /Europa Universalis IV/common/ideas/*.txt. Won't work if the idea isn't present in a National Idea set or a taken Idea groups set for the country
+alias[effect:add_idea] = <idea>
+
+## scope = country
+###Adds an idea group for the current scope. Idea groups are found in /Europa Universalis IV/common/ideas/*.txt. Won't work if the country doesn't have any free idea group slots.
+alias[effect:add_idea_group] = <idea_group>
+
+## scope = country
+###Adds a policy for the current scope. Policies are found in /Europa Universalis IV/common/policies/*.txt. Won't work if the policy triggers are not met by the country, or there are no free policy slots.
+alias[effect:add_active_policy] = <policy>
+
+## scope = country
+###Changes the technology group of the current scope. Technology Groups are found in /Europa Universalis IV/common/technology.txt.. Doesn't change units, use change_unit_type.
+alias[effect:change_technology_group] = <technology_group> #todo
+
+## scope = country
+###Removes an idea for the current scope. Ideas are found in /Europa Universalis IV/common/ideas/*.txt.
+alias[effect:remove_idea] = <idea>
+
+## scope = country
+###Removes an idea group for the current scope. Idea groups are found in /Europa Universalis IV/common/ideas/*.txt.
+alias[effect:remove_idea_group] = <idea_group>
+
+## scope = country
+###Primitive status for the current scope. Primitive status controls whether a country has ships and if they can see Primitive-only mechanics, such as Religious Reforms.
+alias[effect:set_primitive] = bool
+
+## scope = country
+###Re-evaluates the current scope's national idea set assignment, if they match a different set, they will switch to it. Used after tag changes to change National Idea sets.
+alias[effect:swap_free_idea_group] = bool
+
+## scope = country
+###Adds embracement for the current progressing institution within the current scope. Institutions are found in /Europa Universalis IV/common/institutions/*.txt.
+alias[effect:add_next_institution_embracement] = int[0..100]
+
+## scope = country
+###Adds ADM technologies to the current scope. You cannot remove technologies.
+alias[effect:add_adm_tech] = int
+
+## scope = country
+###Adds DIP technologies to the current scope. You cannot remove technologies.
+alias[effect:add_dip_tech] = int
+
+## scope = country
+###Adds MIL technologies to the current scope. You cannot remove technologies.
+alias[effect:add_mil_tech] = int
 
 
-add_idea 	<idea>
+#Country Court stuff
 
-The idea to add.
-	add_idea = military_traditions 	Adds an idea for the current scope. Ideas are found in /Europa Universalis IV/common/ideas/*.txt.
+## scope = country
+###Adds prestige to the current scope. Can also subtract.
+alias[effect:add_prestige] = float
 
-Won't work if the idea isn't present in a National Idea set or a taken Ideagroups set for the country.
-	1.6
-add_idea_group 	<ideagroup>
+## scope = country
+###Adds corruption to the current scope. Can also subtract.
+alias[effect:add_corruption] = float
 
-The ideagroup to add.
-	add_idea_group = aristocracy_ideas 	Adds an ideagroup for the current scope. Ideagroups are found in /Europa Universalis IV/common/ideas/*.txt.
+## scope = country
+###Adds splendor to the current scope. Splendor is used to purchase Age abilities. Can also subtract.
+alias[effect:add_splendor] = int
 
-Won't work if the country doesn't have any free ideagroup slots.
-	1.6
-add_active_policy 	<policy>
+## scope = country
+###Adds the defined advisor to the current scope. Defaults the advisor's location to the capital, and religion and culture to the current scope's.
+alias[effect:create_advisor] = <advisor_type>
 
-The policy to add.
-	add_active_policy = the_statute_of_monopolies 	Adds a policy for the current scope. Policies are found in /Europa Universalis IV/common/policies/*.txt.
+## scope = country
+###Kills a hired advisor for the current scope. Advisor types are found in /Europa Universalis IV/common/advisortypes/*.txt. Displays the advisor death message box when used. Only works for advisors that have been hired.
+alias[effect:kill_advisor] = <advisor_type>
+alias[effect:kill_advisor] = random
+alias[effect:kill_advisor] = <advisor_id> #todo
 
-Won't work if the policy triggers are not met by the country, or there are no free policy slots.
-	1.21
-change_technology_group 	<technology group>
+## scope = country
+###Removes a hired advisor for the current scope. Advisor types are found in /Europa Universalis IV/common/advisortypes/*.txt. Does not display the advisor death message box when used. Only works for advisors that have been hired.
+alias[effect:remove_advisor] = <advisor_type>
+alias[effect:remove_advisor] = random
+alias[effect:remove_advisor] = <advisor_id> #todo
 
-The technology group to change to.
-	change_technology_group = western 	Changes the technology group of the current scope. Technology Groups are found in /Europa Universalis IV/common/technology.txt.
+## scope = country
+###Removes a hired advisor of a monarch power type for the current scope.
+alias[effect:remove_advisor_by_category] = [power_types]
 
-Doesn't change units, use change_unit_type.
-	1.1
-remove_idea 	<idea>
-
-The idea to remove.
-	remove_idea = military_traditions 	Removes an idea for the current scope. Ideas are found in /Europa Universalis IV/common/ideas/*.txt.
-
-Won't work if the idea isn't held.
-	1.6
-remove_idea_group 	<ideagroup>
-
-The ideagroup to remove.
-	remove_idea_group = military_traditions 	Removes an ideagroup for the current scope. Ideagroups are found in /Europa Universalis IV/common/ideas/*.txt.
-
-Won't work if the ideagroup isn't held.
-	1.6
-set_primitive 	<yes><no>
-
-Boolean.
-	set_primitive = no 	Toggles Primitive status for the current scope. Primitive status controls whether a country has ships and if they can see Primitive-only mechanics, such as Religious Reforms. 1.18
-swap_free_idea_group 	<yes>
-
-Boolean.
-	swap_free_idea_group = yes 	Re-evaluates the current scope's national idea set assignment, if they match a different set, they will switch to it. Used after tag changes to change Nationa Idea sets. 1.1
-add_next_institution_embracement 	<int>
-
-The amount of embracement to add.
-	add_next_institution_embracement = 10 	Adds embracement for the current progressing institution within the current scope. Institutions are found in /Europa Universalis IV/common/institutions/*.txt.
-	1.21
-add_adm_tech 	<int>
-
-The amount of technologies to add.
-	add_adm_tech = 1 	Adds ADM technologies to the current scope. You cannot remove technologies. 1.21
-add_dip_tech 	<int>
-
-The amount of technologies to add.
-	add_dip_tech = 1 	Adds DIP technologies to the current scope. You cannot remove technologies. 1.21
-add_mil_tech 	<int>
-
-The amount of technologies to add.
-	add_mil_tech = 1 	Adds MIL technologies to the current scope. You cannot remove technologies. 1.21
-Court
-Ambox outdated info.png 	
-This section may contain outdated information that is inaccurate for the current version of the game. The last version it was verified as up to date for was 1.24.
-Name 	Parameters 	Examples 	Description 	Notes 	Version Added
-add_prestige 	<float>
-
-The amount to add or subtract. <scope>
-The value to take from scope, to add or subtract.
-	add_prestige = 50 	Adds prestige to the current scope. 	1.1
-add_corruption 	<float>
-
-The amount to add or subtract.
-	add_corruption = 2 	Adds corruption to the current scope. 	1.16
-add_splendor 	<int>
-
-The amount to add or subtract.
-	add_splendor = 2 	Adds splendor to the current scope. Splendor is used to purchase Age abilities. 1.20
-create_advisor 	<advisor>
-
-The advisor to create.
-	create_advisor = philosopher 	Adds the defined advisor to the current scope. Defaults the advisor's location to the capital, and religion and culture to the current scope's. 1.1
-kill_advisor 	<random>
-
-Kill a random advisor.
-<advisor>
-Kill a specific advisor type.
-<advisor id>
-Kill a specific advisor id.
-	kill_advisor = philosopher
-
-kill_advisor = random
-kill_advisor = 30
-	Kills a hired advisor for the current scope. Advisor types are found in /Europa Universalis IV/common/advisortypes/*.txt
-
-Displays the advisor death message box when used.
-Only works for advisors that have been hired.
-	1.1
-remove_advisor 	<random>
-
-Remove a random advisor. <advisor>
-Remove a specific advisor type
-<advisor id>
-Remove a specific advisor id.
-	remove_advisor = philosopher
-
-remove_advisor = random
-remove_advisor = 30
-	Removes a hired advisor for the current scope. Advisor types are found in /Europa Universalis IV/common/advisortypes/*.txt
-
-Does not display the advisor death message box when used.
-Only works for advisors that have been hired.
-	1.1
-remove_advisor_by_category 	<type>
-
-Removes an advisor by monarch power type: ADM, DIP or MIL.
-	remove_advisor_by_category = ADM 	Removes a hired advisor of a monarch power type for the current scope. Only works for advisors that have been hired. 1.20
-define_advisor 	type = <type>
-
-The advisor type to create.
-skill = <int>
-The amount of skill the advisor has. Limited to 3 maximum.
-name = <string>
-Optional. The name to use.
-location = <province id>
-Optional. The province that the advisor comes from.
-discount = yes
-Optional. If the SCRIPTED_ADVISOR_DISCOUNT cost reduction applies to this advisor.
-female = yes
-Optional. Makes this advisor female.
-culture = <culture> / <scope>
-Optional. The culture of this advisor.
-religion = <religion> / <scope>
-Optional. The religion of this advisor.
-	
-
-define_advisor = {
-    type = treasurer
-    name = "John Smith"
-    skill = 3
-    culture = english
-    religion = catholic
+## scope = country
+###Adds the defined advisor to the current scope. Advisor types are found in /Europa Universalis IV/common/advisortypes/*.txt. Can utilise Event Scope Values for the culture and religion parameters. The name parameter can accept a saved name variable, see set_saved_name for more context.
+alias[effect:define_advisor] = {
+	type = <advisor_type> #todo
+	skill = int[1..3]
+	## cardinality = 0..1
+	name = scalar #todo: name or saved name
+	## cardinality = 0..1
+	discount = yes
+	## cardinality = 0..1
+	culture = <culture>
+	## cardinality = 0..1
+	culture = scope[country]
+	## cardinality = 0..1
+	religion = <religion>
+	## cardinality = 0..1
+	religion = scope[country]
+	## cardinality = 0..1
+	female = bool
 }
 
-define_advisor = {
-    type = treasurer
-    name = rising_star_advisor
-    skill = 2
-    culture = event_target:wrong_religion_province
-    religion = event_target:wrong_religion_province
-}
 
-define_advisor = {
-    type = recruitmaster
-    skill = 3
-    discount = yes
-    culture = variable:new_ruler_culture
-}
 
-	Adds the defined advisor to the current scope. Advisor types are found in /Europa Universalis IV/common/advisortypes/*.txt
-
-Can utilise Event Scope Values for the culture and religion parameters.
-The name parameter can accept a saved name variable, see set_saved_name for more context.
-	1.1
 Stability
 Ambox outdated info.png 	
 This section may contain outdated information that is inaccurate for the current version of the game. The last version it was verified as up to date for was 1.24.

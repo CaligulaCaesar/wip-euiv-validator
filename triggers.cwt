@@ -1594,7 +1594,7 @@ alias[trigger:is_march] = bool
 ## scope = Country
 ###Returns true if the country is neighbor of X.
 alias[trigger:is_neighbor_of] = scope[country]
-alias[trigger:is_neighbor_of] = <country_id>
+alias[trigger:is_neighbor_of] = <country_tag>
 
 ## scope = Province
 ###Returns true, if the province's trade node is in a trade company region.
@@ -1611,7 +1611,7 @@ alias[trigger:is_orangists_in_power] = bool
 ## scope = Country
 ###Returns true if the specified country is the origin country of the scoped country’s consort.
 alias[trigger:is_origin_of_consort] = scope[country]
-alias[trigger:is_origin_of_consort] = <country_id>
+alias[trigger:is_origin_of_consort] = <country_tag>
 
 ## scope = Province
 ###Returns true if the province is overseas
@@ -1636,7 +1636,7 @@ alias[trigger:is_part_of_hre] = bool
 ## scope = Province
 ###Returns true if the province is a permanent claim of X.
 alias[trigger:is_permanent_claim] = scope[country]
-alias[trigger:is_permanent_claim] = <country_id>
+alias[trigger:is_permanent_claim] = <country_tag>
 
 ## scope = Country
 ###Returns true if the country is a player-designed custom nation.
@@ -1645,12 +1645,12 @@ alias[trigger:is_playing_custom_nation] = bool
 ## scope = Country
 ###Returns true if vassal X is a possible march of the country.
 alias[trigger:is_possible_march] = scope[country]
-alias[trigger:is_possible_march] = <country_id>
+alias[trigger:is_possible_march] = <country_tag>
 
 ## scope = Country
 ###Returns true if country X is releasable as vassal of the country.
 alias[trigger:is_possible_vassal] = scope[country]
-alias[trigger:is_possible_vassal] = <country_id>
+alias[trigger:is_possible_vassal] = <country_tag>
 
 ## scope = Country
 ###Returns true if the country is the previous papal controller.
@@ -1676,7 +1676,7 @@ alias[trigger:is_reformation_center] = bool
 ###Returns true if the province has been granted to any country, to no country or to a specific country.
 alias[trigger:is_religion_grant_colonial_claim] = bool
 alias[trigger:is_religion_grant_colonial_claim] = scope[country]
-alias[trigger:is_religion_grant_colonial_claim] = <country_id>
+alias[trigger:is_religion_grant_colonial_claim] = <country_tag>
 
 ## scope = Anywhere
 ###Returns true if the specified religion is enabled.
@@ -1712,40 +1712,109 @@ alias[trigger:is_state_core] = <province_id>
 alias[trigger:is_state_core] = scope[country]
 alias[trigger:is_state_core] = <country_tag>
 
+## scope = Province
+###Returns true if in the country the statists are in power.
+alias[trigger:is_statists_in_power] = bool
 
+## scope = trade_node
+###Returns true if the specified country has the most trade power in the area.
+alias[trigger:is_strongest_trade_power] = scope[country]
+alias[trigger:is_strongest_trade_power] = <country_tag>
 
+## scope = Country
+###Returns true if the country is a subject.
+alias[trigger:is_subject] = bool
 
-is_statists_in_power	Boolean	Returns true if in the country the statists are in power.	Province	is_statists_in_power = yes
-is_strongest_trade_power	Tag, Scope	Returns true if the specified country has the most trade power in the area.	Province
-(Trade node)	is_strongest_trade_power = POR
-is_subject	Boolean	Returns true if the country is a subject.	Country	is_subject = yes
-is_subject_of	Tag	Returns true if the country is a subject of X.	Country	is_subject_of = FRA
-is_subject_of_type	Identifier	Returns true if the country is a subject of subject type.	Country	is_subject_of_type = tributary_state
-is_territorial_core	Province ID	Returns true if the country has a territorial core on the province with the ID X.	Country	is_territorial_core = 950
-Tag, Scope	Returns true if the country X has a territorial core on the province.	Province	is_territorial_core = NED
-is_territory	Boolean	Returns true if the province is in a territory.	Province	is_territory = no
-is_threat	Tag, Scope	Returns true if country X is threatened by the country.	Country	is_threat = ROOT
-is_trade_league_leader	Boolean	Returns true if the country is the leader of a trade league.	Country	is_trade_league_leader = yes
-is_tribal	Boolean	Returns true if the country has a tribal government.
-(Note: Government types that allow migration are not considered tribal.)	Country	is_tribal = yes
-is_vassal	Boolean	Returns true if the country is a vassal.	Country	is_vassal = yes
-is_variable_equal	Clause	Returns true if the specified variable is equal to X.		
-is_variable_equal = {
-	which = myvar
-	value = 5
+## scope = Country
+###Returns true if the country is a subject of X.
+alias[trigger:is_subject_of] = scope[country]
+alias[trigger:is_subject_of] = <country_tag>
+
+## scope = Country
+###Returns true if the country is a subject of subject type.
+alias[trigger:is_subject_of_type] = <subject_type>
+
+## scope = Country
+###Returns true if the country has a territorial core on the province with the ID X.
+alias[trigger:is_territorial_core] = <province_id>
+
+## scope = Province
+###Returns true if the country X has a territorial core on the province.
+alias[trigger:is_territorial_core] = scope[country]
+alias[trigger:is_territorial_core] = <country_tag>
+
+## scope = Province
+###Returns true if the province is in a territory.
+alias[trigger:is_territory] = bool
+
+## scope = Country
+###Returns true if country X is threatened by the country.
+alias[trigger:is_threat] = scope[country]
+alias[trigger:is_threat] = <country_tag>
+
+## scope = Country
+###Returns true if the country is the leader of a trade league.
+alias[trigger:is_trade_league_leader] = bool
+
+## scope = country
+###Returns true if the country has a tribal government. Note: Government types that allow migration are not considered tribal.
+alias[trigger:is_tribal] = bool
+
+## scope = Country
+###Returns true if the country is a vassal.
+alias[trigger:is_vassal] = bool
+
+## scope = anywhere
+###Returns true if the specified variable is equal to X.
+alias[trigger:is_variable_equal] = {
+	which = scalar #todo: variable
+	value = float
 }
-is_wasteland	Boolean	Returns true if the province is wasteland.	Province	is_wasteland = yes
-is_year	Integer	Returns true if the current year is at least X.	Anywhere	is_year = 1750
-island	Boolean	Returns true if the province is an island, i.e. has no neighboring land provinces.	Province	island = yes
-isolationism	Integer	Returns true if the country has a isolationism level of at least X.	Country	isolationism = 2
-janissary_percentage	Float	Returns true if the country has an army of at least X k janissaries.
-Cradle of Civilization.png Available only with the Cradle of Civilization DLC enabled.	Country	janissary_percentage = 0.3
-junior_union_with	Tag, Scope	Returns true if the country is the junior partner in a personal union under country X.	Country	junior_union_with = ENG
-karma	Integer	Returns true if the country has a karma of at least X.	Country	karma = -50
-Tag, Scope	Returns true if the country has at least as much karma as the specified country.	Country	karma = DAI
-knows_country	Tag. Scope	Returns true if the country has knowledge of country X.	Country	knows_country = INC
-land_forcelimit	Integer	Returns true if the country has a land force limit of at least X.	Country	land_forcelimit = 32
-Tag, Scope	Returns true if the country has a land force limit of at least as much regiments than the specified country.	Country	land_forcelimit = ROOT
+
+## scope = Province
+###Returns true if the province is wasteland.
+alias[trigger:is_wasteland] = bool
+
+## scope = Anywhere
+###Returns true if the current year is at least X.
+alias[trigger:is_year] = int
+
+## scope = Province
+###Returns true if the province is an island, i.e. has no neighboring land provinces.
+alias[trigger:island] = bool
+
+## scope = Country
+###Returns true, if the country has a isolationism level of at least X.
+alias[trigger:isolationism] = int
+
+## scope = Country
+###Returns true if the country has an army of at least X k janissaries.
+alias[trigger:janissary_percentage] = float[0.0..1.0]
+
+## scope = Country
+###Returns true if the country is the junior partner in a personal union under country X.
+alias[trigger:junior_union_with] = scope[country]
+alias[trigger:junior_union_with] = <country_tag>
+
+## scope = Country
+###Returns true if the country has a karma of at least X, or at least as much karma as the specified country.
+alias[trigger:karma] = int
+alias[trigger:karma] = scope[country]
+alias[trigger:karma] = <country_tag>
+
+## scope = Country
+###Returns true if the country has knowledge of country X.
+alias[trigger:knows_country] = scope[country]
+alias[trigger:knows_country] = <country_tag>
+
+## scope = Country
+###Returns true if the country has a land force limit of at least X, or a land force limit of at least as much regiments than the specified country.
+alias[trigger:land_forcelimit] = int
+alias[trigger:land_forcelimit] = scope[country]
+alias[trigger:land_forcelimit] = <country_tag>
+
+
+
 land_maintenance	Float	Returns true if the country has set its land maintenance to X.	Country	land_maintenance = 0.90
 land_morale	Float	Returns true if the country has a morale of armies of at least X.	Country	land_morale = 3.5
 Tag, Scope	Returns true if the country has an at least as high morale of armies as the specified country.	Country	land_morale = PRU
