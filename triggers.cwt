@@ -32,7 +32,7 @@ alias[trigger:absolutism] = int[0..100]
 
 ##country scope
 ###Returns true if the country accepts the specified culture.
-alias[trigger:accepted_culture] = <culture> #todo
+alias[trigger:accepted_culture] = <culture.fixed> #todo
 alias[trigger:accepted_culture] = scope[province]
 
 ##country scope
@@ -287,7 +287,7 @@ alias[trigger:consort_dip] = int[0..6]
 
 ## scope = Country
 ###Returns true if the country's consort has the specified culture. Can utilise Event Scope Values.
-alias[trigger:consort_culture] = <culture>
+alias[trigger:consort_culture] = <culture.fixed>
 alias[trigger:consort_culture] = scope[country] #todo: I assume province works here (and elsewhere) too
 alias[trigger:consort_culture] = <country_type>
 
@@ -342,7 +342,7 @@ alias[trigger:country_or_vassal_holds] = <country_tag>
 
 ## scope = Province
 ###Returns true if the province culture is X.
-alias[trigger:culture] = <culture>
+alias[trigger:culture] = <culture.fixed>
 
 ## scope = Country, Province
 ###Returns true if the country/province has a culture of the specified culture group.
@@ -426,7 +426,7 @@ alias[trigger:dip_tech] = int
 
 ## scope = Country
 ###Returns true if the dominant culture in the country is X.
-alias[trigger:dominant_culture] = <culture> #todo: wiki says "capital"
+alias[trigger:dominant_culture] = <culture.fixed> #todo: wiki says "capital"
 
 ## scope = Country
 ###Returns true if the dominant religion in the country is X.
@@ -460,7 +460,7 @@ alias[trigger:employed_advisor] = {
 	## cardinality = 0..1
 	religion = <country_tag>
 	## cardinality = 0..1
-	culture = <culture>
+	culture = <culture.fixed>
 	## cardinality = 0..1
 	culture = scope[country]
 	## cardinality = 0..1
@@ -1186,7 +1186,7 @@ alias[trigger:heir_claim] = int[0..100]
 
 ## scope = Country
 ###Returns true if the country's heir has the specified culture. Can utilise Event Scope Values.
-alias[trigger:heir_culture] = <culture>
+alias[trigger:heir_culture] = <culture.fixed>
 alias[trigger:heir_culture] = scope[country]
 alias[trigger:heir_culture] = <country_tag>
 
@@ -1213,7 +1213,7 @@ alias[trigger:heir_nationality] = <country_tag>
 
 ## scope = Country
 ###Returns true if the country's heir has the specified religion. Can utilise Event Scope Values.
-alias[trigger:heir_religion] = <culture>
+alias[trigger:heir_religion] = <culture.fixed>
 alias[trigger:heir_religion] = scope[country]
 alias[trigger:heir_religion] = <country_tag>
 
