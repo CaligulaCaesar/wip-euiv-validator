@@ -2285,65 +2285,48 @@ Note: the size of revolts follows this formulae:
 
     { \text{number of regiments} = round \left[\left( 4 + 0.3 \cdot \text{total development} \right) \cdot (1 + 0.03 \cdot \text{technology level}) \cdot \text{rebellion size} \right] }
 
-Colonisation
-Ambox outdated info.png 	
-This section may contain outdated information that is inaccurate for the current version of the game. The last version it was verified as up to date for was 1.24.
-Name 	Parameters 	Examples 	Description 	Notes 	Version Added
-create_colony 	<int>
 
-The initial size of the colony.
-	
 
-random_empty_neighbor_province = {
-    create_colony = 200
-}
+#Province Colonisation stuff
 
-	Starts a colony belonging to the owner of the ROOT province scope. 	1.1
-add_colonysize 	<int>
+## scope = province
+###Starts a colony belonging to the owner of the ROOT province scope. Use with e.g. random_empty_neighbor_province
+alias[effect:create_colony] = int
 
-The amount of settlers to add.
-	add_colonysize = 10 	Adds settlers to the current province scope if a colony. 	1.1
-multiply_colonysize 	<float>
+## scope = province
+###Adds settlers to the current province scope of a colony.
+alias[effect:add_colonysize] = int
 
-The multiplier to use.
-	multiply_colonysize = 2 	Multiplies the settler count in the current province scope if a colony. 	1.1
-add_siberian_construction 	<int>
+## scope = province
+###Multiplies the settler count in the current province scope of a colony.
+alias[effect:multiply_colonysize] = float
 
-The initial size of the colony.
-	add_siberian_construction = 400 	Starts a siberian colony in the current province scope. Only works if the ROOT scope is a country that can use Siberian Frontiers. 1.22
-change_native_ferocity 	<int>
+## scope = province
+###Adds to the Native Ferocity within an uncolonized provinceStarts a siberian colony in the current province scope. Only works if the ROOT scope is a country that can use Siberian Frontiers.
+alias[effect:add_siberian_construction] = int
 
-The amount to add or subtract.
-	change_native_ferocity = 5 	Adds to the Native Ferocity within an uncolonized province. 	1.1
-change_native_hostileness 	<int>
+## scope = province
+###Adds to the Native Ferocity within an uncolonized province.
+alias[effect:change_native_ferocity] = int
 
-The amount to add or subtract.
-	change_native_hostileness = 5 	Adds to the Native Hostileness within an uncolonized province. 	1.1
-change_native_size 	<int>
+## scope = province
+###Adds to the Native Hostileness within an uncolonized province.
+alias[effect:change_native_hostileness] = int
 
-The amount to add or subtract.
-	change_native_size = 50 	Adds to the amount of natives within an uncolonized province. 	1.1
-discover_country 	<scope>
+## scope = province
+###Adds to the amount of natives within an uncolonized province.
+alias[effect:change_native_size] = int
 
-The country that gains vision.
-	
+## scope = province
+###The defined scope gains vision over the current province scope. Best used within areas, regions, etc to add vision.
+alias[effect:discover_country] = scope[country]
+alias[effect:discover_country] = <country_tag>
 
-upper_peru_region = {
-    discover_country = FRA
-}
+## scope = province
+###The defined scope loses vision over the current province scope. Best used within areas, regions, etc to remove vision.
+alias[effect:undiscover_country] = scope[country]
+alias[effect:undiscover_country] = <country_tag>
 
-	The defined scope gains vision over the current province scope. Best used within areas, regions, etc to add vision. 1.1
-undiscover_country 	<scope>
-
-The country that loses vision.
-	
-
-upper_peru_region = {
-    undiscover_country = FRA
-}
-
-	The defined scope loses vision over the current province scope. Best used within areas, regions, etc to remove vision. 1.1
-	
 
 #Province Diplomacy stuff
 
