@@ -363,7 +363,7 @@ alias[trigger:current_debate] = <parliamentary_debate> #todo
 
 ## scope = Country
 ###Returns true if the country has the specified (orthodox) icon.
-alias[trigger:current_icon] = <orthodox_icon> #todo
+alias[trigger:current_icon] = enum[orthodox_icons]
 
 ## scope = Country, Province
 ###Returns true if the country/province has an institution growth of at least X for the first not embraced institution.
@@ -1295,121 +1295,426 @@ alias[trigger:infantry_fraction] = float[0.0..1.0]
 ###Returns true if there are at least X infantry units in the province.
 alias[trigger:infantry_in_province] = int
 
+## scope = country
+###Returns true if the country has an inflation of at least X, or t least as much inflation as the country X.
+alias[trigger:inflation] = int
+alias[trigger:inflation] = scope[country]
+alias[trigger:inflation] = <country_tag>
+
+## scope = country
+###Returns true if the value of the specified incident is at least X.
+alias[trigger:incident_variable_value] = {
+	incident = <incident>
+	value = int
+}
+
+## scope = country
+###Returns true if the country has embraced at least X more institutions than the specified country.
+alias[trigger:institution_difference] = {
+	who = scope[country]
+	who = <country_tag>
+	value = int
+}
+
+## scope = Country
+###Returns true if the country has invested at least X papal influence in the election of the next papal controller.
+alias[trigger:invested_papal_influence] = int
+
+## scope = Country
+###Returns true if the countries is in the X league.
+alias[trigger:in_league] = <league> #todo
+
+## scope = Anywhere
+###Returns true if the ironman mode is enabled
+alias[trigger:ironman] = bool
+
+## scope = country
+###Returns true if the advisor with the ID X is employed.
+alias[trigger:is_advisor_employed] = <advisor_id>
+
+## scope = Country
+###Returns true if the country is at war.
+alias[trigger:is_at_war] = bool
+
+## scope = Province
+###Returns true if the province is backing the current issue in the parliament.
+alias[trigger:is_backing_current_issue] = bool
+
+## scope = Country
+###Returns true if the country is bankrupt.
+alias[trigger:is_bankrupt] = bool
+
+## scope = Province
+###Returns true if the province is blockaded.
+alias[trigger:is_blockaded] = bool
+
+## scope = Province
+###Returns true if the province is a capital.
+alias[trigger:is_capital] = bool
+
+## scope = Province
+###Returns true if the province is a city, i.e. has a population of at least 1000.
+alias[trigger:is_city] = bool
+
+## scope = Country
+###Returns true if the country has a claim on the province with the ID X.
+alias[trigger:is_claim] = <province_id>
+
+## scope = Province
+###Returns true if the specified country has a claim on the province.
+alias[trigger:is_claim] = scope[country]
+alias[trigger:is_claim] = <country_tag>
+
+## scope = Country
+###Returns true if the country is a client state.
+alias[trigger:is_client_nation] = bool
+
+## scope = Country
+###Returns true if the country is a client state of X.
+alias[trigger:is_client_nation_of] = scope[country]
+alias[trigger:is_client_nation_of] = <country_tag>
+
+## scope = Country
+###Returns true if the country is a non-independent colonial nation.
+alias[trigger:is_colonial_nation] = bool
+
+## scope = Country
+###Returns true if the country is a colonial nation of X.
+alias[trigger:is_colonial_nation_of] = scope[country]
+alias[trigger:is_colonial_nation_of] = <country_tag>
+
+## scope = Province
+###Returns true if the province is a colony.
+alias[trigger:is_colony] = bool
+
+## scope = Country
+###Returns true if the country has a core on the province with the ID X.
+alias[trigger:is_core] = <province_id>
+
+## scope = Province
+###Returns true if the country X has a core on the province.
+alias[trigger:is_core] = scope[country]
+alias[trigger:is_core] = <country_tag>
+
+
+## scope = Country
+###Returns true if the country is the target of a crusade.
+alias[trigger:is_crusade_target] = bool
+
+## scope = Country
+###Returns true if the country is the defender of the faith.
+alias[trigger:is_defender_of_faith] = bool
+
+## scope = Country
+###Returns true, if the country is a dynamically created tag (e.g. client states).
+alias[trigger:is_dynamic_tag] = bool
+
+## scope = Country
+###Returns true if the country is an elector of the HRE.
+alias[trigger:is_elector] = bool
+
+## scope = Country
+###Returns true if the country is the emperor of the HRE.
+alias[trigger:is_emperor] = bool
+
+## scope = Country
+###Returns true if the country is the emperor of China.
+alias[trigger:is_emperor_of_china] = bool
+
+## scope = Province
+###Returns true if province is empty
+alias[trigger:is_empty] = bool
+
+## scope = Country
+###Returns true the country views country X as an enemy.
+alias[trigger:is_enemy] = bool
+
+## scope = Country
+###Returns true if the ruler of the country is excommunicated.
+alias[trigger:is_excommunicated] = bool
+
+## scope = Country
+###Returns true if the country is a federation leader.
+alias[trigger:is_federation_leader] = bool
+
+## scope = Country
+###Returns true if ruler of the country is female.
+alias[trigger:is_female] = bool
+
+## scope = Country
+###Returns true if country has been force-converted via either religious rebels or an Enforce Religion peace treaty. Note: The subject interaction Enforce Religion does not cause the subject to be considered as force-converted.
+alias[trigger:is_force_converted] = bool
+
+## scope = Country
+###Returns true if the country is a colonial nation that has gained independence.
+alias[trigger:is_former_colonial_nation] = bool
+
+## scope = Country
+###Returns true if the country is a great power.
+alias[trigger:is_great_power] = bool
+
+## scope = Country
+###Returns true, if the country is currently harmonizing with the specified religion or religion group.
+alias[trigger:is_harmonizing_with] = scope[country]
+alias[trigger:is_harmonizing_with] = <country_tag>
+
+## scope = Country
+###Returns true if the heir of the country is a general. Note: Proper localisation for the negation only with NOT = ...
+alias[trigger:is_heir_leader] = bool
+
+## scope = Anywhere
+###Returns true if the emperor has a casus belli on occupiers of the Empire. Note: Enabled/Disabled with Call for Reichsreform.
+alias[trigger:is_imperial_ban_allowed] = bool
+
+## scope = Country
+###Returns true, if the specified incident is active. Allowed parameters are <incident>, yes/no, any and none.
+alias[trigger:is_incident_active] = <incident>
+alias[trigger:is_incident_active] = bool
+alias[trigger:is_incident_active] = any
+alias[trigger:is_incident_active] = none
+
+## scope = Country
+###Returns true, if the specified incident already happened.
+alias[trigger:is_incident_happened] = <incident>
+
+## scope = Country
+###Returns true, if the specified incident can possibly happen.
+alias[trigger:is_incident_possible] = <incident>
+
+## scope = Country
+###Returns true, if the specified incident is visible and therefore can happen in the future.
+alias[trigger:is_incident_potential] = <incident>
+
+## scope = Anywhere
+###Returns true if the specified institution has been discovered.
+alias[trigger:is_institution_enabled] = <institution>
+
+## scope = Province
+###Returns true if the province is the origin of the specified institution.
+alias[trigger:is_institution_origin] = Attention!!! <institution>
+
+## scope = Province
+###Returns true if the province is in the capital area of its owner (i.e. has a land connection to the owner’s capital through whose provinces).
+alias[trigger:is_in_capital_area] = bool
+
+## scope = Country
+###Returns true if the country is in a coalition.
+alias[trigger:is_in_coalition] = bool
+
+## scope = Country
+###Returns true if the country is fighting a coalition war.
+alias[trigger:is_in_coalition_war] = bool
+
+## scope = Country
+###Returns true if the country is running a deficit.
+alias[trigger:is_in_deficit] = bool
+
+## scope = Country
+###Returns true if the country is in a religious league war.
+alias[trigger:is_in_league_war] = bool
+
+## scope = Country
+###Returns true if the country is a member of a trade league.
+alias[trigger:is_in_trade_league] = bool
+
+## scope = Country
+###Returns true if the country is a member of the same trade league as country X.
+alias[trigger:is_in_trade_league_with] = scope[country]
+alias[trigger:is_in_trade_league_with] = <country_tag>
+
+## scope = Country
+###Returns true if the country is at war and the mentioned conditions are fulfilled.
+alias[trigger:is_in_war] = {
+	## cardinality = 0..1
+	attacker_leader = scope[country]
+	## cardinality = 0..1
+	attacker_leader = <country_tag>
+	## cardinality = 0..1
+	defender_leader = scope[country]
+	## cardinality = 0..1
+	defender_leader = <country_tag>
+	
+	## cardinality = 0..1
+	duration = int
+	
+	#These are according to the Wiki. Not sure where its info is from
+	## cardinality = 0..1
+	casus_belli = <casus_belli>
+
+	## cardinality = 0..1
+	war_score = int[0..100]
+	
+	## cardinality = 0..1
+	start_date = scalar #todo: date
+	
+	## cardinality = 0..1
+	war_goal_province = <province_id>
+	
+	# defenders, attackers, participants (not sure what these are meant to look like)
+}
+
+## scope = Province
+###Returns true if the province is an island, i.e. has no neighboring land province and no reachable province via a strait.
+alias[trigger:is_island] = bool
+
+## scope = Country
+###Returns true if country X is league enemy of the country('s league).
+alias[trigger:is_league_enemy] = scope[country]
+alias[trigger:is_league_enemy] = <country_tag>
+
+## scope = Country
+###Returns true, if the country is in the same religious league as the specified country.
+alias[trigger:is_league_friend] = scope[country]
+alias[trigger:is_league_friend] = <country_tag>
+
+## scope = Country
+###Returns true if the country leads a religious league.
+alias[trigger:is_league_leader] = bool
+
+## scope = Country
+###Returns true if the country is the lesser partner in a personal union.
+alias[trigger:is_lesser_in_union] = bool
+
+## scope = Province
+###Returns true if the province is looted.
+alias[trigger:is_looted] = bool
+
+## scope = Country
+###Returns true if the ruler of the country is a general.
+alias[trigger:is_monarch_leader] = bool
+
+## scope = Anywhere
+###Returns true if the current month is at least X (zero based).
+alias[trigger:is_month] = int[1..12]
+
+## scope = Country
+###Returns true if the country is a march.
+alias[trigger:is_march] = bool
+
+## scope = Country
+###Returns true if the country is neighbor of X.
+alias[trigger:is_neighbor_of] = scope[country]
+alias[trigger:is_neighbor_of] = <country_id>
+
+## scope = Province
+###Returns true, if the province's trade node is in a trade company region.
+alias[trigger:is_node_in_trade_company_region] = bool
+
+## scope = Country
+###Returns true if country's government is nomadic. Note: Only the Steppe Nomads government is flagged as nomadic.
+alias[trigger:is_nomad] = bool
+
+## scope = Country
+###Returns true if in the country the orangists are in power.
+alias[trigger:is_orangists_in_power] = bool
+
+## scope = Country
+###Returns true if the specified country is the origin country of the scoped country’s consort.
+alias[trigger:is_origin_of_consort] = scope[country]
+alias[trigger:is_origin_of_consort] = <country_id>
+
+## scope = Province
+###Returns true if the province is overseas
+alias[trigger:is_overseas] = bool
+
+## scope = Country (subject)
+###Returns true if the subject is overseas.
+alias[trigger:is_overseas_subject] = bool
+
+## scope = Province
+###Returns true if the province belongs to a trade company.
+alias[trigger:is_owned_by_trade_company] = bool
+
+## scope = Country
+###Returns true if the country is the papal controller.
+alias[trigger:is_papal_controller] = bool
+
+## scope = Country, province
+###Returns true if the country/province is part of the HRE.
+alias[trigger:is_part_of_hre] = bool
+
+## scope = Province
+###Returns true if the province is a permanent claim of X.
+alias[trigger:is_permanent_claim] = scope[country]
+alias[trigger:is_permanent_claim] = <country_id>
+
+## scope = Country
+###Returns true if the country is a player-designed custom nation.
+alias[trigger:is_playing_custom_nation] = bool
+
+## scope = Country
+###Returns true if vassal X is a possible march of the country.
+alias[trigger:is_possible_march] = scope[country]
+alias[trigger:is_possible_march] = <country_id>
+
+## scope = Country
+###Returns true if country X is releasable as vassal of the country.
+alias[trigger:is_possible_vassal] = scope[country]
+alias[trigger:is_possible_vassal] = <country_id>
+
+## scope = Country
+###Returns true if the country is the previous papal controller.
+alias[trigger:is_previous_papal_controller] = bool
+
+## scope = Province
+###Returns true if the province is prosperous. NOTE: Does not have a tooltip.
+alias[trigger:is_prosperous] = bool
+
+## scope = Country
+###Returns true if the country is a protectorate
+alias[trigger:is_protectorate] = bool
+
+## scope = Anywhere
+###Returns true if playing with a random New World.
+alias[trigger:is_random_new_world] = bool
+
+## scope = Global
+###Returns true if the province is a reformation center.
+alias[trigger:is_reformation_center] = bool
+
+## scope = Province
+###Returns true if the province has been granted to any country, to no country or to a specific country.
+alias[trigger:is_religion_grant_colonial_claim] = bool
+alias[trigger:is_religion_grant_colonial_claim] = scope[country]
+alias[trigger:is_religion_grant_colonial_claim] = <country_id>
+
+## scope = Anywhere
+###Returns true if the specified religion is enabled.
+alias[trigger:is_religion_enabled] = <religion>
+
+## scope = Country
+###Returns true if the country has reformed their religion.
+alias[trigger:is_religion_reformed] = bool
+
+## scope = Country
+###Returns true if the country is the revolution target.
+alias[trigger:is_revolution_target] = bool
+
+## scope = Country
+###Returns true if country X is a rival of the country.
+alias[trigger:is_rival] = scope[country]
+alias[trigger:is_rival] = <country_tag>
+
+## scope = Province
+###Returns true if the province is sea. Mostly used for trade nodes.
+alias[trigger:is_sea] = bool
+
+## scope = Province
+###Returns true if the province is in a state.
+alias[trigger:is_state] = bool
+
+## scope = Country
+###Returns true if the country has a state core on the province with the ID X.
+alias[trigger:is_state_core] = <province_id>
+
+## scope = Province
+###Returns true if the specified country has a claim on the province.
+alias[trigger:is_state_core] = scope[country]
+alias[trigger:is_state_core] = <country_tag>
 
 
 
-inflation	Float	Returns true if the country has an inflation of at least X	Country	inflation = 10
-Tag, Scope	Returns true if the country has at least as much inflation as the country X.	Country	inflation = NOV
-incident_variable_value	Clause	Returns true if the value of the specified incident is at least X.	Country	
-incident_variable_value = {
-	incident = incident_neo_confucianism
-	value = 10
-}
-institution_difference	Clause	Returns true if the country has embraced at least X more institutions than the specified country.	Country	
-institution_difference = {
-	who = SWE
-	value = 2
-}
-invested_papal_influence	Integer	Returns true if the country has invested at least X papal influence in the election of the next papal controller.	Country	invested_papal_influence = 50
-in_league	Identifier	Returns true if the countries is in the X league.	Country	in_league = protestant
-ironman	Boolean	Returns true if the ironman mode is enabled	Anywhere	ironman = yes
-is_advisor_employed	Advisor ID[1]	Returns true if the advisor with the ID X is employed.		is_advisor_employed = 562
-is_at_war	Boolean	Returns true if the country is at war.	Country	is_at_war = yes
-is_backing_current_issue	Boolean	Returns true if the province is backing the current issue in the parliament.	Province	is_backing_current_issue = yes
-is_bankrupt	Boolean	Returns true if the country is bankrupt.	Country	is_bankrupt = yes
-is_blockaded	Boolean	Returns true if the province is blockaded.	Province	is_blockaded = yes
-is_capital	Boolean	Returns true if the province is a capital.	Province	is_capital = yes
-is_city	Boolean	Returns true if the province is a city, i.e. has a population of at least 1000.	Province	is_city = yes
-is_claim	Province id	Returns true if the country has a claim on the province with the ID X.	Country	is_claim = 337
-Tag, Scope	Returns true if the specified country has a claim on the province.	Province	is_claim = MCH
-is_client_nation	Boolean	Returns true if the country is a client state.	Country	is_client_nation = yes
-is_client_nation_of	Tag, Scope	Returns true if the country is a client state of X.	Country	is_client_nation_of = ROOT
-is_colonial_nation	Boolean	Returns true if the country is a non-independent colonial nation.	Country	is_colonial_nation = yes
-is_colonial_nation_of	Tag, Scope	Returns true if the country is a colonial nation of X.	Country	is_colonial_nation_of = ROOT
-is_colony	Boolean	Returns true if the province is a colony.	Province	is_colony = yes
-is_core	Province ID	Returns true if the country has a core on the province with the ID X.	Country	is_core = 950
-Tag, Scope	Returns true if the country X has a core on the province.	Province	is_core = NED
-is_crusade_target	Boolean	Returns true if the country is the target of a crusade.	Country	is_crusade_target = yes
-is_defender_of_faith	Boolean	Returns true if the country is the defender of the faith.	Country	is_defender_of_faith = yes
-is_dynamic_tag	Boolean	Returns true if the country is a dynamically created tag (e.g. client states).	Country	is_dynamic_tag = yes
-is_elector	Boolean	Returns true if the country is an elector of the HRE.	Country	is_elector = yes
-is_emperor	Boolean	Returns true if the country is the emperor of the HRE.	Country	is_emperor = yes
-is_emperor_of_china	Boolean	Returns true if the country is the emperor of China.	Country	is_emperor_of_china = yes
-is_empty	Boolean	Returns true if province is empty	Province	is_empty = yes
-is_enemy	Boolean	Returns true the country views country X as an enemy.	Country	is_enemy = ROOT
-is_excommunicated	Boolean	Returns true if the ruler of the country is excommunicated.	Country	is_excommunicated = yes
-is_federation_leader	Boolean	Returns true if the country is a federation leader.	Country	is_federation_leader = yes
-is_female	Boolean	Returns true if ruler of the country is female.	Country	is_female = yes
-is_force_converted	Boolean	Returns true if country has been force-converted via either religious rebels or an Enforce Religion peace treaty.
-Note: The subject interaction Enforce Religion does not cause the subject to be considered as force-converted.	Country	is_force_converted = no
-is_former_colonial_nation	Boolean	Returns true if the country is a colonial nation that has gained independence.	Country	is_former_colonial_nation = no
-is_great_power	Boolean	Returns true if the country is a great power.	Country	is_great_power = yes
-is_harmonizing_with	Identifier, Scope	Returns true if the country is currently harmonizing with the specified religion or religion group.	Country	is_harmonizing_with = tengri_pagan_reformed
-is_heir_leader	Boolean	Returns true if the heir of the country is a general.
-Note: Proper localisation for the negation only with NOT = ….	Country	is_heir_leader = yes
-is_imperial_ban_allowed	Boolean	Returns true if the emperor has a casus belli on occupiers of the Empire.
-Note: Enabled/Disabled with Call for Reichsreform.	Anywhere	is_imperial_ban_allowed = yes
-is_incident_active	Identifier	Returns true if the specified incident is active.	Country	is_incident_active = incident_neo_confucianism
-Boolean, any, none	Returns true if any/none incident is active.	Country	is_incident_active = any
-is_incident_happened	Identifier	Returns true if the specified incident already happened.	Country	is_incident_happened = incident_neo_confucianism
-is_incident_possible	Identifier	Returns true if the specified incident can possibly happen.	Country	is_incident_possible = incident_neo_confucianism
-is_incident_potential	Identifier	Returns true if the specified incident is visible and therefor can happen in the future.	Country	is_incident_potential = incident_neo_confucianism
-is_institution_enabled	Identifier	Returns true if the specified institution has been discovered.	Anywhere	is_institution_enabled = renaissance
-is_institution_origin	Identifier	Returns true if the province is the origin of the specified institution.	Province	is_institution_origin = printing_press
-is_in_capital_area	Boolean	Returns true if the province is in the capital area of its owner (i.e. has a land connection to the owner’s capital through whose provinces).	Province	is_in_capital_area = yes
-is_in_coalition	Boolean	Returns true if the country is in a coalition.	Country	is_in_coalition = no
-is_in_coalition_war	Boolean	Returns true if the country is fighting a coalition war.	Country	is_in_coalition_war = yes
-is_in_deficit	Boolean	Returns true if the country is running a deficit.	Country	is_in_deficit = yes
-is_in_league_war	Boolean	Returns true if the country is in a religious league war.	Country	is_in_league_war = yes
-is_in_trade_league	Boolean	Returns true if the country is a member of a trade league.	Country	is_in_trade_league = yes
-is_in_trade_league_with	Tag, Scope	Returns true if the country is a member of the same trade league as country X.	Country	is_in_trade_league = VEN
-is_in_war	Clause	Returns true if the country is at war and the mentioned conditions are fulfilled.
-Possible are: attacker_leader, defender_leader, casus_belli, defenders, attackers, participants, war_score, start_date, duration, war_goal_province.	Country	
-is_in_war = {
-    attacker_leader = ROOT
-    duration = 1875
-}
-is_island	Boolean	Returns true if the province is an island, i.e. has no neighboring land province and no reachable province via a strait.	Province	is_island = yes
-is_league_enemy	Scope	Returns true if country X is league enemy of the country('s league).	Country	is_league_enemy = ROOT
-is_league_friend	Scope	Returns true if the country is in the same religious league as the specified country.	Country	is_league_friend = ROOT
-is_league_leader	Boolean	Returns true if the country leads a religious league.	Country	is_league_leader = yes
-is_lesser_in_union	Boolean	Returns true if the country is the lesser partner in a personal union.	Country	is_lesser_in_union = no
-is_looted	Boolean	Returns true if the province is looted.	Province	is_looted = yes
-is_monarch_leader	Boolean	Returns true if the rulerof the country is a general.
-Note: Proper localisation for the negation only with NOT = ….	Country	is_monarch_leader = yes
-is_month	Integer	Returns true if the current month is at least X (zero based).	Anywhere	is_month = 1 # February
-is_march	Boolean	Returns true if the country is a march.	Country	is_march = yes
-is_neighbor_of	Tag, Scope	Returns true if the country is neighbor of X.	Country	is_neighbor_of = FRA
-is_node_in_trade_company_region	Boolean	Returns true if the province's trade node is in a trade company region.	Province	is_node_in_trade_company_region = yes
-is_nomad	Boolean	Returns true if country's government is nomadic.
-(Note: Only the Steppe Nomads government is flagged as nomadic.)	Country	is_nomad = yes
-is_orangists_in_power	Boolean	Returns true if in the country the orangists are in power.	Country	is_orangists_in_power = yes
-is_origin_of_consort	Scope, Tag	Returns true if the specified country is the origin country of the scoped country’s consort.	Country	is_origin_of_consort = ROOT
-is_overseas	Boolean	Returns true if the province is overseas	Province	is_overseas = yes
-is_overseas_subject	Boolean	Returns true if the subject is overseas.	Country (subject)	is_overseas_subject = yes
-is_owned_by_trade_company	Boolean	Returns true if the province belongs to a trade company.	Province	is_owned_by_trade_company = yes
-is_papal_controller	Boolean	Returns true if the country is the papal controller.	Country	is_papal_controller = yes
-is_part_of_hre	Boolean	Returns true if the country/province is part of the HRE.	Country
-Province	is_part_of_hre = yes
-is_permanent_claim	Tag, Scope	Returns true if the province is a permanent claim of X.	Province	is_permanent_claim = ROOT
-is_playing_custom_nation	Boolean	Returns true if the country is a player-designed custom nation.	Country	is_playing_custom_nation = yes
-is_possible_march	Tag, Scope	Returns true if vassal X is a possible march of the country.	Country	is_possible_march = ROOT
-is_possible_vassal	Tag, Scope	Returns true if country X is releasable as vassal of the country.	Country	ENG = { is_possible_vassal = CRN }
-is_previous_papal_controller	Boolean	Returns true if the country is the previous papal controller.	Country	is_previous_papal_controller = yes
-is_prosperous	Boolean	Returns true if the province is prosperous. NOTE: Does not have a tooltip.	Province	is_prosperous = yes
-is_protectorate	Boolean	Returns true if the country is a protectorate	Country	is_protectorate = yes
-is_random_new_world	Boolean	Returns true if playing with a random New World.	Anywhere	is_random_new_world = no
-is_reformation_center	Boolean	Returns true if the province is a reformation center.	Global	is_reformation_center = no
-is_religion_grant_colonial_claim	Boolean, Tag, Scope	Returns true if the province has been granted to any country, to no country or to a specific country.	Province	is_religion_grant_colonial_claim = ROOT
-is_religion_enabled	Identifier	Returns true if the specified religion is enabled.	Anywhere	is_religion_enabled = reformed
-is_religion_reformed	Boolean	Returns true if the country has reformed their religion.	Country	is_religion_reformed = yes
-is_revolution_target	Boolean	Returns true if the country is the revolution target.	Country	is_revolution_target = yes
-is_rival	Tag, Scope	Returns true if country X is a rival of the country.	Country	is_rival = FRA
-is_sea	Boolean	Returns true if the province is sea.
-Mostly used for trade nodes.	Province	is_sea = yes
-is_state	Boolean	Returns true if the province is in a state.	Province	is_state = yes
-is_state_core	Province ID	Returns true if the country has a state core on the province with the ID X.	Country	is_state_core = 950
-Tag, Scope	Returns true if the country X has a state core on the province.	Province	is_state_core = NED
+
 is_statists_in_power	Boolean	Returns true if in the country the statists are in power.	Province	is_statists_in_power = yes
 is_strongest_trade_power	Tag, Scope	Returns true if the specified country has the most trade power in the area.	Province
 (Trade node)	is_strongest_trade_power = POR
@@ -1682,7 +1987,7 @@ religion_years	Clause	Returns true if the specified religion is enabled for at l
 religious_school	Clause	Returns true if the country has the specified religious school.	Country	
 religious_school = {
 	group = muslim
-	school = hanbali_school
+	school = enum[religious_schools]
 }
 religious_unity	Float	Returns true if the country's religious unity is at least X.	Country	religious_unity = 0.99
 republican_tradition	Integer	Returns true if country's republican tradition is at least X.	Country	republican_tradition = 90
