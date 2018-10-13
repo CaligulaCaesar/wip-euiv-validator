@@ -378,7 +378,7 @@ alias[effect:add_harmony] = int
 
 ## scope = country
 ###Adds a religion to the list of Harmonized religions for the current scope. No effect if the country does not hold a religion using uses_harmony.
-alias[effect:add_harmonized_religion] = <religion>
+alias[effect:add_harmonized_religion] = <religion.not_school>
 
 ## scope = country
 ###Adds Harmonization Progress for the current harmonization target to the current scope. No effect if the country does not hold a religion using uses_harmony.
@@ -510,7 +510,7 @@ alias[effect:define_advisor] = {
 	## cardinality = 0..1
 	culture = scope[country]
 	## cardinality = 0..1
-	religion = <religion>
+	religion = <religion.not_school>
 	## cardinality = 0..1
 	religion = scope[country]
 	## cardinality = 0..1
@@ -1330,7 +1330,7 @@ set_ruler_culture = variable:my_variable
 
 Can utilise Event Scope Values.
 	1.23
-set_ruler_religion 	<religion>
+set_ruler_religion 	<religion.not_school>
 
 The religion to change to.
 	set_ruler_religion = catholic
@@ -1469,7 +1469,7 @@ male = yes
 Optional. Forces the ruler to be male.
 culture = <culture> / <scope>
 Optional. The culture of the ruler.
-religion = <religion> / <scope>
+religion = <religion.not_school> / <scope>
 Optional. The religion of the ruler.
 	
 
@@ -1543,7 +1543,7 @@ set_consort_culture = variable:my_variable
 
 Can utilise Event Scope Values.
 	1.23
-set_consort_religion 	<religion>
+set_consort_religion 	<religion.not_school>
 
 The religion to change to.
 	set_consort_religion = catholic
@@ -1587,7 +1587,7 @@ male = yes
 Optional. Forces the consort to be male.
 culture = <culture> / <scope>
 Optional. The culture of the consort.
-religion = <religion> / <scope>
+religion = <religion.not_school> / <scope>
 Optional. The religion of the consort.
 	
 
@@ -1668,7 +1668,7 @@ set_heir_culture = variable:my_variable
 
 Can utilise Event Scope Values.
 	1.23
-set_heir_religion 	<religion>
+set_heir_religion 	<religion.not_school>
 
 The religion to change to.
 	set_heir_religion = catholic
@@ -1763,7 +1763,7 @@ male = yes
 Optional. Forces the heir to be male.
 culture = <culture> / <scope>
 Optional. The culture of the heir.
-religion = <religion> / <scope>
+religion = <religion.not_school> / <scope>
 Optional. The religion of the heir.
 	
 
@@ -1843,11 +1843,11 @@ enable_hre_leagues 	yes
 
 Boolean.
 	enable_hre_leagues = yes 	Enables the Religious Leagues. 	1.8
-set_hre_religion 	<religion>
+set_hre_religion 	<religion.not_school>
 
 Which religion to set.
 	set_hre_religion = catholic 	Makes the defined religion the official religion of the HRE. 	1.8
-set_hre_heretic_religion 	<religion>
+set_hre_heretic_religion 	<religion.not_school>
 
 Which religion to set.
 	set_hre_heretic_religion = catholic 	Makes the defined religion the heretic religion of the HRE. 	1.8
@@ -2146,7 +2146,7 @@ add_culture_construction 	yes
 
 Boolean.
 	add_culture_construction = yes 	Starts culture conversion in the current province scope, for the current owner. 	1.12
-change_religion 	<religion>
+change_religion 	<religion.not_school>
 
 The religion to change to.
 <scope>
@@ -2176,11 +2176,11 @@ remove_cardinal 	yes
 
 Boolean.
 	remove_cardinal = yes 	Removes a Cardinal in the current province scope. 	1.8
-add_reform_center 	<religion>
+add_reform_center 	<religion.not_school>
 
 The religion to use.
 	add_reform_center = reformed 	Adds a Center of Reformation for the defined religion in the current province scope. 	1.8
-remove_reform_center 	<religion>
+remove_reform_center 	<religion.not_school>
 
 The religion to use.
 	remove_reform_center = reformed 	Removes the Center of Reformation for the defined religion in the current province scope. 	1.8
@@ -2244,7 +2244,7 @@ size = <int>
 The size to use.
 culture = <culture> / <scope>
 Optional. The culture the rebels belong to.
-religion = <religion> / <scope>
+religion = <religion.not_school> / <scope>
 Optional. The religion the rebels belong to.
 unrest = <int>
 Optional. Adds this amount of unrest to the province the rebels spawn in.

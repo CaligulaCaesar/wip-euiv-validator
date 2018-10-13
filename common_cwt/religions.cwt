@@ -6,6 +6,10 @@ types = {
 	## skip_root_key = any
 	type[religion] = {
 		path = "game/common/religions"
+		
+		subtype[not_school] = {
+			icon = scalar
+		}
 	}
 }
 
@@ -221,7 +225,7 @@ alias[religion:scalar] = {
 	## cardinality = 0..1
 	allowed_conversion = {
 		## cardinality = 1..inf
-		<religion>
+		<religion.not_school>
 	}
 	
 	## cardinality = 0..1
