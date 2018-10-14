@@ -1,6 +1,35 @@
 
-alias[trigger:<scripted_effect>] = yes
+alias[effect:<scripted_effect>] = yes
 
+#Variables
+
+alias[effect:export_to_variable] = {
+	which = scalar #todo: Variable
+	value = enum[export_to_variable_data]
+	## cardinality = 0..1
+	who = scope[country]
+	## cardinality = 0..1
+	with = scope[country] #for when you use "trust"
+}
+
+alias[effect:multiply_variable] = {
+	which = scalar #todo: Variable
+	value = float
+}
+
+alias[effect:change_variable] = {
+	which = scalar #todo: Variable
+	value = float
+}
+
+alias[effect:subtract_variable] = {
+	which = scalar #todo: Variable
+	value = float
+}
+
+
+
+#Anywhere Effects
 
 ## scope = any
 ###Defines a global flag.
@@ -605,6 +634,8 @@ alias[effect:create_conquistador] = int[0..100]
 ## scope = country
 ###Generates an new general for the current scope. The number is the amount of army tradition to use in generation.
 alias[effect:create_general] = int[0..100]
+
+
 
 
 
