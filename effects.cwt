@@ -562,51 +562,53 @@ alias[effect:end_disaster] = <disaster>
 
 #Country Military stuff
 
+## scope = country
+###Adds Army Tradition to the current scope.
+alias[effect:add_army_tradition] = int
 
-add_army_tradition 	<int>
+## scope = country
+###Adds Navy Tradition to the current scope.
+alias[effect:add_navy_tradition] = int
 
-The amount of army tradition to add or subtract.
-	add_army_tradition = 10 	Adds Army Tradition to the current scope. 	1.1
-add_navy_tradition 	<int>
+## scope = country
+###Adds Army Professionalism to the current scope.
+alias[effect:add_army_professionalism] = float[0.0..1.0]
 
-The amount of navy tradition to add or subtract.
-	add_navy_tradition = 10 	Adds Navy Tradition to the current scope. 	1.1
-add_army_professionalism 	<float>
+## scope = country
+###Adds manpower to the current scope. 1 is equal to 1000 manpower.
+alias[effect:add_manpower] = float[0.1..999.0] #I am assuming no one wants to add 1,000,000 manpower to a country
 
-The amount of army professionalism to add or subtract.
-	add_army_professionalism = 0.05 	Adds Army Professionalism to the current scope. 	1.23
-add_manpower 	<float>
+## scope = country
+###Adds sailors to the current scope. 1 is equal to 1 sailor.
+alias[effect:add_sailors] = int
 
-The amount of manpower to add or subtract.
-	add_manpower = 1 	Adds manpower to the current scope. 1 is equal to 1000 manpower. 1.1
-add_sailors 	<int>
+## scope = country
+###Adds manpower to the current scope, as a percentage of total yearly manpower. 1 is equal to 100% of total yearly manpower.
+alias[effect:add_yearly_manpower] = float[0.1..10.0] #I am assuming no one wants to add more than 10 years of manpower to a country
 
-The amount of sailors to add or subtract.
-	add_sailors = 10 	Adds sailors to the current scope. 1 is equal to 1 sailor. 1.16
-add_yearly_manpower 	<float>
+## scope = country
+###Adds sailors to the current scope, as a percentage of total yearly sailors. 1 is equal to 100% of total yearly sailors.
+alias[effect:add_yearly_sailors] = float[0.1..10.0] #I am assuming no one wants to add more than 10 years of manpower to a country
 
-The amount of manpower to add or subtract.
-	add_yearly_manpower = 0.5 	Adds manpower to the current scope, as a percentage of total yearly manpower. 1 is equal to 100% of total yearly manpower. 1.4
-add_yearly_sailors 	<float>
+## scope = country
+###Generates an new admiral for the current scope. The number is the amount of navy tradition to use in generation.
+alias[effect:create_admiral] = int[0..100]
 
-The amount of sailors to add or subtract.
-	add_yearly_sailors = 10 	Adds sailors to the current scope, as a percentage of total yearly sailors. 1 is equal to 100% of total yearly sailors. 1.16
-create_admiral 	<int>
+## scope = country
+###Generates an new explorer for the current scope. The number is the amount of navy tradition to use in generation.
+alias[effect:create_explorer] = int[0..100]
 
-The amount of navy tradition to use in generation.
-	create_admiral = 50 	Generates an new admiral for the current scope. 	1.1
-create_explorer 	<int>
+## scope = country
+###Generates an new conquistador for the current scope. The number is the amount of army tradition to use in generation.
+alias[effect:create_conquistador] = int[0..100]
 
-The amount of navy tradition to use in generation.
-	create_explorer = 50 	Generates an new explorer for the current scope. 	1.1
-create_conquistador 	<int>
+## scope = country
+###Generates an new general for the current scope. The number is the amount of army tradition to use in generation.
+alias[effect:create_general] = int[0..100]
 
-The amount of army tradition to use in generation.
-	create_conquistador = 50 	Generates an new conquistador for the current scope. 	1.1
-create_general 	<int>
 
-The amount of armu tradition to use in generation.
-	create_general = 50 	Generates an new general for the current scope. 	1.1
+
+
 change_unit_type 	<type>
 
 The unit type to change to.
