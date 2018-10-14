@@ -518,68 +518,51 @@ alias[effect:define_advisor] = {
 }
 
 
+#Country Stability stuff
 
-Stability
-Ambox outdated info.png 	
-This section may contain outdated information that is inaccurate for the current version of the game. The last version it was verified as up to date for was 1.24.
-Name 	Parameters 	Examples 	Description 	Notes 	Version Added
-add_stability 	<int>
+## scope = country
+###Adds stability to the current scope.
+alias[effect:add_stability] = int
 
-The amount to add or subtract.
-	add_stability = 1 	Adds stability to the current scope. 	1.1
-add_war_exhaustion 	<int>
+## scope = country
+###Adds war exhaustion to the current scope.
+alias[effect:add_war_exhaustion] = int
 
-The amount to add or subtract.
-	add_war_exhaustion = 2 	Adds war exhaustion to the current scope. 	1.1
-add_liberty_desire 	<int>
+## scope = country
+###Adds liberty desire to the current scope.
+alias[effect:add_liberty_desire] = int
 
-The amount to add or subtract.
-	add_liberty_desire = 10 	Adds liberty desire to the current scope. Used on the subject to raise liberty desire for the overlord. 1.4
-disband_rebels 	<type>
+## scope = country
+###Disbands all active rebels of the specified type in the provinces of the current scope. Rebel types are found in /Europa Universalis IV/common/rebel_types/*.txt
+alias[effect:disband_rebels] = <rebel_type>
 
-The rebel type to disband.
-	disband_rebels = anti_tax_rebels 	Disbands all active rebels of the specified type in the provinces of the current scope. Rebel types are found in /Europa Universalis IV/common/rebel_types/*.txt 	1.1
-collapse_nation 	yes
+## scope = country
+###Causes owned cores of the current scope to be released as nations and for them to take a percentage of the current scope's owned provinces.
+alias[effect:collapse_nation] = yes
 
-Boolean
-	collapse_nation = yes 	Causes owned cores of the current scope to be released as nations and for them to take a percentage of the current scope's owned provinces. 	1.10
-add_disaster_modifier 	name = <modifier>
-
-The event modifier to add.
-disaster = <disaster>
-The disaster to apply the modifier to.
-duration = <days>
-The duration for the modifier to be active for.
-	
-
-add_disaster_modifier = {
-    name = "restrict_serfdom"
-    duration = -1
-    disaster = internal_conflicts
+## scope = country
+###Applies an event modifier to the current scope that is removed when the disaster is over, or the duration runs out. Disasters are found in /Europa Universalis IV/common/disasters/*.txt
+alias[effect:add_disaster_modifier] = {
+	name = <event_modifier> #todo
+	duration = int
+	disaster = <disaster>
 }
 
-	Applies an event modifier to the current scope that is removed when the disaster is over, or the duration runs out. Disasters are found in /Europa Universalis IV/common/disasters/*.txt 	1.10
-add_disaster_progress 	disaster = <disaster>
-
-The disaster to alter.
-value = <int>
-The amount of progress to add or subtract.
-	
-
-add_disaster_progress = {
-    disaster = internal_conflicts
-    value = 10
+## scope = country
+###Adds progress towards an already declared (conditions for disaster are met since at least a month) disaster 	Disasters are found in /Europa Universalis IV/common/disasters/*.txt
+alias[effect:add_disaster_progress] = {
+	value = int
+	disaster = <disaster>
 }
 
-	Adds progress towards an already declared (conditions for disaster are met since at least a month) disaster 	Disasters are found in /Europa Universalis IV/common/disasters/*.txt 	1.16
-end_disaster 	<disaster>
+## scope = country
+###Immediately ends an active disaster for the current scope. Disasters are found in /Europa Universalis IV/common/disasters/*.txt
+alias[effect:end_disaster] = <disaster>
 
-The disaster to end.
-	end_disaster = internal_conflicts 	Immediately ends an active disaster for the current scope. Disasters are found in /Europa Universalis IV/common/disasters/*.txt 	1.9
-Military
-Ambox outdated info.png 	
-This section may contain outdated information that is inaccurate for the current version of the game. The last version it was verified as up to date for was 1.24.
-Name 	Parameters 	Examples 	Description 	Notes 	Version Added
+
+#Country Military stuff
+
+
 add_army_tradition 	<int>
 
 The amount of army tradition to add or subtract.
