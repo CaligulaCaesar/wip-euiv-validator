@@ -1,4 +1,5 @@
 
+
 alias[effect:<scripted_effect>] = yes
 
 #Variables
@@ -818,386 +819,282 @@ alias[effect:reverse_remove_opinion] = {
 	modifier = <opinion_modifier> #todo
 }
 
+## scope = country
+###Creates an alliance between the current scope and the defined scope.
+alias[effect:create_alliance] = scope[country]
+alias[effect:create_alliance] = <country_tag>
 
+## scope = country
+###Creates an guarantee over the defined scope for the current scope.
+alias[effect:create_guarantee] = scope[country]
+alias[effect:create_guarantee] = <country_tag>
 
+## scope = country
+###Creates a royal marriage between the current scope and the defined scope.
+alias[effect:create_marriage] = scope[country]
+alias[effect:create_marriage] = <country_tag>
 
-create_alliance 	<scope>
+## scope = country
+###Makes the defined scope a junior partner in a personal union with the current scope.
+alias[effect:create_union] = scope[country]
+alias[effect:create_union] = <country_tag>
 
-The country to create an alliance with.
-	create_alliance = FRA 	Creates an alliance between the current scope and the defined scope. 	1.1
-create_guarantee 	<scope>
+## scope = country
+###Makes the defined scope a vassal subject of the current scope. Uses the vassal subject type.
+alias[effect:create_vassal] = scope[country]
+alias[effect:create_vassal] = <country_tag>
 
-The country to create an guarantee with.
-	create_guarantee = FRA 	Creates an guarantee over the defined scope for the current scope. 	1.8
-create_marriage 	<scope>
+## scope = country
+###Makes the defined scope a march subject of the current scope. Uses the march subject type.
+alias[effect:create_march] = scope[country]
+alias[effect:create_march] = <country_tag>
 
-The country to create an royal marriage with.
-	create_marriage = FRA 	Creates a royal marriage between the current scope and the defined scope. 	1.1
-create_union 	<scope>
+## scope = country
+###Makes the defined scope a vassal subject of the current scope. Uses the vassal subject type. Exact same effect as create_vassal.
+alias[effect:vassalize] = scope[country]
+alias[effect:vassalize] = <country_tag>
 
-The country to make into the junior partner.
-	create_union = FRA 	Makes the defined scope a junior partner in a personal union with the current scope. 	1.1
-create_vassal 	<scope>
-
-The country to make into a vassal.
-	create_vassal = FRA 	Makes the defined scope a vassal subject of the current scope. Uses the vassal subject type. 1.22
-create_march 	<scope>
-
-The country to make into a march.
-	create_march = FRA 	Makes the defined scope a march subject of the current scope. Uses the march subject type. 1.12
-vassalize 	<scope>
-
-The country to vassalize.
-	vassalize = FRA 	Makes the defined scope a vassal subject of the current scope. Uses the vassal subject type.
-Exact same effect as create_vassal. 1.1
-create_subject 	subject_type = <type>
-
-The subject type to use.
-subject = <scope>
-The scope to make the subject.
-	
-
-create_subject = {
-    subject_type = tributary_state
-    subject = FRA
+## scope = country
+###Makes the defined scope into the defined subject type under the current scope. Subject types are found in /Europa Universalis IV/common/subject_types/*.txt.
+alias[effect:create_subject] = {
+	subject_type = <subject_type>
+	subject = scope[country]
+	subject = <country_tag>
 }
 
-	Makes the defined scope into the defined subject type under the current scope. Subject types are found in /Europa Universalis IV/common/subject_types/*.txt. 1.20
-break_marriage 	<scope>
+## scope = country
+###Breaks the current scope's royal marriage with the defined scope.
+alias[effect:break_marriage] = scope[country]
+alias[effect:break_marriage] = <country_tag>
 
-The country to break the marriage with.
-	break_marriage = FRA 	Breaks the current scope's royal marriage with the defined scope. 	1.11
-break_union 	<scope>
+## scope = country
+###Breaks the current scope's union with the defined scope.
+alias[effect:break_union] = scope[country]
+alias[effect:break_union] = <country_tag>
 
-The country to break the union with.
-	break_union = FRA 	Breaks the current scope's union with the defined scope. 	1.1
-inherit 	<scope>
+## scope = country
+###The current scope inherits all of the defined scope's provinces.
+alias[effect:inherit] = scope[country]
+alias[effect:inherit] = <country_tag>
 
-The country to inherit.
-	inherit = FRA 	The current scope inherits all of the defined scope's provinces. 	1.1
-release 	<scope>
+## scope = country
+###The current scope releases all provinces with the defined scope's cores.
+alias[effect:release] = <country_tag>
 
-The country to release.
-	release = FRA 	The current scope releases all provinces with the defined scope's cores. 	1.1
-release_all_subjects 	yes
+## scope = country
+###The current scope releases all possible subjects from cores.
+alias[effect:release_all_subjects] = yes
 
-Boolean.
-	release_all_subjects = yes 	The current scope releases all possible subjects from cores. 	1.10
-grant_independence 	yes
+## scope = country
+###The current scope is granted independence from their overlord.
+alias[effect:grant_independence] = yes
 
-Boolean.
-	grant_independence = yes 	The current scope is granted independence from their overlord. 	1.22
-declare_war 	<scope>
+## scope = country
+###Creates a no casus belli war against the defined scope for the current scope.
+alias[effect:declare_war] = scope[country]
+alias[effect:declare_war] = <country_tag>
 
-The country to declare against.
-	declare_war = FRA 	Creates a no casus belli war against the defined scope for the current scope. 	1.1
-declare_war_with_cb 	who = <scope>
-
-The country declared against.
-casus_belli = <cb>
-The casus belli to use.
-war_goal_province = <province id>
-Optional. Defines the province the war was declared for, if required by the casus belli.
-	
-
-declare_war_with_cb = {
-    who = FRA
-    casus_belli = cb_annex
+## scope = country
+###Declares war for the current scope against the defined scope, using the defined casus belli. Casus belli are found in /Europa Universalis IV/common/cb_types/*.txt 
+alias[effect:create_subject] = {
+	casus_belli = <casus_belli>
+	who = scope[country]
+	who = <country_tag>
 }
 
-	Declares war for the current scope against the defined scope, using the defined casus belli. Casus belli are found in /Europa Universalis IV/common/cb_types/*.txt 	1.1
-add_truce_with 	<scope>
+## scope = country
+###Creates a truce between the defined scope and the current scope. The truce length is the default white peace truce length.
+alias[effect:add_truce_with] = scope[country]
+alias[effect:add_truce_with] = <country_tag>
 
-The country to add a truce against.
-	add_truce_with = FRA 	Creates a truce between the defined scope and the current scope. The truce length is the default white peace truce length. 1.1
-white_peace 	<scope>
+## scope = country
+###Forces the defined scope into a white peace truce with the current scope.
+alias[effect:white_peace] = scope[country]
+alias[effect:white_peace] = <country_tag>
 
-The country to force white peace against.
-	white_peace = FRA 	Forces the defined scope into a white peace truce with the current scope. 	1.1
-form_coalition_against 	<scope>
+## scope = country
+###The current scope creates or joins a coalition against the defined scope.
+alias[effect:form_coalition_against] = scope[country]
+alias[effect:form_coalition_against] = <country_tag>
 
-The country to form against.
-	form_coalition_against = FRA 	The current scope creates or joins a coalition against the defined scope. 	1.1
-add_casus_belli 	target = <scope>
-
-The country to add the casus belli against.
-type = <cb>
-The casus belli to add.
-months = <months>
-The number of months the casus belli lasts for.
-	
-
-add_casus_belli = {
-    target = FRA
-    type = cb_annex
-    months = 12
+## scope = country
+###Adds a casus belli for the current scope against the defined scope. Casus belli are found in /Europa Universalis IV/common/cb_types/*.txt 
+alias[effect:add_casus_belli] = {
+	type = <casus_belli>
+	target = scope[country]
+	target = <country_tag>
+	months = int
 }
 
-	Adds a casus belli for the current scope against the defined scope. Casus belli are found in /Europa Universalis IV/common/cb_types/*.txt 	1.1
-reverse_add_casus_belli 	target = <scope>
-
-The country to that gains the casus belli.
-type = <cb>
-The casus belli to add.
-months = <months>
-The number of months the casus belli lasts for.
-	
-
-reverse_add_casus_belli = {
-    target = FRA
-    type = cb_annex
-    months = 12
+## scope = country
+###Adds a casus belli against the current scope for the defined scope. Casus belli are found in /Europa Universalis IV/common/cb_types/*.txt
+alias[effect:reverse_add_casus_belli] = {
+	type = <casus_belli>
+	target = scope[country]
+	target = <country_tag>
+	months = int
 }
 
-	Adds a casus belli against the current scope for the defined scope. Casus belli are found in /Europa Universalis IV/common/cb_types/*.txt 	1.1
-remove_casus_belli 	target = <scope>
-
-The country the casus belli is against.
-type = <cb>
-The casus belli to remove.
-	
-
-remove_casus_belli = {
-    target = FRA
-    type = cb_annex
+## scope = country
+###Removes a casus belli held against the defined scope for the current scope. Casus belli are found in /Europa Universalis IV/common/cb_types/*.txt
+alias[effect:remove_casus_belli] = {
+	type = <casus_belli>
+	target = scope[country]
+	target = <country_tag>
 }
 
-	Removes a casus belli held against the defined scope for the current scope. Casus belli are found in /Europa Universalis IV/common/cb_types/*.txt 	1.1
-reverse_remove_casus_belli 	target = <scope>
-
-The country that holds the casus belli.
-type = <cb>
-The casus belli to remove.
-	
-
-reverse_remove_casus_belli = {
-    target = FRA
-    type = cb_annex
+## scope = country
+###Removes a casus belli held by the defined scope against the current scope. Casus belli are found in /Europa Universalis IV/common/cb_types/*.txt
+alias[effect:reverse_remove_casus_belli] = {
+	type = <casus_belli>
+	target = scope[country]
+	target = <country_tag>
 }
 
-	Removes a casus belli held by the defined scope against the current scope. Casus belli are found in /Europa Universalis IV/common/cb_types/*.txt 	1.1
-remove_fow 	<months>
+## scope = country
+###Removes the fog of war in the current scope for the previous scope for a given number of months.
+alias[effect:form_coalition_against] = int
 
-The number of months to remove fog of war.
-	
-
-random_rival_country = {
-    limit = { war_with = ROOT }
-    remove_fow = 3
+## scope = country
+###Adds spy network in the current scope for the defined scope.
+alias[effect:add_spy_network_from] = {
+	who = scope[country]
+	who = <country_tag>
+	value = int
 }
 
-	Removes the fog of war in the current scope for the previous scope. 	1.1
-add_spy_network_from 	who = <scope>
-
-The country to add spy network for.
-value = <int>
-The amount of spy network to add or subtract.
-	
-
-add_spy_network_from = {
-    who = FRA
-    value = 10
+## scope = country
+###Adds spy network for the current scope in the defined scope.
+alias[effect:add_spy_network_in] = {
+	who = scope[country]
+	who = <country_tag>
+	value = int
 }
 
-	Adds spy network in the current scope for the defined scope. 	1.16
-add_spy_network_in 	who = <scope>
 
-The country to add spy network in.
-value = <int>
-The amount of spy network to add or subtract.
-	
+#Country Estate and Faction stuff
 
-add_spy_network_in = {
-    who = FRA
-    value = 10
+## scope = country
+###Creates an independent nation from provinces owned by the specified estate within the current scope's owned provinces. Estates are found in /Europa Universalis IV/common/estates/*.txt. The additional parameters for the independent nation are found within an estate's file.
+alias[effect:create_independent_estate] = <estate>
+
+## scope = country
+###Creates an independent nation from provinces owned by the specified estate within the current scope's owned provinces. Estates are found in /Europa Universalis IV/common/estates/*.txt. Created with the religion that the majority of the provinces that the defined estate own holds. The additional parameters for the independent nation are found within an estate's file.
+alias[effect:create_independent_estate_from_religion] = <estate>
+
+## scope = country
+###Adds an influence modifier for the defined estate used by the current scope. Estates are found in /Europa Universalis IV/common/estates/*.txt 
+alias[effect:add_estate_influence_modifier] = {
+	estate = <estate>
+	desc = localisation
+	influence = int
+	duration = int
 }
 
-	Adds spy network for the current scope in the defined scope. 	1.16
-Estates and Factions
-Ambox outdated info.png 	
-This section may contain outdated information that is inaccurate for the current version of the game. The last version it was verified as up to date for was 1.24.
-Name 	Parameters 	Examples 	Description 	Notes 	Version Added
-create_independent_estate 	<estate>
-
-The estate to create the independent nation from.
-	create_independent_estate = estate_cossacks 	Creates an independent nation from provinces owned by the specified estate within the current scope's owned provinces. Estates are found in /Europa Universalis IV/common/estates/*.txt
-
-The additional parameters for the independent nation are found within an estate's file.
-	1.14
-create_independent_estate_from_religion 	<estate>
-
-The estate to create the independent nation from.
-	create_independent_estate = estate_dhimmi 	Creates an independent nation from provinces owned by the specified estate within the current scope's owned provinces. Estates are found in /Europa Universalis IV/common/estates/*.txt
-
-Created with the religion that the majority of the provinces that the defined estate own holds.
-The additional parameters for the independent nation are found within an estate's file.
-	1.14
-add_estate_influence_modifier 	estate = <estate>
-
-The estate to apply the modifier to.
-desc = <string>
-The text to display in the Influence tooltip for this modifier.
-influence = <int>
-The amount of influence to add or subtract.
-duration = <days>
-The duration for which this modifier is active.
-	
-
-add_estate_influence_modifier = {
-    estate = estate_nobles
-	desc = EST_VAL_FURTHERED_SPOUSES_FAMILY_NOBLES
-    influence = 10
-    duration = 7300
+## scope = country
+###Adds loyalty for the defined estate used by the current scope. Estates are found in /Europa Universalis IV/common/estates/*.txt 
+alias[effect:add_estate_loyalty] = {
+	estate = <estate>
+	loyalty = int
 }
 
-	Adds an influence modifier for the defined estate used by the current scope. Estates are found in /Europa Universalis IV/common/estates/*.txt 	1.14
-add_estate_loyalty 	estate = <estate>
-
-The estate to apply the loyalty to.
-loyalty = <int>
-The amount of loyalty to add or subtract.
-	
-
-add_estate_loyalty = {
-    estate = estate_nobles
-    loyalty = 10
+## scope = country
+###Adds a loyalty modifier for the defined estate used by the current scope. Estates are found in /Europa Universalis IV/common/estates/*.txt 
+alias[effect:add_estate_loyalty_modifier] = {
+	estate = <estate>
+	desc = localisation
+	loyalty = int
+	duration = int
 }
 
-	Adds loyalty for the defined estate used by the current scope. Estates are found in /Europa Universalis IV/common/estates/*.txt 	1.14
-add_estate_loyalty_modifier 	estate = <estate>
+## scope = country
+###Adds a faction to the current scope. Factions are found in /Europa Universalis IV/common/factions/.
+alias[effect:add_faction] = <faction>
 
-The estate to apply the modifier to.
-desc = <string>
-The text to display in the Influence tooltip for this modifier.
-loyalty = <int>
-The amount of loyalty to add or subtract.
-duration = <days>
-The duration for which this modifier is active.
-	
+## scope = country
+###Removes a faction from the current scope. Factions are found in /Europa Universalis IV/common/factions/.
+alias[effect:remove_faction] = <faction>
 
-add_estate_loyalty_modifier = {
-    estate = estate_nobles
-	desc = EST_VAL_EXAMPLE
-    loyalty = 10
-    duration = 7300
+## scope = country
+###Adds influence for the defined faction. Mimics the influence boost from pressing the button in the faction window.
+alias[effect:add_faction_influence] = {
+	faction = <faction>
+	influence = int
 }
 
-	Adds an loyalty modifier for the defined estate used by the current scope. Estates are found in /Europa Universalis IV/common/estates/*.txt 	1.14
-add_faction 	<faction>
 
-The faction to add.
-	add_faction = temples 	Adds a faction to the current scope. Factions are found in /Europa Universalis IV/common/factions/. 1.1
-remove_faction 	<faction>
+#Country Ruler stuff
 
-The faction to remove.
-	add_faction = temples 	Removes a faction from the current scope. Factions are found in /Europa Universalis IV/common/factions/. 1.1
-add_faction_influence 	faction = <faction>
+## scope = country
+###Adds ADM skill to the current ruler.
+alias[effect:change_adm] = int[-6..6]
 
-The faction to add influence to.
-influence = <int>
-The amount of influence to add.
-	
+## scope = country
+###Adds DIP skill to the current ruler.
+alias[effect:change_dip] = int[-6..6]
 
-add_faction_influence = {
-    faction = temples
-    influence = 10
-}
+## scope = country
+###Adds MIL skill to the current ruler.
+alias[effect:change_mil] = int[-6..6]
 
-	Adds influence for the defined faction. Mimics the influence boost from pressing the button in the faction window. 1.1
-Ruler
-Ambox outdated info.png 	
-This section may contain outdated information that is inaccurate for the current version of the game. The last version it was verified as up to date for was 1.24.
-Name 	Parameters 	Examples 	Description 	Notes 	Version Added
-change_adm 	<int>
+## scope = country
+###Adds the defined personality to the current ruler. Ruler personalities are found in /Europa Universalis IV/common/ruler_personalities/00_core.txt
+alias[effect:add_ruler_personality] = <personality>
 
-The amount to add or subtract from the ruler's ADM skill.
-	change_adm = 1 	Adds ADM skill to the current ruler. 	1.1
-change_dip 	<int>
+## scope = country
+###Removes the defined personality to the current ruler. Ruler personalities are found in /Europa Universalis IV/common/ruler_personalities/00_core.txt
+alias[effect:remove_ruler_personality] = <personality>
 
-The amount to add or subtract from the ruler's DIP skill.
-	change_dip = 1 	Adds DIP skill to the current ruler. 	1.1
-change_mil 	<int>
+## scope = country
+###Defines a ruler flag for the current scope's ruler. Flags can be appended with scopes or event targets via e.g. @root
+alias[effect:set_ruler_flag] = scalar
 
-The amount to add or subtract from the ruler's MIL skill.
-	change_mil = 1 	Adds MIL skill to the current ruler. 	1.1
-add_ruler_personality 	<personality>
+## scope = country
+###Clears a ruler flag for the current scope's ruler.
+alias[effect:clr_ruler_flag] = scalar
 
-The ruler personality to add.
-	add_ruler_personality = righteous_personality 	Adds the defined personality to the current ruler. Ruler personalities are found in /Europa Universalis IV/common/ruler_personalities/00_core.txt 	1.18
-remove_ruler_personality 	<personality>
+## scope = country
+###Sets the dynasty of the current scope's ruler.
+alias[effect:set_dynasty] = scalar #todo: name e.g. "Smith"
+alias[effect:set_dynasty] = scope[country]
+alias[effect:set_dynasty] = <country_tag>
+alias[effect:set_dynasty] = original_dynasty
 
-The ruler personality to remove.
-	remove_ruler_personality = righteous_personality 	Removes the defined personality from the current ruler. Ruler personalities are found in /Europa Universalis IV/common/ruler_personalities/00_core.txt 	1.18
-set_ruler_flag 	<flag>
+## scope = country
+###Changes the ruler culture of the current scope. Cultures are found in /Europa Universalis IV/common/cultures/*.txt. Can utilise Event Scope Values.
+alias[effect:set_ruler_culture] = <culture.fixed>
+alias[effect:set_ruler_culture] = scope[country]
+alias[effect:set_ruler_culture] = <country_tag>
 
-An unique string to identify the ruler flag with.
-	set_ruler_flag = my_flag
+## scope = country
+###Changes the ruler religion of the current scope. Cultures are found in /Europa Universalis IV/common/cultures/*.txt. Can utilise Event Scope Values.
+alias[effect:set_ruler_religion] = <religion.not_school>
+alias[effect:set_ruler_religion] = scope[country]
+alias[effect:set_ruler_religion] = <country_tag>
 
-set_ruler_flag = my_flag@ROOT
-set_ruler_flag = my_flag@event_target:name
-	Defines a ruler flag for the current scope's ruler. Flags can be appended with scopes or event targets 	1.7
-clr_ruler_flag 	<flag>
+## scope = country
+###Removes the current ruler of the current scope, saving them to the unique string.
+alias[effect:exile_ruler_as] = scalar #todo: kinda like a variable
 
-The unique string of the flag to clear.
-	clr_ruler_flag = my_flag
-	Clears a ruler flag for the current scope's ruler. 	1.7
-set_dynasty 	<string> / <scope> / original_dynasty
+## scope = country
+###Makes an exiled ruler the ruler of the current scope.
+alias[effect:set_ruler] = scalar #todo: kinda like a variable, is the string from exile_ruler_as
 
-The dynasty to set.
-	set_dynasty = "Smith"
+## scope = country
+###Kills the ruler of the current scope.
+alias[effect:kill_ruler] = yes
 
-set_dynasty = FRA
-set_dynasty = original_dynasty
-	Sets the dynasty of the current scope's ruler. 	1.1
-set_ruler_culture 	<culture.fixed>
+## scope = country
+###Converts a female ruler into a general.
+alias[effect:convert_female_ruler_to_general] = yes
 
-The culture to change to.
-	set_ruler_culture = english
+## scope = country
+###Converts a male ruler into a general.
+alias[effect:convert_ruler_to_general] = yes
 
-set_ruler_culture = CAS
-set_ruler_culture = event_target:my_event_target
-set_ruler_culture = variable:my_variable
-	Changes the ruler culture of the current scope. Cultures are found in /Europa Universalis IV/common/cultures/*.txt
 
-Can utilise Event Scope Values.
-	1.23
-set_ruler_religion 	<religion.not_school>
 
-The religion to change to.
-	set_ruler_religion = catholic
 
-set_ruler_religion = CAS
-set_ruler_religion = event_target:my_event_target
-set_ruler_religion = variable:my_variable
-	Changes the ruler religion of the current scope. Religions are found in /Europa Universalis IV/common/religions/*.txt
-
-Can utilise Event Scope Values.
-	1.23
-exile_ruler_as 	<string>
-
-The unique string to identify the exiled ruler with.
-	exile_ruler_as = my_exiled_ruler
-	Removes the current ruler of the current scope, saving them to the unique string. 	1.12
-set_ruler 	<string>
-
-The unique string of an exiled ruler.
-	set_ruler = my_exiled_ruler
-	Makes the exiled ruler the ruler of the current scope. 	1.12
-kill_ruler 	yes
-
-Boolean.
-	kill_ruler = yes
-	Kills the ruler of the current scope. 	1.1
-convert_female_ruler_to_general 	yes
-
-Boolean.
-	convert_female_ruler_to_general = yes
-	Converts a female ruler into a general. 	1.15
-convert_ruler_to_general 	yes
-
-Boolean.
-	convert_ruler_to_general = yes
-	Converts a male ruler into a general. 	1.8
 add_ruler_modifier 	name = <name>
 
 The event modifier to add.
