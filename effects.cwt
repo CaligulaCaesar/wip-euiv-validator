@@ -1521,7 +1521,7 @@ alias[effect:set_revolution_target] = ---
 ## scope = country
 ###Makes the current scope (if AI) the defined personality. AI personalities are found in /Europa Universalis IV/common/ai_personalities/00_ai_personalities.txt.
 alias[effect:set_ai_personality] = {
-	personality = <personality>
+	personality = <ai_personality>
 	###Whether the personality can be re-evaluated and changed.
 	locked = bool
 }
