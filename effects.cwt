@@ -1529,7 +1529,7 @@ alias[effect:set_ai_personality] = {
 ## scope = country
 ###Makes the current scope (if AI) have the defined attitude against the defined scope. AI attitudes are found in /Europa Universalis IV/common/ai_attitudes/00_ai_attitudes.txt.
 alias[effect:set_ai_attitude] = {
-	attitude = <attitude>
+	attitude = enum[attitudes]
 	###Whether the personality can be re-evaluated and changed.
 	locked = bool
 	who = scope[country]
