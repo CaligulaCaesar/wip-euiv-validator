@@ -1419,504 +1419,414 @@ alias[effect:define_heir] = {
 }
 
 
-#Country HRE stuff
+#Country HRE + Empire of China stuff
+
+## scope = country
+###Adds Imperial Influence for the current scope. No effect if not emperor.
+alias[effect:add_imperial_influence] = int
+
+## scope = country
+###Adds Imperial Influence for the current scope, scaled by the current Imperial Authority value. No effect if not emperor.
+alias[effect:add_scaled_imperial_influence] = int
+
+## scope = country
+###Makes the defined scope an elector of the Holy Roman Empire.
+alias[effect:elector] = scope[country]
+alias[effect:elector] = <country_tag>
+
+## scope = country
+###Removes an Imperial Reform. Imperial Reforms are found in /Europa Universalis IV/common/imperial_reforms/00_hre.txt.
+alias[effect:revoke_reform] = <imperial_reform> #todo
+
+## scope = country
+###Places the current scope and all owned provinces (if valid) in the empire.
+alias[effect:set_in_empire] = yes
+
+## scope = country
+###Makes the seat of the Emperor inheritable.
+alias[effect:hre_inheritable] = yes
+
+## scope = country
+###Enables the Imperial Ban casus belli.
+alias[effect:imperial_ban_allowed] = yes
+
+## scope = country
+###Disables casus belli creation for HRE members against one another.
+alias[effect:internal_hre_cb] = no
+
+## scope = country
+###Enables female rulers to become emperor.
+alias[effect:set_allow_female_emperor] = yes
+
+## scope = country
+###Disbands the HRE and removes all members from it.
+alias[effect:dismantle_hre] = yes
+
+## scope = country
+###Enables the Religious Leagues.
+alias[effect:enable_hre_leagues] = yes
+
+## scope = country
+###Makes the defined religion the official religion of the HRE.
+alias[effect:set_hre_religion] = <religion.not_school>
+
+## scope = country
+###Makes the defined religion the heretic religion of the HRE.
+alias[effect:set_hre_heretic_religion] = <religion.not_school>
+
+## scope = country
+###Locks the official and heretic religion assignments, ending the Religious Leagues.
+alias[effect:set_hre_religion_locked] = yes
+
+## scope = country
+###Ends the Religious Leagues with no set religions.
+alias[effect:set_hre_religion_treaty] = yes
+
+## scope = country
+###Makes the current scope join the League that the defined scope belongs to.
+alias[effect:join_league] = scope[country]
+alias[effect:join_league] = <country_tag>
+
+## scope = country
+###Makes the current scope leave the League that the defined scope belongs to.
+alias[effect:leave_league] = scope[country]
+alias[effect:leave_league] = <country_tag>
+
+## scope = country
+###Removes the Empire of China and the Mandate system.
+alias[effect:dismantle_empire_of_china] = yes
+
+## scope = country
+###Sets the current Emperor of China.
+alias[effect:set_emperor_of_china] = scope[country]
+alias[effect:set_emperor_of_china] = <country_tag>
+
+## scope = country
+###Adds mandate to the current scope. No effect if not the Emperor of China.
+alias[effect:add_mandate] = int
+
+## scope = country
+###Sets the mandate value for the current scope. No effect if not the Emperor of China.
+alias[effect:set_mandate] = int
+
+## scope = country
+###Makes the defined scope the new revolutionary target. Use --- to remove the target and not re-assign.
+alias[effect:set_revolution_target] = scope[country]
+alias[effect:set_revolution_target] = <country_tag>
+alias[effect:set_revolution_target] = ---
 
 
+#Country AI stuff
 
-
-
-
-	1.1
-Holy Roman Empire et al
-Ambox outdated info.png 	
-This section may contain outdated information that is inaccurate for the current version of the game. The last version it was verified as up to date for was 1.24.
-Name 	Parameters 	Examples 	Description 	Notes 	Version Added
-add_imperial_influence 	<int>
-
-The amount of influence to add or subtract.
-	add_imperial_influence = 10 	Adds Imperial Influence for the current scope. No effect if not emperor. 1.1
-add_scaled_imperial_influence 	<int>
-
-The amount of influence to add or subtract.
-	add_scaled_imperial_influence = 10 	Adds Imperial Influence for the current scope, scaled by the current Imperial Authority value. No effect if not emperor. 1.1
-elector 	<scope>
-
-The country to make elector.
-	elector = FRA 	Makes the defined scope an elector of the Holy Roman Empire. 	1.1
-revoke_reform 	<reform>
-
-The reform to remove.
-	revoke_reform = reichsreform 	Removes an Imperial Reform. Imperial Reforms are found in /Europa Universalis IV/common/imperial_reforms/00_hre.txt. 1.1
-set_in_empire 	yes
-
-Boolean.
-	set_in_empire = yes 	Places the current scope and all owned provinces (if valid) in the empire. 	1.12
-hre_inheritable 	yes
-
-Boolean.
-	hre_inheritable = yes 	Makes the seat of the Emperor inheritable. 	1.1
-imperial_ban_allowed 	yes
-
-Boolean.
-	imperial_ban_allowed = yes 	Enables the Imperial Ban casus belli. 	1.1
-internal_hre_cb 	no
-
-Boolean.
-	internal_hre_cb = no 	Disables casus belli creation for HRE members against one another. 	1.1
-set_allow_female_emperor 	yes
-
-Boolean.
-	set_allow_female_emperor = yes 	Enables female rulers to become emperor. 	1.1
-dismantle_hre 	yes
-
-Boolean.
-	dismantle_hre = yes 	Disbands the HRE and removes all members from it. 	1.1
-enable_hre_leagues 	yes
-
-Boolean.
-	enable_hre_leagues = yes 	Enables the Religious Leagues. 	1.8
-set_hre_religion 	<religion.not_school>
-
-Which religion to set.
-	set_hre_religion = catholic 	Makes the defined religion the official religion of the HRE. 	1.8
-set_hre_heretic_religion 	<religion.not_school>
-
-Which religion to set.
-	set_hre_heretic_religion = catholic 	Makes the defined religion the heretic religion of the HRE. 	1.8
-set_hre_religion_locked 	yes
-
-Boolean.
-	set_hre_religion_locked = yes 	Locks the official and heretic religion assignments, ending the Religious Leagues. 	1.8
-set_hre_religion_treaty 	yes
-
-Boolean.
-	set_hre_religion_treaty = yes 	Ends the Religious Leagues with no set religions. 	1.8
-join_league 	<scope>
-
-Which league to join.
-	join_league = FRA 	Makes the current scope join the League that the defined scope belongs to. 	1.8
-leave_league 	<scope>
-
-Which league to leave.
-	leave_league = FRA 	Makes the current scope leave the League that the defined scope belongs to. 	1.8
-dismantle_empire_of_china 	<yes> / <no>
-
-Boolean.
-	dismantle_empire_of_china = yes 	Removes the Empire of China and the Mandate system. 	1.20
-set_emperor_of_china 	<scope>
-
-Which country to set.
-	set_emperor_of_china = MNG 	Sets the current Emperor of China. 	1.20
-add_mandate 	<int>
-
-The amount of mandate to add or subtract.
-	add_mandate = 10 	Adds mandate to the current scope. No effect if not the emperor of china. 1.20
-set_mandate 	<int>
-
-The amount of mandate to set.
-	set_mandate = 10 	Sets the mandate value for the current scope. No effect if not the emperor of china. 1.20
-set_revolution_target 	<scope>
-
-The country to set.
-	set_revolution_target = FRA 	Makes the defined scope the new revolutionary target. Use --- to remove the target and not re-assign. 1.1
-AI
-Ambox outdated info.png 	
-This section may contain outdated information that is inaccurate for the current version of the game. The last version it was verified as up to date for was 1.24.
-Name 	Parameters 	Examples 	Description 	Notes 	Version Added
-set_ai_personality 	personality = <type>
-
-The personality to use.
-locked = <yes> / <no>
-Whether the personality can be re-evaluated and changed.
-	
-
-set_ai_personality = {
-    personality = ai_capitalist
-    locked = yes
+## scope = country
+###Makes the current scope (if AI) the defined personality. AI personalities are found in /Europa Universalis IV/common/ai_personalities/00_ai_personalities.txt.
+alias[effect:set_ai_personality] = {
+	personality = <personality>
+	###Whether the personality can be re-evaluated and changed.
+	locked = bool
 }
 
-	Makes the current scope (if AI) the defined personality. AI personalities are found in /Europa Universalis IV/common/ai_personalities/00_ai_personalities.txt. 1.1
-set_ai_attitude 	attitude = <type>
-
-The attitude to use.
-who = <scope>
-Who the attitude is directed against.
-locked = <yes> / <no>
-Whether the attitude can be re-evaluated and changed.
-	
-
-set_ai_attitude = {
-    attitude = attitude_friendly
-    who = FRA
-    locked = yes
+## scope = country
+###Makes the current scope (if AI) have the defined attitude against the defined scope. AI attitudes are found in /Europa Universalis IV/common/ai_attitudes/00_ai_attitudes.txt.
+alias[effect:set_ai_attitude] = {
+	attitude = <attitude>
+	###Whether the personality can be re-evaluated and changed.
+	locked = bool
+	who = scope[country]
+	who = <country_tag>
 }
 
-	Makes the current scope (if AI) have the defined attitude against the defined scope. AI attitudes are found in /Europa Universalis IV/common/ai_attitudes/00_ai_attitudes.txt. 1.1
-Province scope
-Ambox outdated info.png 	
-This section may contain outdated information that is inaccurate for the current version of the game. The last version it was verified as up to date for was 1.24.
 
-The effects can only be used when in a province scope.
-General
-Ambox outdated info.png 	
-This section may contain outdated information that is inaccurate for the current version of the game. The last version it was verified as up to date for was 1.24.
-Name 	Parameters 	Examples 	Description 	Notes 	Version Added
-province_event 	id = <id>
 
-The event id to fire.
-days = <days>
-Optional. The number of days to wait after the effect is executed to fire the event.
-random = <days>
-Optional. The max number of additional days that can be added to the days parameter for randomness.
-tooltip = <string>
-Optional. The tooltip to display in the effect tooltip country_event is used in.
-	
+#Province General stuff
 
-province_event = { 
-    id = uprising.1
-    days = 30
-    random = 15
-    tooltip = UPRISING_TOOLTIP
+## scope = province
+###Fire a province event for the current province scope. Appears for the owner of the province scope. You cannot fire the same event within itself.
+alias[effect:province_event] = {
+	id = <event.province>
+	## cardinality = 0..1
+	###The number of days to wait after the effect is executed to fire the event.
+	days = int
+	## cardinality = 0..1
+	###The max number of additional days that can be added to the days parameter for randomness.
+	random = int
+	## cardinality = 0..1
+	###The tooltip to display in the effect tooltip province_event is used in.
+	tooltip = localisation
 }
 
-	Fire a province event for the current province scope. Appears for the owner of the province scope. You cannot fire the same event within itself. 1.1
-add_province_modifier 	name = <name>
-
-The event modifier to add.
-duration = <days>
-Optional. The number of days to add the province modifier for.
-hidden = yes
-Optional. Whether the province modifier is hidden in the province view.
-desc = <string>
-Optional. The string used to override the automatic duration string.
-	
-
-add_province_modifier = { 
-    name = annoyed_people
-    duration = -1  
-    desc = annoyed_people_tooltip
-    hidden = yes
+## scope = province
+###Adds an event modifier to the current province scope as a province modifier. Modifiers added with this effect are cleared automatically when the province changes ownership.
+alias[effect:add_province_modifier] = {
+	name = <event_modifier>
+	## cardinality = 0..1
+	duration = int
+	## cardinality = 0..1
+	hidden = yes
+	## cardinality = 0..1
+	###The string used to override the automatic duration string.
+	desc = localisation
 }
 
-	Adds an event modifier to the current province scope as a province modifier. Modifiers added with this effect are cleared automatically when the province changes ownership. 1.1
-add_permanent_province_modifier 	name = <name>
-
-The event modifier to add.
-duration = <days>
-Optional. The number of days to add the province modifier for.
-hidden = yes
-Optional. Whether the province modifier is hidden in the province view.
-desc = <string>
-Optional. The string used to override the automatic duration string.
-	
-
-add_permanent_province_modifier = { 
-    name = annoyed_people
-    duration = -1  
-    desc = annoyed_people_tooltip
-    hidden = yes
+## scope = province
+###Adds an event modifier to the current province scope as a province modifier. Modifiers added with this effect persist through ownership changes.
+alias[effect:add_permanent_province_modifier] = {
+	name = <event_modifier>
+	## cardinality = 0..1
+	duration = int
+	## cardinality = 0..1
+	hidden = yes
+	## cardinality = 0..1
+	###The string used to override the automatic duration string.
+	desc = localisation
 }
 
-	Adds an event modifier to the current province scope as a province modifier. Modifiers added with this effect persist through ownership changes. 1.1
-add_province_triggered_modifier 	<modifier>
+## scope = province
+###Adds a province triggered modifier to the current province scope.
+alias[effect:add_permanent_province_modifier] = <triggered_modifier> #todo
 
-The province triggered modifier to add.
-	
-
-add_province_triggered_modifier = test_modifier
-
-	Adds a province triggered modifier to the current province scope. 	1.24
-extend_province_modifier 	name = <name>
-
-The event modifier to extend.
-duration = <days>
-	
-
-extend_province_modifier = { 
-    name = annoyed_people
-    duration = 365
+## scope = province
+###Extends the duration of an existing province modifier held by the current province scope. Modifiers added with this effect persist through ownership changes.
+alias[effect:extend_province_modifier] = {
+	name = <event_modifier>
+	## cardinality = 0..1
+	duration = int
 }
 
-	Extends the duration of an existing province modifier held by the current province scope. Modifiers added with this effect persist through ownership changes. 1.1
-remove_province_modifier 	<modifier>
+## scope = province
+###Removes an already assigned province modifier from the current province scope.
+alias[effect:add_permanent_province_modifier] = <event_modifier>
 
-The event modifier to remove.
-	remove_province_modifier = annoyed_people 	Removes an already assigned province modifier from the current province scope. 	1.1
-set_province_flag 	<flag>
+## scope = province
+###Defines a province flag for the current province scope. Flags can be appended with scopes or event targets with @scope.
+alias[effect:set_province_flag] = scalar
 
-An unique string to identify the province flag with.
-	set_province_flag = my_flag
+## scope = province
+###Clears a defined province flag for the current province scope.
+alias[effect:clr_province_flag] = scalar
 
-set_province_flag = my_flag@ROOT
-set_province_flag = my_flag@event_target:name
-	Defines a province flag for the current province scope. Flags can be appended with scopes or event targets 	1.1
-clr_province_flag 	<flag>
+## scope = province
+###Changes the province name of the current province scope to the defined name.
+alias[effect:change_province_name] = scalar
 
-The unique string of a province flag to clear.
-	clr_province_flag = my_flag 	Clears a defined province flag for the current province scope. 	1.1
-change_province_name 	<string>
+## scope = province
+###Changes the capital name of the current province scope to the defined name. The capital name is the second name that appears under the province name within the province window.
+alias[effect:rename_capital] = scalar
 
-The name to change to.
-	change_province_name = "Paris" 	Changes the province name of the current province scope to the defined name. 	1.1
-rename_capital 	<string>
 
-The name to change to.
-	rename_capital = "Paris" 	Changes the capital name of the current province scope to the defined name. The capital name is the second name that appears under the province name within the province window. 1.1
-Development
-Ambox outdated info.png 	
-This section may contain outdated information that is inaccurate for the current version of the game. The last version it was verified as up to date for was 1.24.
-Name 	Parameters 	Examples 	Description 	Notes 	Version Added
-add_base_tax 	<int>
+#Province Development stuff
 
-The amount of base tax to add or subtract.
-	add_base_tax = 1 	Adds base tax to the current province scope. 	1.1
-add_base_production 	<int>
+## scope = province
+###Adds base tax to the current province scope.
+alias[effect:add_base_tax] = int
 
-The amount of base production to add or subtract.
-	add_base_production = 1 	Adds base production to the current province scope. 	1.1
-add_base_manpower 	<int>
+## scope = province
+###Adds base production to the current province scope.
+alias[effect:add_base_production] = int
 
-The amount of base manpower to add or subtract.
-	add_base_manpower = 1 	Adds base manpower to the current province scope. 	1.1
-add_prosperity 	<int>
+## scope = province
+###Adds base manpower to the current province scope.
+alias[effect:add_base_manpower] = int
 
-The amount of prosperity to add or subtract.
-	add_prosperity = 1 	Adds prosperity to the current province scope. 	1.20
-add_devastation 	<int>
+## scope = province
+###Adds prosperity to the current province scope.
+alias[effect:add_prosperity] = int
 
-The amount of devastation to add or subtract.
-	add_devastation = 1 	Adds devastation to the current province scope. 	1.20
-add_local_autonomy 	<int>
+## scope = province
+###Adds devastation to the current province scope.
+alias[effect:add_devastation] = int
 
-The amount of local autonomy to add or subtract.
-	add_local_autonomy = 10 	Adds local autonomy to the current province scope. 	1.8
-set_local_autonomy 	<int>
+## scope = province
+###Adds local autonomy to the current province scope.
+alias[effect:add_local_autonomy] = int[-100..100]
 
-The amount of local autonomy to set.
-	set_local_autonomy = 50 	Sets local autonomy for the current province scope. 	1.12
-change_trade_goods 	<good>
+## scope = province
+###Sets local autonomy to the current province scope.
+alias[effect:set_local_autonomy] = int[0..100]
 
-The trade good to set.
-	change_trade_goods = grain 	Sets the trade good for the current province scope. Trade Goods are found in /Europa Universalis IV/common/tradegoods/*.txt. 1.1
-add_scaled_local_adm_power 	<int>
+## scope = province
+###Sets the trade good for the current province scope. Trade Goods are found in /Europa Universalis IV/common/tradegoods/*.txt.
+alias[effect:change_trade_goods] = <trade_good>
 
-The amount of administrative power to add.
-	add_scaled_local_adm_power = 10 	Adds Administrative power to the owner of the current province scope, scaling with the base tax. 1 power per point of yearly base tax. 1.12
-add_scaled_local_dip_power 	<int>
+## scope = province
+###Adds Administrative power to the owner of the current province scope, scaling with the base tax. 1 power per point of yearly base tax.
+alias[effect:add_scaled_local_adm_power] = int
 
-The amount of diplomatic power to add.
-	add_scaled_local_dip_power = 10 	Adds Diplomatic power to the owner of the current province scope, scaling with the base production. 1 power per point of yearly base production. 1.12
-add_scaled_local_mil_power 	<int>
+## scope = province
+###Adds Diplomatic power to the owner of the current province scope, scaling with the base production. 1 power per point of yearly base tax.
+alias[effect:add_scaled_local_dip_power] = int
 
-The amount of military power to add.
-	add_scaled_local_mil_power = 10 	Adds Military power to the owner of the current province scope, scaling with the base manpower. 1 power per point of yearly base manpower. 1.12
-cancel_construction 	yes
+## scope = province
+###Adds Military power to the owner of the current province scope, scaling with the base manpower. 1 power per point of yearly base tax.
+alias[effect:add_scaled_local_mil_power] = int
 
-Boolean.
-	cancel_construction = yes 	Cancels any construction ongoing in the current province scope. Constructions are coring, religious conversion, cultural conversion, buildings and great projects. 1.6
-add_great_project 	<project>
+## scope = province
+###Cancels any construction ongoing in the current province scope. Constructions are coring, religious conversion, cultural conversion, buildings and great projects.
+alias[effect:cancel_construction] = yes
 
-The great project to add.
-	add_great_project = kiel_canal 	Starts construction of a great project in the current province scope. Great projects are found in /Europa Universalis IV/common/great_projects/*.txt. 1.6
-add_construction_progress 	<float>
+## scope = province
+###Starts construction of a great project in the current province scope. Great projects are found in /Europa Universalis IV/common/great_projects/*.txt.
+alias[effect:add_great_project] = <project> #todo
 
-The amount of progress to add or subtract.
-	add_construction_progress = 0.05 	Changes the construction progress of a great project in the current province scope. 	1.6
-add_building 	<building>
+## scope = province
+###Changes the construction progress of a great project in the current province scope.
+alias[effect:add_construction_progress] = float[-1.0..1.0]
 
-The building to add.
-	add_building = temple 	Adds the defined building to the current province scope. Buildings are found in /Europa Universalis IV/common/buildings/*.txt. 1.1
-remove_building 	<building>
+## scope = province
+###Adds the defined building to the current province scope. Buildings are found in /Europa Universalis IV/common/buildings/*.txt.
+alias[effect:add_building] = <building>
 
-The building to remove.
-	remove_building = temple 	Removes the defined building to the current province scope. Buildings are found in /Europa Universalis IV/common/buildings/*.txt. 1.1
-add_building_construction 	building = <building>
+## scope = province
+###Removes the defined building from the current province scope. Buildings are found in /Europa Universalis IV/common/buildings/*.txt.
+alias[effect:remove_building] = <building>
 
-The building to construct.
-speed = <float>
-The speed percentage of the base building speed to use.
-cost = <float>
-The cost percentage of the base building cost to use.
-	
-
-add_building_construction = {
-    building = temple
-    speed = 0.5
-    cost = 0.5
+## scope = province
+###Starts building construction in the current province scope. cost and speed are a percentage of the base value, i.e. 0.5 is 50% of the base value.
+alias[effect:add_building_construction] = {
+	building = <building>
+	speed = float
+	cost = float
 }
 
-	Starts building construction in the current province scope. cost and speed are a percentage of the base value, i.e. 0.5 is 50% of the base value. 1.11
-Society
-Ambox outdated info.png 	
-This section may contain outdated information that is inaccurate for the current version of the game. The last version it was verified as up to date for was 1.24.
-Name 	Parameters 	Examples 	Description 	Notes 	Version Added
-create_advisor 	<advisor>
 
-The advisor to add.
-	create_advisor = treasurer 	Adds the defined advisor for the owner of the current province scope. Advisors are found in /Europa Universalis IV/common/advisors/*.txt. 1.1
-set_seat_in_parliament 	yes / no
+#Province Society stuff
 
-Boolean.
-	set_seat_in_parliament = yes 	Adds the current province scope to Parliament. No effect if the owner of the province does not have a government using has_parliament. 1.12
-back_current_issue 	yes / no
+## scope = province
+###Adds the defined advisor for the owner of the current province scope. Advisors are found in /Europa Universalis IV/common/advisors/*.txt.
+alias[effect:create_advisor] = <advisor_type>
 
-Boolean.
-	back_current_issue = yes 	Backs or blocks the current issue in Parliament, if the current province scope has a seat. No effect if the owner of the province does not have a government using has_parliament. 1.12
-change_culture 	<culture.fixed>
+## scope = province
+###Adds the current province scope to Parliament. No effect if the owner of the province does not have a government using has_parliament.
+alias[effect:set_seat_in_parliament] = yes
 
-The culture to change to.
-	change_culture = english
+## scope = province
+###Backs or blocks the current issue in Parliament, if the current province scope has a seat. No effect if the owner of the province does not have a government using has_parliament.
+alias[effect:back_current_issue] = bool
 
-change_culture = ENG
-change_culture = event_target:my_event_target
-change_culture = variable:my_variable
-	Changes the culture of the current province scope. Cultures are found in /Europa Universalis IV/common/cultures/*.txt.
+## scope = province
+###Changes the culture of the current province scope. Cultures are found in /Europa Universalis IV/common/cultures/*.txt. Can utilise Event Scope Values.
+alias[effect:change_culture] = <culture.fixed>
+alias[effect:change_culture] = <country_tag>
+alias[effect:change_culture] = scope[country]
 
-Can utilise Event Scope Values.
-	1.1
-add_culture_construction 	yes
+## scope = province
+###Starts culture conversion in the current province scope, for the current owner.
+alias[effect:add_culture_construction] = yes
 
-Boolean.
-	add_culture_construction = yes 	Starts culture conversion in the current province scope, for the current owner. 	1.12
-change_religion 	<religion.not_school>
+## scope = province
+###Changes the religion of the current province scope. Religions are found in /Europa Universalis IV/common/religions/*.txt. Can utilise Event Scope Values.
+alias[effect:change_religion] = <religion.not_school>
+alias[effect:change_religion] = <country_tag>
+alias[effect:change_religion] = scope[country]
 
-The religion to change to.
-<scope>
-The religion to change to, derived from the scope.
-	change_religion = catholic
+## scope = province
+###Changes the religion in the current province scope to the syncretic religion of its owner.
+alias[effect:change_to_secondary_religion] = yes
 
-change_religion = CAS
-change_religion = event_target:my_event_target
-change_religion = variable:my_variable
-	Changes the religion of the current province scope. Religions are found in /Europa Universalis IV/common/religions/*.txt
+## scope = province
+###Starts religious conversion in the current province scope, for the current owner.
+alias[effect:send_missionary] = yes
 
-Can utilise Event Scope Values.
-	1.1
-change_to_secondary_religion 	yes
+## scope = province
+###Adds a Cardinal to the current province scope, for the current owner.
+alias[effect:add_cardinal] = yes
 
-Boolean.
-	change_to_secondary_religion = yes 	Changes the religion in the current province scope to the syncretic religion of its owner. 	1.14
-send_missionary 	yes
+## scope = province
+###Removes a Cardinal from the current province scope, for the current owner.
+alias[effect:remove_cardinal] = yes
 
-Boolean.
-	send_missionary = yes 	Starts religious conversion in the current province scope, for the current owner. 	1.12
-add_cardinal 	yes
+## scope = province
+###Adds a Center of Reformation for the defined religion in the current province scope.
+alias[effect:add_reform_center] = <religion.not_school>
 
-Boolean.
-	add_cardinal = yes 	Adds a Cardinal to the current province scope, for the current owner. 	1.8
-remove_cardinal 	yes
+## scope = province
+###Removes the Center of Reformation for the defined religion in the current province scope.
+alias[effect:remove_reform_center] = <religion.not_school>
 
-Boolean.
-	remove_cardinal = yes 	Removes a Cardinal in the current province scope. 	1.8
-add_reform_center 	<religion.not_school>
+## scope = province
+###Adds an estate to the current province scope. Will override any previous estate.
+alias[effect:set_estate] = <estate>
 
-The religion to use.
-	add_reform_center = reformed 	Adds a Center of Reformation for the defined religion in the current province scope. 	1.8
-remove_reform_center 	<religion.not_school>
+## scope = province
+###Removes an estate in the current province scope. Does not produce a tooltip.
+alias[effect:remove_estate] = <estate>
 
-The religion to use.
-	remove_reform_center = reformed 	Removes the Center of Reformation for the defined religion in the current province scope. 	1.8
-set_estate 	<estate>
+## scope = province
+###Places the current province scope in the Holy Roman Empire.
+alias[effect:set_in_empire] = bool
 
-Which estate to use.
-	set_estate = estate_nobles 	Adds an estate to the current province scope. Will override a previous estate. 1.1
-remove_estate 	<estate>
-
-Which estate to remove.
-	remove_estate = estate_nobles 	Removes an estate in the current province scope. Does not produce a tooltip. 1.1
-set_in_empire 	yes / no
-
-Boolean.
-	set_in_empire = yes 	Places the current province scope in the Holy Roman Empire. 	1.1
-add_institution_embracement 	which = <institution>
-
-The institution to add to.
-value = <int>
-The amount of embracement to add or subtract.
-	
-
-add_institution_embracement = {
-    which = feudalism
-    value = 10
+## scope = province
+###Adds institution embracement progress for the defined institution in the current province scope. The defined institution must be enabled for the owner of the province first.
+alias[effect:add_institution_embracement] = {
+	which = <institution>
+	value = int
 }
 
-	Adds institution embracement progress for the defined institution in the current province scope. The defined institution must be enabled for the owner of the province first. 1.18
-Unrest
-Ambox outdated info.png 	
-This section may contain outdated information that is inaccurate for the current version of the game. The last version it was verified as up to date for was 1.24.
-Name 	Parameters 	Examples 	Description 	Notes 	Version Added
-add_nationalism 	<int>
 
-The amount to add or subtract.
-	add_nationalism = 10 	Adds Nationalism to the current province scope. 	1.1
-add_unrest 	<int>
+#Province Unrest stuff
 
-The amount to add or subtract.
-	add_unrest = 10 	Adds Local Unrest to the current province scope. Appears under Base Unrest. 1.8
-create_native 	<int>
+## scope = province
+###Adds Nationalism to the current province scope.
+alias[effect:add_nationalism] = int
 
-The size to use.
-	create_native = 1 	Spawns natives in the current province scope. Only useful in colonies; will immediately disappear in cities or uncolonized provinces. 1.1
-create_pirate 	<int>
+## scope = province
+###Adds Local Unrest to the current province scope. Appears under Base Unrest.
+alias[effect:add_unrest] = int
 
-The size to use.
-	create_pirate = 1 	Spawns pirates in the current province scope. Only spawnable in sea zones and land provinces with ports. 1.1
-create_revolt 	<int>
+## scope = province
+###Spawns natives in the current province scope. Only useful in colonies; will immediately disappear in cities or uncolonized provinces.
+alias[effect:create_native] = int
 
-The size to use.
-	create_revolt = 1 	Spawns the most likely rebel type in the current province scope. 	1.1
-<rebel type> 	<int>
+## scope = province
+###Spawns pirates in the current province scope. Only spawnable in sea zones and land provinces with ports.
+alias[effect:create_pirate] = int
 
-The size to use.
-	anti_tax_rebels = 1 	Spawns the defined rebel type in the current province scope. Rebel types found in /Europa Universalis IV/common/rebel_types/*.txt. 1.1
-spawn_rebels 	type = <type>
+## scope = province
+###Spawns the most likely rebel type in the current province scope.
+alias[effect:create_revolt] = int
 
-The size type to use.
-size = <int>
-The size to use.
-culture = <culture.fixed> / <scope>
-Optional. The culture the rebels belong to.
-religion = <religion.not_school> / <scope>
-Optional. The religion the rebels belong to.
-unrest = <int>
-Optional. Adds this amount of unrest to the province the rebels spawn in.
-win = yes
-Optional. Changes control of the province the rebels spawn in to the rebels.
-friend = <scope>
-Optional. Associate a country with the rebels.
-leader = <string>
-Optional. Assigns the rebel leader a specific name. Can use set_saved_name.
-female = yes
-Optional. Makes the rebel leader female.
-use_heir_as_leader = yes
-Optional. Makes the owner's heir the rebel leader. Removes heir.
-use_consort_as_leader = yes
-Optional. Makes the owner's consort the rebel leader. Removes consort.
-	
+## scope = province
+###Spawns the defined rebel type in the current province scope. Rebel types found in /Europa Universalis IV/common/rebel_types/*.txt.
+alias[effect:<rebel_type>] = int
 
-spawn_rebels = {
-    type = noble_rebels
-    size = 1
+## scope = province
+###Spawns the defined rebels in the current province scope. Rebel types found in /Europa Universalis IV/common/rebel_types/*.txt. Note: the size of revolts follows this formula: number of regiments = round[(4 + 0.3 * total development) * (1 + 0.03 * technology level) * rebellion size]
+alias[effect:spawn_rebels] = {
+	type = <rebel_type>
+	size = int
+	## cardinality = 0..1
+	culture = <culture.fixed>
+	## cardinality = 0..1
+	culture = <country_tag>
+	## cardinality = 0..1
+	culture = scope[country]
+	## cardinality = 0..1
+	religion = <religion.not_school>
+	## cardinality = 0..1
+	religion = <country_tag>
+	## cardinality = 0..1
+	religion = scope[country]
+	## cardinality = 0..1
+	###Adds this amount of unrest to the province the rebels spawn in.
+	unrest = int
+	## cardinality = 0..1
+	###Changes control of the province the rebels spawn in to the rebels.
+	win = yes
+	## cardinality = 0..1
+	###Associate a country with the rebels.
+	friend = scope[country]
+	## cardinality = 0..1
+	###Associate a country with the rebels.
+	friend = <country_tag>
+	## cardinality = 0..1
+	leader = scalar #todo: name / saved name
+	## cardinality = 0..1
+	female = yes
+	## cardinality = 0..1
+	use_heir_as_leader = yes
+	## cardinality = 0..1
+	use_consort_as_leader = yes
 }
-
-spawn_rebels = {
-    type = pretender_rebels
-    size = 2
-    leader = rebel_preacher
-}
-
-spawn_rebels = {
-    type = catholic_rebels
-    size = 2
-    friend = FROM
-}
-
-	Spawns the defined rebels in the current province scope. Rebel types found in /Europa Universalis IV/common/rebel_types/*.txt. 1.1
-
-Note: the size of revolts follows this formulae:
-
-    { \text{number of regiments} = round \left[\left( 4 + 0.3 \cdot \text{total development} \right) \cdot (1 + 0.03 \cdot \text{technology level}) \cdot \text{rebellion size} \right] }
-
 
 
 #Province Colonisation stuff
