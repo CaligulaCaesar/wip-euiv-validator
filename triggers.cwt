@@ -3617,6 +3617,8 @@ alias[trigger:variable_arithmetic_trigger] = {
 		value = enum[export_to_variable_data]
 		## cardinality = 0..1
 		who = scope[country]
+		## cardinality = 0..1
+		with = scope[country]
 	}
 	
 	## cardinality = 0..inf
