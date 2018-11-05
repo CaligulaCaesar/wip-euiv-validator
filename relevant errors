@@ -2,35 +2,9 @@
 c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\common\government_reforms\00_government_reforms.txt, 872, 0, CW002, Error, "This block has mixed key/values and values, it is probably a missing equals sign inside it."
 c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\map\area.txt, 0, 0, CW002, Error, "This block has mixed key/values and values, it is probably a missing equals sign inside it."
 c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\map\area.txt, 285, 0, CW002, Error, "This block has mixed key/values and values, it is probably a missing equals sign inside it."
-c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\common\parliament_bribes\pay_armyprofessionalism.txt, 8, 2, CW240, Error, "Expecting a value between 0.000000 and 1.000000"
-c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\common\parliament_bribes\pay_institutiongrowth.txt, 4, 3, CW241, Error, "Unexpected node current_institution in FROM"
-c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\common\parliament_bribes\pay_institutiongrowth.txt, 11, 3, CW240, Error, "Expecting a value between 0 and 100"
-c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\common\parliament_bribes\pay_reformprogress.txt, 4, 2, CW241, Error, "Unexpected node government_reform_progress in trigger"
-c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\common\parliament_bribes\pay_reformprogress.txt, 8, 2, CW241, Error, "Unexpected node change_government_reform_progress in effect"
 c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\common\parliament_bribes\scapegoat_bribe.txt, 13, 12, CW240, Error, "Expected value of type province_id"
 c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\common\parliament_bribes\scapegoat_bribe.txt, 37, 12, CW240, Error, "Expected value of type province_id"
-c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\common\parliament_issues\appropriation_of_land.txt, 9, 1, CW241, Error, "Unexpected node on_issue_taken in appropriation_of_land"
-c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\common\province_triggered_modifiers\00_modifiers.txt, 80, 2, CW241, Error, "Unexpected node else_if in trigger"
-c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\common\rebel_types\anti_tax.txt, 4, 0, CW242, Warning, "Too many will_relocate, expecting at most 1"
-c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\common\rebel_types\cossacks.txt, 124, 2, CW241, Error, "Unexpected node create_independent_estate in demands_enforced_effect"
-c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\common\rebel_types\nationalist.txt, 33, 1, CW241, Error, "Unexpected node handle_action_change_culture in nationalist_rebels"
-c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\common\estates\06_dhimmi.txt, 15, 1, CW241, Error, "Unexpected node territory_power_modifier in estate_dhimmi"
-c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\common\estates\06_dhimmi.txt, 7, 1, CW241, Error, "Unexpected node independence_trigger in estate_dhimmi"
 c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\common\estates\06_dhimmi.txt, 67, 2, CW241, Error, "Unexpected node local_religious_unity_contribution in province_modifier_happy"
-c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\common\estates\06_dhimmi.txt, 85, 12, CW999, Error, "Wrong scope, in Province but expected [Country]
-or
-Wrong scope, in Province but expected [Country]
-or
-This is not a target. Expected a target in scope(s) Country
-or
-Wrong scope, in Province but expected [Country]"
-c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\common\estates\06_dhimmi.txt, 95, 12, CW999, Error, "Wrong scope, in Province but expected [Country]
-or
-Wrong scope, in Province but expected [Country]
-or
-This is not a target. Expected a target in scope(s) Country
-or
-Wrong scope, in Province but expected [Country]"
 c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\common\government_reforms\00_government_reforms.txt, 564, 2, CW241, Error, "Unexpected node factions in conditional"
 c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\common\government_reforms\00_government_reforms.txt, 646, 1, CW240, Error, "Expecting a "government_icons" value, e.g. seq
   ["ambrosian_republic"; "arabic_scripture"; "asian_scripture"; "assembly_hall";
@@ -7022,16 +6996,6 @@ c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\events\Patri
 c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\events\Patriarchs.txt, 413, 2, CW241, Error, "Unexpected node event_target:monastic_province in option"
 c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\events\PersonalityEvents.txt, 14, 1, CW240, Error, "Expected value of type sprite"
 c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\events\PersonalityEvents.txt, 70, 1, CW240, Error, "Expected value of type sprite"
-
-
-
-
-
-c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\events\PersonalityEvents.txt, 101, 5, CW241, Error, "Unexpected node discover_province in ROOT"
-c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\events\PersonalityEvents.txt, 1904, 3, CW241, Error, "Unexpected node set_variable in hidden_effect"
-
-
-
 c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\events\PersonalityEvents.txt, 2414, 1, CW240, Error, "Expected value of type sprite"
 c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\events\PersonalityEvents.txt, 2453, 1, CW240, Error, "Expected value of type sprite"
 c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\events\PersonalityEvents.txt, 2486, 1, CW240, Error, "Expected value of type sprite"
@@ -7316,9 +7280,7 @@ c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\events\Repub
 c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\events\RepublicFactions.txt, 1053, 5, CW240, Error, "Expected value of type trade_good"
 c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\events\Republics.txt, 827, 3, CW241, Error, "Unexpected node any_active_trade_node in NOT"
 c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\events\Republics.txt, 1698, 2, CW240, Error, "Expected value of type government_reform.new"
-c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\events\Republics.txt, 2438, 2, CW241, Error, "Unexpected node check_if_non_state_advisor_effect in immediate"
-c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\events\Republics.txt, 2472, 2, CW241, Error, "Unexpected node generate_advisor_of_type_and_semi_random_religion_effect in option"
-c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\events\Republics.txt, 2481, 2, CW241, Error, "Unexpected node erase_advisor_flags_effect in after"
+"
 c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\events\Republics.txt, 3166, 3, CW240, Error, "Expected value of type government.normal"
 c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\events\Republics.txt, 3302, 2, CW241, Error, "Unexpected node add_government_reform in option"
 c:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV\events\Republics.txt, 3300, 3, CW241, Error, "Unexpected node change_government_via_reform in if"
